@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Hanken_Grotesk, Space_Grotesk } from "next/font/google";
+import { CartProvider } from "@/lib/cart-context";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -39,7 +40,9 @@ export default function RootLayout({
       className={`dark ${montserrat.variable} ${hankenGrotesk.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body-md text-on-background bg-background overflow-x-hidden">
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

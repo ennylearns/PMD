@@ -6,6 +6,7 @@ import ImageGallery from "@/components/image-gallery";
 import VariantSelector from "@/components/variant-selector";
 import StockIndicator from "@/components/stock-indicator";
 import ProductCard from "@/components/product-card";
+import { useCart } from "@/lib/cart-context";
 
 type Variant = {
   id: string;
@@ -42,6 +43,12 @@ export default function ProductDetailClient({
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(
     firstAvailable || null
   );
+  const [addingToCart, setAddingToCart] = useState(false);
+  const [cartFeedback, setCartFeedback] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+  const { addItem } = useCart();
 
   const stock = selectedVariant?.inventory?.stock || 0;
 
@@ -139,24 +146,58 @@ export default function ProductDetailClient({
               </div>
             )}
 
+            {/* Cart Feedback */}
+            {cartFeedback && (
+              <div
+                className={`px-4 py-3 text-xs font-accent-label uppercase tracking-[0.15em] ${
+                  cartFeedback.type === "success"
+                    ? "bg-green-900/30 text-green-400 border border-green-500/20"
+                    : "bg-error-container/30 text-error border border-error/20"
+                }`}
+              >
+                {cartFeedback.message}
+              </div>
+            )}
+
             {/* Add to Cart Button */}
             <button
               id="add-to-cart-btn"
-              disabled={!selectedVariant || stock <= 0}
+              disabled={!selectedVariant || stock <= 0 || addingToCart}
+              onClick={async () => {
+                if (!selectedVariant) return;
+                setAddingToCart(true);
+                setCartFeedback(null);
+                const result = await addItem(selectedVariant.id, 1);
+                setAddingToCart(false);
+                if (result.ok) {
+                  setCartFeedback({
+                    type: "success",
+                    message: "Added to cart",
+                  });
+                } else {
+                  setCartFeedback({
+                    type: "error",
+                    message: result.error || "Failed to add",
+                  });
+                }
+                setTimeout(() => setCartFeedback(null), 3000);
+              }}
               className={`
                 w-full py-4 text-sm font-button-text uppercase tracking-[0.25em] transition-all duration-200
                 ${
-                  selectedVariant && stock > 0
+                  selectedVariant && stock > 0 && !addingToCart
                     ? "bg-[#f5f5f5] text-[#131313] hover:bg-error hover:text-on-error cursor-pointer active:scale-[0.98]"
                     : "bg-surface-container-high text-on-surface/30 cursor-not-allowed"
                 }
               `}
             >
-              {!selectedVariant
-                ? "Select a variant"
-                : stock <= 0
-                  ? "Out of Stock"
-                  : "Add to Cart"}
+              {addingToCart
+                ? "Adding..."
+                : !selectedVariant
+                  ? "Select a variant"
+                  : stock <= 0
+                    ? "Out of Stock"
+                    : "Add to Cart"}
             </button>
 
             {/* Details Accordion */}
