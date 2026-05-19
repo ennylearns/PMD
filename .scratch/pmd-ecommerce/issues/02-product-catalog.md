@@ -8,15 +8,15 @@ Product catalog with variant-level inventory: database schema for products/categ
 
 ## Acceptance criteria
 
-- [ ] Categories: T-Shirts, Joggers, New Drops with slug-based routing
-- [ ] Products: name, slug, description, price, images, category association
-- [ ] Variants: color + size combinations per product
-- [ ] VariantInventory: tracked per variant (color/size combo)
-- [ ] API: GET/POST/PUT/DELETE /api/products
-- [ ] API: GET/POST/PUT/DELETE /api/categories
-- [ ] API: GET/POST/PUT/DELETE /api/variants
-- [ ] Shop page: grid of products with category filter
-- [ ] Product detail: image gallery, variant selector (color swatches, size buttons), stock indicator
+- [x] Categories: T-Shirts, Joggers, New Drops with slug-based routing
+- [x] Products: name, slug, description, price, images, category association
+- [x] Variants: color + size combinations per product
+- [x] VariantInventory: tracked per variant (color/size combo)
+- [x] API: GET/POST/PUT/DELETE /api/products
+- [x] API: GET/POST/PUT/DELETE /api/categories
+- [x] API: GET/POST/PUT/DELETE /api/variants
+- [x] Shop page: grid of products with category filter
+- [x] Product detail: image gallery, variant selector (color swatches, size buttons), stock indicator
 
 ## Blocked by
 
@@ -24,4 +24,4 @@ Product catalog with variant-level inventory: database schema for products/categ
 
 ---
 
-Status: needs-triage
+Status: done

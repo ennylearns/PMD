@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex-1 flex flex-col">
@@ -14,9 +16,12 @@ export default function Home() {
           <p className="font-accent-label text-accent-label text-on-surface-variant mb-12 tracking-widest uppercase">
             The New Standard in Tactical Streetwear.
           </p>
-          <button className="bg-[#F5F5F5] text-primary-container font-button-text text-button-text px-12 py-5 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150 ease-linear border-0 group relative overflow-hidden">
+          <Link
+            href="/shop"
+            className="bg-[#F5F5F5] text-primary-container font-button-text text-button-text px-12 py-5 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150 ease-linear border-0 group relative overflow-hidden"
+          >
             <span className="relative z-10">Shop Now</span>
-          </button>
+          </Link>
         </div>
       </section>
     </main>
