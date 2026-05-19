@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | RMD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&amp;family=Montserrat:wght@700;800;900&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Fast linear transitions */
+        .transition-fast {
+            transition: all 150ms linear;
+        }
+        
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF0000;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#c6c6c7",
+                        "primary": "#c6c6c6",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#353535",
+                        "on-primary-container": "#757575",
+                        "tertiary": "#c6c6c6",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-container-low": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-surface-variant": "#cfc4c5",
+                        "surface-dim": "#131313",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-container": "#454747",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#393939",
+                        "on-tertiary-container": "#757575",
+                        "primary-container": "#000000",
+                        "inverse-on-surface": "#303030",
+                        "tertiary-container": "#000000",
+                        "surface": "#131313",
+                        "outline-variant": "#4c4546",
+                        "inverse-surface": "#e2e2e2",
+                        "on-primary": "#303030",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "outline": "#988e90",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-variant": "#353535",
+                        "on-tertiary": "#303030",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#5e5e5e",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#2f3131",
+                        "on-surface": "#e2e2e2",
+                        "background": "#131313",
+                        "surface-tint": "#c6c6c6",
+                        "surface-container": "#1f1f1f",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-background": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "display-xl": ["Montserrat"],
+                        "accent-label": ["Space Grotesk"],
+                        "button-text": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", { "lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "150%", "fontWeight": "400" }],
+                        "display-xl": ["96px", { "lineHeight": "100%", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "accent-label": ["14px", { "lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "button-text": ["14px", { "lineHeight": "100%", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "110%", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "160%", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-error selection:text-primary-container font-body-md min-h-screen flex flex-col">
+<!-- Minimal Header for Checkout -->
+<header class="w-full border-b border-surface-container-highest py-6 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest sticky top-0 z-50">
+<div class="flex justify-between items-center max-w-7xl mx-auto">
+<a class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-error italic tracking-tighter" href="/">RMD</a>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">lock</span>
+<span class="font-accent-label text-accent-label">SECURE CHECKOUT</span>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter">
+<!-- Left Column: Forms -->
+<div class="lg:col-span-7 space-y-12">
+<!-- Contact & Shipping -->
+<section class="space-y-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg uppercase border-b border-surface-container-highest pb-4">Shipping Info</h2>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-accent-label text-accent-label text-on-surface-variant block" for="firstName">First Name</label>
+<input class="w-full bg-surface border border-surface-container-highest p-4 text-on-surface font-body-md focus:border-error focus:ring-0 transition-fast rounded-none outline-none" id="firstName" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-accent-label text-accent-label text-on-surface-variant block" for="lastName">Last Name</label>
+<input class="w-full bg-surface border border-surface-container-highest p-4 text-on-surface font-body-md focus:border-error focus:ring-0 transition-fast rounded-none outline-none" id="lastName" required="" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-accent-label text-accent-label text-on-surface-variant block" for="address">Street Address</label>
+<input class="w-full bg-surface border border-surface-container-highest p-4 text-on-surface font-body-md focus:border-error focus:ring-0 transition-fast rounded-none outline-none" id="address" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-2 md:col-span-2">
+<label class="font-accent-label text-accent-label text-on-surface-variant block" for="city">City</label>
+<input class="w-full bg-surface border border-surface-container-highest p-4 text-on-surface font-body-md focus:border-error focus:ring-0 transition-fast rounded-none outline-none" id="city" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-accent-label text-accent-label text-on-surface-variant block" for="zip">ZIP / Postal</label>
+<input class="w-full bg-surface border border-surface-container-highest p-4 text-on-surface font-body-md focus:border-error focus:ring-0 transition-fast rounded-none outline-none" id="zip" required="" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-accent-label text-accent-label text-on-surface-variant block flex items-center gap-2" for="whatsapp">
+                            WhatsApp Number
+                            <span class="text-error text-xs">*Required for order updates</span>
+</label>
+<div class="flex">
+<span class="bg-surface-container-highest border border-surface-container-highest border-r-0 p-4 text-on-surface-variant font-body-md flex items-center">+</span>
+<input class="w-full bg-surface border border-surface-container-highest p-4 text-on-surface font-body-md focus:border-error focus:ring-0 transition-fast rounded-none outline-none" id="whatsapp" placeholder="123 456 7890" required="" type="tel"/>
+</div>
+</div>
+</form>
+</section>
+<!-- Payment Method -->
+<section class="space-y-6 pt-8 border-t border-surface-container-highest">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg uppercase pb-4">Payment</h2>
+<div class="space-y-4">
+<!-- Paystack Option (Primary) -->
+<label class="block relative border border-error bg-[#1A1A1A] p-6 cursor-pointer transition-fast hover:bg-[#222222]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-5 h-5 rounded-full border-2 border-error flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-error rounded-full"></div>
+</div>
+<span class="font-button-text text-button-text text-on-surface uppercase">Paystack</span>
+</div>
+<!-- SVG Placeholder for Paystack Logo -->
+<div class="h-8 w-24 bg-surface-container-highest flex items-center justify-center text-xs font-accent-label text-on-surface-variant">PAYSTACK</div>
+</div>
+<div class="mt-4 pl-9 text-on-surface-variant font-body-sm text-body-sm">
+                            Pay securely with your Visa, Mastercard, Verve, or Bank Transfer.
+                        </div>
+<!-- Distress overlay hint -->
+<div class="absolute inset-0 bg-error/5 pointer-events-none mix-blend-overlay"></div>
+</label>
+<!-- Crypto Option -->
+<label class="block border border-surface-container-highest bg-surface p-6 cursor-pointer transition-fast hover:border-surface-variant hover:bg-[#1A1A1A]">
+<div class="flex items-center justify-between opacity-70">
+<div class="flex items-center gap-4">
+<div class="w-5 h-5 rounded-full border-2 border-surface-container-highest"></div>
+<span class="font-button-text text-button-text text-on-surface uppercase">Cryptocurrency</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">currency_bitcoin</span>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary Sidebar -->
+<div class="lg:col-span-5">
+<div class="bg-[#1A1A1A] border border-surface-container-highest p-8 sticky top-32">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mb-8 border-b border-surface-container-highest pb-4">Order Summary</h2>
+<!-- Items -->
+<div class="space-y-6 mb-8 border-b border-surface-container-highest pb-8">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="w-24 h-32 bg-surface border border-surface-container-highest relative overflow-hidden group">
+<img alt="Hoodie" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="A gritty, high-contrast studio shot of a heavy black streetwear hoodie featuring a bold red distressed graphic. The lighting is harsh and directional, creating deep shadows against a dark textured background. The overall mood is raw, industrial, and premium, perfectly matching a brutalist luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzdvXmfrStCQTyu_9yfP-iVoLfTk9fEYzM3XiGSaqES35J0-8zQhWn8Rhp3riWZjdlXPtPkkPlDmYcBnT-6sKqdUt9GuKRFmDDyyJ4nIkMdpMYJnpxL_5wUr5AGMZ87-3f-tBNUH7PB4sY2GHKPhtvu0nB7JoA3Unkved_9PI32vv3VtLX1P1Nwi0lDm43eYk0zeVLxKu2GTymFzLvCXPoCsOFWEGOGGRsN0qKSkA1PdU5txgVedpxFAietegzUU8YQhaRXJ-tEw"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h3 class="font-button-text text-button-text uppercase text-on-surface">RMD Signature Heavyweight Hoodie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Size: L | Color: Onyx</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-accent-label text-accent-label text-on-surface-variant">Qty: 1</span>
+<span class="font-button-text text-button-text text-on-surface">$120.00</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="w-24 h-32 bg-surface border border-surface-container-highest relative overflow-hidden group">
+<img alt="T-Shirt" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="A tactical, minimalist product shot of a structured black streetwear t-shirt with subtle tactical seams. Shot against a pitch-black background with a single sharp spotlight revealing the fabric's heavy texture. The scene conveys urban utility and high-end exclusivity within a noir digital atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUdx6QuVnT-xlungOS2Wkqa_xvj556AfauW1wGGs5VdmjiToIrcSiiy1QR-XI5fn2zb9uZpIjtndOIzbW_PyVoXuFmx8kV0_Bn2OSehos0NHP4NwNnq5AyC_jV3jA4I25grjiYBOjsTNsuafnGwjrntjapjTordRmV6nkg-vvYTAoeVRuFdte7u5DgQ_xAz0C5paDyhbbDB2lsK7YMKuWQaGSXM-TpZxHpcymYqi08IHOnoXfRio5tSq9ATfoKHf_dzA-pQvl08w"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h3 class="font-button-text text-button-text uppercase text-on-surface">Tactical Basic Tee</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Size: L | Color: Phantom</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-accent-label text-accent-label text-on-surface-variant">Qty: 2</span>
+<span class="font-button-text text-button-text text-on-surface">$90.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Calculations -->
+<div class="space-y-4 mb-8 font-accent-label text-accent-label uppercase">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span>$210.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping</span>
+<span>Calculated at next step</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Taxes</span>
+<span>$18.90</span>
+</div>
+<div class="flex justify-between text-error text-lg pt-4 border-t border-surface-container-highest mt-4">
+<span>Total</span>
+<span>$228.90</span>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-[#F5F5F5] text-[#000000] font-button-text text-button-text uppercase py-5 px-6 hover:bg-[#FF0000] hover:text-[#FFFFFF] transition-fast flex justify-between items-center group" type="button">
+<span>Complete Order</span>
+<span class="material-symbols-outlined transform group-hover:translate-x-2 transition-transform duration-200">arrow_forward</span>
+</button>
+<div class="mt-6 flex items-center justify-center gap-2 text-on-surface-variant font-body-sm text-body-sm opacity-60">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span>256-bit Encrypted Checkout</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-surface-container-highest mt-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<span class="text-headline-lg-mobile font-black text-on-surface italic tracking-tighter text-error">RMD</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">© 2024 RMD. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="col-span-1 md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-3">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Shop All</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Collaborations</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">FAQ</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Order Tracking</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Instagram</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">X</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Discord</a>
+</div>
+</div>
+</footer>
+</body></html>

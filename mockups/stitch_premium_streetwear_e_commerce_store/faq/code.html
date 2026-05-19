@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAQ - RMD</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Hanken+Grotesk:wght@400;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#c6c6c7",
+                      "primary": "#c6c6c6",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#353535",
+                      "on-primary-container": "#757575",
+                      "tertiary": "#c6c6c6",
+                      "on-primary-fixed-variant": "#474747",
+                      "surface-container-low": "#1b1b1b",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "on-surface-variant": "#cfc4c5",
+                      "surface-dim": "#131313",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-high": "#2a2a2a",
+                      "secondary-container": "#454747",
+                      "on-secondary-container": "#b4b5b5",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#393939",
+                      "on-tertiary-container": "#757575",
+                      "primary-container": "#000000",
+                      "inverse-on-surface": "#303030",
+                      "tertiary-container": "#000000",
+                      "surface": "#131313",
+                      "outline-variant": "#4c4546",
+                      "inverse-surface": "#e2e2e2",
+                      "on-primary": "#303030",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "outline": "#988e90",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-variant": "#353535",
+                      "on-tertiary": "#303030",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#5e5e5e",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-secondary": "#2f3131",
+                      "on-surface": "#e2e2e2",
+                      "background": "#131313",
+                      "surface-tint": "#c6c6c6",
+                      "surface-container": "#1f1f1f",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-background": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "120px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-xl": [
+                              "Montserrat"
+                      ],
+                      "accent-label": [
+                              "Space Grotesk"
+                      ],
+                      "button-text": [
+                              "Montserrat"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "110%",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "150%",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "96px",
+                              {
+                                      "lineHeight": "100%",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "900"
+                              }
+                      ],
+                      "accent-label": [
+                              "14px",
+                              {
+                                      "lineHeight": "100%",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "button-text": [
+                              "14px",
+                              {
+                                      "lineHeight": "100%",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "110%",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "160%",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom Accordion Transition */
+        .accordion-content {
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md selection:bg-error selection:text-on-error">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-background/80 dark:bg-background/80 backdrop-blur-md text-on-background dark:text-on-background border-b border-surface-container-highest sticky top-0 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 z-50">
+<a class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-error italic tracking-tighter" href="#">RMD</a>
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-all duration-150 ease-linear hover:text-on-surface transition-colors duration-200" href="#">Shop</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-all duration-150 ease-linear hover:text-on-surface transition-colors duration-200" href="#">About</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-all duration-150 ease-linear hover:text-on-surface transition-colors duration-200" href="#">Contact</a>
+</nav>
+<div class="flex gap-4 items-center">
+<button aria-label="search" class="hover:text-error transition-all duration-150 ease-linear hover:scale-95 transition-transform duration-100 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="person" class="hover:text-error transition-all duration-150 ease-linear hover:scale-95 transition-transform duration-100 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="shopping_bag" class="hover:text-error transition-all duration-150 ease-linear hover:scale-95 transition-transform duration-100 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-section-gap">
+<!-- Page Header -->
+<div class="mb-section-gap text-center md:text-left">
+<h1 class="font-display-xl text-display-xl text-on-background mb-4 uppercase tracking-tighter">FAQ</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                FREQUENTLY ASKED QUESTIONS. FIND ANSWERS REGARDING SHIPPING, RETURNS, SIZING, AND PAYMENTS BELOW. FOR FURTHER ASSISTANCE, CONTACT SUPPORT.
+            </p>
+</div>
+<!-- FAQ Categories & Accordions -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Category Sidebar (Sticky on Desktop) -->
+<aside class="md:col-span-3">
+<div class="sticky top-32 space-y-4">
+<h2 class="font-accent-label text-accent-label text-on-surface-variant uppercase tracking-widest border-b border-surface-container-highest pb-2 mb-6">Categories</h2>
+<ul class="space-y-2">
+<li><a class="block font-body-sm text-body-sm hover:text-error transition-colors duration-150 py-2 border-l-2 border-transparent hover:border-error pl-4" href="#shipping">Shipping</a></li>
+<li><a class="block font-body-sm text-body-sm hover:text-error transition-colors duration-150 py-2 border-l-2 border-transparent hover:border-error pl-4" href="#returns">Returns &amp; Exchanges</a></li>
+<li><a class="block font-body-sm text-body-sm hover:text-error transition-colors duration-150 py-2 border-l-2 border-transparent hover:border-error pl-4" href="#sizing">Sizing &amp; Fit</a></li>
+<li><a class="block font-body-sm text-body-sm hover:text-error transition-colors duration-150 py-2 border-l-2 border-transparent hover:border-error pl-4" href="#payments">Payments</a></li>
+</ul>
+</div>
+</aside>
+<!-- Accordion Content Area -->
+<div class="md:col-span-9 space-y-section-gap">
+<!-- Shipping Section -->
+<section class="scroll-mt-32" id="shipping">
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8 uppercase text-error border-b border-surface-container-highest pb-4">Shipping</h3>
+<div class="space-y-4 border-t border-surface-container-highest">
+<div class="accordion-item border-b border-surface-container-highest">
+<button class="w-full text-left py-6 flex justify-between items-center focus:outline-none hover:text-error transition-colors duration-150 group" onclick="toggleAccordion(this)">
+<span class="font-accent-label text-accent-label text-on-background group-hover:text-error">WHEN WILL MY ORDER SHIP?</span>
+<span class="material-symbols-outlined accordion-icon text-on-surface-variant">expand_more</span>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden">
+<p class="pb-6 font-body-sm text-body-sm text-on-surface-variant">
+                                    ORDERS ARE TYPICALLY PROCESSED AND SHIPPED WITHIN 2-4 BUSINESS DAYS. DURING HIGH VOLUME RELEASES OR SALES, PROCESSING MAY TAKE UP TO 7-10 BUSINESS DAYS. YOU WILL RECEIVE A TRACKING NUMBER VIA EMAIL ONCE YOUR ORDER DISPATCHES.
+                                </p>
+</div>
+</div>
+<div class="accordion-item border-b border-surface-container-highest">
+<button class="w-full text-left py-6 flex justify-between items-center focus:outline-none hover:text-error transition-colors duration-150 group" onclick="toggleAccordion(this)">
+<span class="font-accent-label text-accent-label text-on-background group-hover:text-error">DO YOU SHIP INTERNATIONALLY?</span>
+<span class="material-symbols-outlined accordion-icon text-on-surface-variant">expand_more</span>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden">
+<p class="pb-6 font-body-sm text-body-sm text-on-surface-variant">
+                                    YES, WE OFFER WORLDWIDE SHIPPING. INTERNATIONAL SHIPPING RATES ARE CALCULATED AT CHECKOUT BASED ON DESTINATION AND WEIGHT. PLEASE NOTE THAT CUSTOMS DUTIES AND TAXES ARE THE RESPONSIBILITY OF THE RECIPIENT AND ARE NOT INCLUDED IN THE SHIPPING COST.
+                                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Returns Section -->
+<section class="scroll-mt-32" id="returns">
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8 uppercase text-error border-b border-surface-container-highest pb-4">Returns</h3>
+<div class="space-y-4 border-t border-surface-container-highest">
+<div class="accordion-item border-b border-surface-container-highest">
+<button class="w-full text-left py-6 flex justify-between items-center focus:outline-none hover:text-error transition-colors duration-150 group" onclick="toggleAccordion(this)">
+<span class="font-accent-label text-accent-label text-on-background group-hover:text-error">WHAT IS YOUR RETURN POLICY?</span>
+<span class="material-symbols-outlined accordion-icon text-on-surface-variant">expand_more</span>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden">
+<p class="pb-6 font-body-sm text-body-sm text-on-surface-variant">
+                                    WE ACCEPT RETURNS WITHIN 14 DAYS OF DELIVERY FOR STORE CREDIT ONLY. ITEMS MUST BE UNWORN, UNWASHED, AND IN THEIR ORIGINAL CONDITION WITH ALL TAGS ATTACHED. "FINAL SALE" ITEMS CANNOT BE RETURNED.
+                                </p>
+</div>
+</div>
+<div class="accordion-item border-b border-surface-container-highest">
+<button class="w-full text-left py-6 flex justify-between items-center focus:outline-none hover:text-error transition-colors duration-150 group" onclick="toggleAccordion(this)">
+<span class="font-accent-label text-accent-label text-on-background group-hover:text-error">HOW DO I START A RETURN?</span>
+<span class="material-symbols-outlined accordion-icon text-on-surface-variant">expand_more</span>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden">
+<p class="pb-6 font-body-sm text-body-sm text-on-surface-variant">
+                                    TO INITIATE A RETURN, PLEASE VISIT OUR RETURNS PORTAL AND ENTER YOUR ORDER NUMBER AND EMAIL ADDRESS. FOLLOW THE INSTRUCTIONS TO RECEIVE A RETURN SHIPPING LABEL (COST DEDUCTED FROM STORE CREDIT).
+                                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sizing Section -->
+<section class="scroll-mt-32" id="sizing">
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8 uppercase text-error border-b border-surface-container-highest pb-4">Sizing</h3>
+<div class="space-y-4 border-t border-surface-container-highest">
+<div class="accordion-item border-b border-surface-container-highest">
+<button class="w-full text-left py-6 flex justify-between items-center focus:outline-none hover:text-error transition-colors duration-150 group" onclick="toggleAccordion(this)">
+<span class="font-accent-label text-accent-label text-on-background group-hover:text-error">HOW DO YOUR GARMENTS FIT?</span>
+<span class="material-symbols-outlined accordion-icon text-on-surface-variant">expand_more</span>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden">
+<p class="pb-6 font-body-sm text-body-sm text-on-surface-variant">
+                                    OUR GARMENTS GENERALLY FEATURE AN OVERSIZED, BOXY FIT INTENDED FOR A STREETWEAR AESTHETIC. WE RECOMMEND ORDERING YOUR TRUE SIZE FOR THE INTENDED LOOK, OR SIZING DOWN FOR A MORE STANDARD FIT. DETAILED MEASUREMENTS ARE PROVIDED ON EACH PRODUCT PAGE.
+                                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Payments Section -->
+<section class="scroll-mt-32" id="payments">
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8 uppercase text-error border-b border-surface-container-highest pb-4">Payments</h3>
+<div class="space-y-4 border-t border-surface-container-highest">
+<div class="accordion-item border-b border-surface-container-highest">
+<button class="w-full text-left py-6 flex justify-between items-center focus:outline-none hover:text-error transition-colors duration-150 group" onclick="toggleAccordion(this)">
+<span class="font-accent-label text-accent-label text-on-background group-hover:text-error">WHAT PAYMENT METHODS DO YOU ACCEPT?</span>
+<span class="material-symbols-outlined accordion-icon text-on-surface-variant">expand_more</span>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden">
+<p class="pb-6 font-body-sm text-body-sm text-on-surface-variant">
+                                    WE ACCEPT ALL MAJOR CREDIT CARDS (VISA, MASTERCARD, AMEX), PAYPAL, APPLE PAY, AND SELECTED CRYPTOCURRENCIES (BTC, ETH) VIA COINBASE COMMERCE.
+                                </p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-on-surface dark:text-on-surface border-t border-surface-container-highest w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto">
+<div class="flex flex-col gap-4">
+<span class="text-headline-lg-mobile font-black text-on-surface italic tracking-tighter">RMD</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-auto">
+                © 2024 RMD. ALL RIGHTS RESERVED.
+            </p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-accent-label text-accent-label text-on-surface-variant mb-4 uppercase">Shop</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Shop All</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Collaborations</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-accent-label text-accent-label text-on-surface-variant mb-4 uppercase">Support</h4>
+<a class="font-body-sm text-body-sm font-bold text-on-surface hover:text-error transition-colors duration-200" href="#">FAQ</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Order Tracking</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-accent-label text-accent-label text-on-surface-variant mb-4 uppercase">Social</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Instagram</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">X</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Discord</a>
+</div>
+</footer>
+<script>
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = item.querySelector('.accordion-content');
+            
+            // Close other open accordions in the same section
+            const section = item.closest('section');
+            const openItems = section.querySelectorAll('.accordion-item.active');
+            
+            openItems.forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active');
+        }
+    </script>
+</body></html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About RMD - Engineered for Chaos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#c6c6c7",
+                        "primary": "#c6c6c6",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#353535",
+                        "on-primary-container": "#757575",
+                        "tertiary": "#c6c6c6",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-container-low": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-surface-variant": "#cfc4c5",
+                        "surface-dim": "#131313",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-container": "#454747",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#393939",
+                        "on-tertiary-container": "#757575",
+                        "primary-container": "#000000",
+                        "inverse-on-surface": "#303030",
+                        "tertiary-container": "#000000",
+                        "surface": "#131313",
+                        "outline-variant": "#4c4546",
+                        "inverse-surface": "#e2e2e2",
+                        "on-primary": "#303030",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "outline": "#988e90",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-variant": "#353535",
+                        "on-tertiary": "#303030",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#5e5e5e",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#2f3131",
+                        "on-surface": "#e2e2e2",
+                        "background": "#131313",
+                        "surface-tint": "#c6c6c6",
+                        "surface-container": "#1f1f1f",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-background": "#e2e2e2",
+                        "brand-red": "#FF0000" // Custom red for the distress aesthetic
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "none": "0px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat", "sans-serif"],
+                        "body-sm": ["Hanken Grotesk", "sans-serif"],
+                        "display-xl": ["Montserrat", "sans-serif"],
+                        "accent-label": ["Space Grotesk", "sans-serif"],
+                        "button-text": ["Montserrat", "sans-serif"],
+                        "headline-lg-mobile": ["Montserrat", "sans-serif"],
+                        "body-md": ["Hanken Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", { "lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "150%", "fontWeight": "400" }],
+                        "display-xl": ["96px", { "lineHeight": "100%", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "accent-label": ["14px", { "lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "button-text": ["14px", { "lineHeight": "100%", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "110%", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "160%", "fontWeight": "400" }]
+                    },
+                    "backgroundImage": {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            position: relative;
+        }
+        
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');
+            mix-blend-mode: overlay;
+        }
+
+        .industrial-border {
+            border: 1px solid theme('colors.surface-container-highest');
+        }
+
+        .distress-hover:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+            border-color: theme('colors.brand-red');
+        }
+        
+        /* Hard-cut transitions */
+        * {
+            transition: all 0.15s linear;
+        }
+
+        /* Material Icons setup */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
+<div class="noise-overlay"></div>
+<!-- TopNavBar Component -->
+<nav class="sticky top-0 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-surface-container-highest docked full-width top-0 z-50 flat no shadows">
+<a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-brand-red italic tracking-tighter" href="#">
+            RMD
+        </a>
+<ul class="hidden md:flex gap-gutter items-center">
+<li>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-accent-label text-accent-label hover:text-brand-red transition-all duration-150 ease-linear" href="#">Shop</a>
+</li>
+<li>
+<a class="text-on-surface font-bold border-b-2 border-brand-red pb-1 font-accent-label text-accent-label hover:text-brand-red transition-all duration-150 ease-linear scale-95 transition-transform duration-100" href="#">About</a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-accent-label text-accent-label hover:text-brand-red transition-all duration-150 ease-linear" href="#">Contact</a>
+</li>
+</ul>
+<div class="flex gap-4 items-center text-on-background dark:text-on-background">
+<button class="hover:text-brand-red transition-all duration-150 ease-linear"><span class="material-symbols-outlined">search</span></button>
+<button class="hover:text-brand-red transition-all duration-150 ease-linear"><span class="material-symbols-outlined">person</span></button>
+<button class="hover:text-brand-red transition-all duration-150 ease-linear"><span class="material-symbols-outlined">shopping_bag</span></button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col pt-section-gap pb-section-gap">
+<!-- Hero Logo Section -->
+<section class="w-full px-margin-mobile md:px-margin-desktop flex justify-center items-center mb-section-gap">
+<img alt="RMD Distressed Logo" class="w-full max-w-4xl opacity-90 hover:opacity-100 transition-opacity duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZTaPkAllAgaakwja1CJjgFtMbm7WgHUL6C74ikfyHmKdszb0WqiXD4UPkuJ_W392evAZJ3T0rzxVqz_Bv5vunpMwKN93Bs7xzxt3KICKA4ueO6pzO4_qwOydrAFptK8yLLYsBoUsLC2uM9cIqaZxfnTDccqi6JO3pPDbMMaqssgpS0eXUXLFetRIU2lVdJB-Rur-ts3XZ3HYAcFy-Ouhk6Naw50p_Wm250rLdFJzYhfuS1qD4MfYprbiZvLynraJabumMQUmBg"/>
+</section>
+<!-- Story Section -->
+<section class="w-full grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop mb-section-gap">
+<div class="md:col-span-12 industrial-border p-8 md:p-16 bg-surface-container-low relative overflow-hidden group">
+<div class="absolute inset-0 bg-brand-red opacity-0 group-hover:opacity-5 transition-opacity duration-300 z-0"></div>
+<div class="relative z-10">
+<h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl uppercase mb-8">Forged in the Undergound.</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            RMD isn't just a label; it's a reaction. Born from the concrete reality of urban existence, we strip away the excess to reveal the raw structural integrity underneath. Our designs are tactical, aggressive, and uncompromisingly premium.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            We don't follow seasons. We execute drops. Each piece is a calculated intervention in the luxury streetwear space, built for those who operate in the shadows and command attention in the light.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- The Mission (Bento Grid) -->
+<section class="w-full px-margin-mobile md:px-margin-desktop mb-section-gap">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase mb-12 border-b border-surface-container-highest pb-4">The Mission</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-unit h-auto md:h-[600px]">
+<!-- Main Image Block -->
+<div class="md:col-span-8 industrial-border relative group overflow-hidden h-[400px] md:h-full">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300 z-10"></div>
+<img alt="Urban editorial" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105" data-alt="A gritty, high-contrast urban fashion editorial shot. A model wearing dark, tactical streetwear stands in a brutalist concrete environment. Sharp lighting, deep shadows, monochromatic palette with subtle red accents. Raw, energetic texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzkOyFBvtDD3Ata1bA_7hwCPeYgQmpwaUEOR0KBAGNW3xa1pVhsU1h5DhtaLe0umeS8qUBbsX0tsx6_Xzyh3wdNfqzkBwAF3rIRckOGetECJfAFiUgVOvQQjRVNIuBllAmqMSEOGT3Tae_uwBUE76_VhG-enwXl8_9bJ-S-CTP-kWl1ewSm-LUd3DbXpeEIbACtpE7RrxfMA0yTv_OnIKOYEcrupNLL7s8f76R5HLpGKVtpmaCDTDqQdZlkWDdB3LrTA7MZspECg"/>
+<div class="absolute bottom-8 left-8 z-20">
+<span class="bg-surface-container-low px-4 py-2 font-accent-label text-accent-label text-brand-red industrial-border">TACTICAL AESTHETICS</span>
+</div>
+</div>
+<!-- Secondary Blocks -->
+<div class="md:col-span-4 flex flex-col gap-unit h-[400px] md:h-full">
+<div class="flex-1 industrial-border bg-surface-container-low p-8 flex flex-col justify-between distress-hover">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant">precision_manufacturing</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg-mobile uppercase mb-2">Disrupt</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Shattering traditional luxury paradigms with industrial aggression.</p>
+</div>
+</div>
+<div class="flex-1 industrial-border bg-surface-container-low p-8 flex flex-col justify-between distress-hover relative overflow-hidden group">
+<div class="absolute inset-0 bg-brand-red/10 translate-y-full group-hover:translate-y-0 transition-transform duration-200"></div>
+<span class="material-symbols-outlined text-4xl text-on-surface-variant relative z-10">bolt</span>
+<div class="relative z-10">
+<h3 class="font-headline-lg text-headline-lg-mobile uppercase mb-2">Execute</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Precision engineering in every garment. Zero compromise.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Engineered for Chaos (Philosophy) -->
+<section class="w-full px-margin-mobile md:px-margin-desktop mb-section-gap">
+<div class="industrial-border bg-surface-container-lowest p-8 md:p-24 text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-red to-transparent opacity-50"></div>
+<h2 class="font-display-xl text-headline-lg-mobile md:text-display-xl uppercase mb-6 text-transparent bg-clip-text bg-gradient-to-b from-on-surface to-surface-container-highest">Engineered for Chaos.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    Our design philosophy rejects the clean and the safe. We embrace the friction of the city. Every stitch, every heavy-duty zipper, every distressed texture is an intentional act of rebellion against homogeneity. We build armor for the modern dystopia.
+                </p>
+<a class="inline-block bg-primary text-primary-container font-button-text text-button-text px-8 py-4 uppercase tracking-widest hover:bg-brand-red hover:text-white transition-colors duration-150" href="#">View Latest Drop</a>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-surface-container-highest full-width bottom-0 flat no shadows">
+<div class="col-span-1 md:col-span-1 flex flex-col justify-between h-full">
+<div class="text-headline-lg-mobile font-black text-on-surface uppercase italic text-brand-red">RMD</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-8 md:mt-0">© 2024 RMD. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="col-span-1">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-6 border-b border-surface-container-highest pb-2 inline-block">Collections</h4>
+<ul class="flex flex-col gap-4 font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">Shop All</a></li>
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">New Arrivals</a></li>
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">Collaborations</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-6 border-b border-surface-container-highest pb-2 inline-block">Support</h4>
+<ul class="flex flex-col gap-4 font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">FAQ</a></li>
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">Contact Us</a></li>
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">Order Tracking</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-6 border-b border-surface-container-highest pb-2 inline-block">Connect</h4>
+<ul class="flex flex-col gap-4 font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">Instagram</a></li>
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">X</a></li>
+<li><a class="hover:text-brand-red transition-colors duration-200" href="#">Discord</a></li>
+</ul>
+</div>
+</footer>
+</body></html>

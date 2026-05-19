@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RMD | High-Stakes Tactical Streetwear</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&amp;family=Montserrat:wght@800;900&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#c6c6c7",
+                        "primary": "#c6c6c6",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#353535",
+                        "on-primary-container": "#757575",
+                        "tertiary": "#c6c6c6",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-container-low": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-surface-variant": "#cfc4c5",
+                        "surface-dim": "#131313",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-container": "#454747",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#393939",
+                        "on-tertiary-container": "#757575",
+                        "primary-container": "#000000",
+                        "inverse-on-surface": "#303030",
+                        "tertiary-container": "#000000",
+                        "surface": "#131313",
+                        "outline-variant": "#4c4546",
+                        "inverse-surface": "#e2e2e2",
+                        "on-primary": "#303030",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "outline": "#988e90",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-variant": "#353535",
+                        "on-tertiary": "#303030",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#5e5e5e",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-secondary": "#2f3131",
+                        "on-surface": "#e2e2e2",
+                        "background": "#131313",
+                        "surface-tint": "#c6c6c6",
+                        "surface-container": "#1f1f1f",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-background": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "display-xl": ["Montserrat"],
+                        "accent-label": ["Space Grotesk"],
+                        "button-text": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", { "lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "150%", "fontWeight": "400" }],
+                        "display-xl": ["96px", { "lineHeight": "100%", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "accent-label": ["14px", { "lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "button-text": ["14px", { "lineHeight": "100%", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "110%", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "160%", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Utilities for High-Contrast Industrial Minimalism */
+        .ghost-border { border: 1px solid #333333; }
+        .ghost-border-focus:focus { border-color: #ffb4ab; outline: none; }
+        .hard-shadow { box-shadow: 4px 4px 0px 0px rgba(255, 180, 171, 0.2); }
+        .distress-overlay {
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05" fill="%23ffb4ab"/></svg>');
+            pointer-events: none;
+        }
+        
+        /* Grid setup */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        @media (min-width: 768px) {
+            .layout-grid {
+                grid-template-columns: repeat(12, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-background/80 dark:bg-background/80 backdrop-blur-md docked full-width top-0 z-50 border-b border-surface-container-highest flat no shadows sticky top-0 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<!-- Logo -->
+<a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-error italic tracking-tighter" href="#">
+<img alt="RMD Logo" class="h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZTaPkAllAgaakwja1CJjgFtMbm7WgHUL6C74ikfyHmKdszb0WqiXD4UPkuJ_W392evAZJ3T0rzxVqz_Bv5vunpMwKN93Bs7xzxt3KICKA4ueO6pzO4_qwOydrAFptK8yLLYsBoUsLC2uM9cIqaZxfnTDccqi6JO3pPDbMMaqssgpS0eXUXLFetRIU2lVdJB-Rur-ts3XZ3HYAcFy-Ouhk6Naw50p_Wm250rLdFJzYhfuS1qD4MfYprbiZvLynraJabumMQUmBg"/>
+</a>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface font-accent-label text-accent-label font-bold border-b-2 border-error pb-1 hover:text-error transition-all duration-150 ease-linear scale-95 transition-transform duration-100" href="#">Shop</a>
+<a class="text-on-surface-variant font-accent-label text-accent-label hover:text-on-surface transition-colors duration-200 hover:text-error transition-all duration-150 ease-linear" href="#">About</a>
+<a class="text-on-surface-variant font-accent-label text-accent-label hover:text-on-surface transition-colors duration-200 hover:text-error transition-all duration-150 ease-linear" href="#">Contact</a>
+</nav>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-4">
+<button aria-label="search" class="text-on-background dark:text-on-background hover:text-error transition-all duration-150 ease-linear">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="person" class="text-on-background dark:text-on-background hover:text-error transition-all duration-150 ease-linear hidden md:block">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="shopping_bag" class="text-on-background dark:text-on-background hover:text-error transition-all duration-150 ease-linear">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button aria-label="menu" class="md:hidden text-on-background hover:text-error transition-all duration-150 ease-linear">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-surface-container-lowest">
+<img alt="Hero Tactical Streetwear Visual" class="w-full h-full object-cover opacity-60 grayscale mix-blend-luminosity" data-alt="A gritty, high-contrast, black and white photograph of an urban street model wearing tactical, oversized streetwear. The setting is a brutalist concrete underpass lit by harsh, high-key fluorescent lights creating stark shadows. The aesthetic is industrial minimalism, echoing underground culture and luxury fashion. The model's face is obscured, focusing on the heavy textures of the clothing and the raw power of the posture. Deep black tones dominate the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbnYXK1didBtTyRgDWuOhoFB9mNJPriuuTM6m72l9b15aTKKFfVdeOjeiCgGctER1CXZFxpViY__jJjzJoUuti3OXGomT5euZspk0fSlPL8KaOT9mhxImyvn8n71hoi9sojiM_42TmopylwNxPVAO7nh5dyb0il-ilGWdedwdmt9xXRJzqd7wj1N0JzPvS31KdSEsnt7ZRyZM7BobkRv8BcFuAPIFO-khzrov1-oLapaSBvLXjQU7IUjG4no0hapK9G28W9oZXiQ"/>
+</div>
+<!-- Video Overlay Effect -->
+<div class="absolute inset-0 z-10 pointer-events-none distress-overlay mix-blend-overlay"></div>
+<!-- Content -->
+<div class="relative z-20 text-center px-margin-mobile md:px-margin-desktop flex flex-col items-center">
+<h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl text-on-background mb-4 uppercase mix-blend-difference drop-shadow-[0_0_10px_rgba(255,0,0,0.5)]">
+                    RMD: BORN IN CHAOS
+                </h1>
+<p class="font-accent-label text-accent-label text-on-surface-variant mb-12 tracking-widest uppercase">
+                    The New Standard in Tactical Streetwear.
+                </p>
+<button class="bg-[#F5F5F5] text-primary-container font-button-text text-button-text px-12 py-5 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150 ease-linear border-0 group relative overflow-hidden">
+<span class="relative z-10">Shop Now</span>
+</button>
+</div>
+</section>
+<!-- Featured Products -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-background">
+<div class="flex justify-between items-end mb-16 border-b border-surface-container-highest pb-4">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase">Latest Drops</h2>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-150 uppercase flex items-center gap-2" href="#">
+                    View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="layout-grid">
+<!-- Product Card 1 -->
+<div class="col-span-4 md:col-span-3 group cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low ghost-border mb-4 overflow-hidden">
+<div class="absolute top-4 left-4 z-10 bg-background/90 text-error font-accent-label text-[10px] px-3 py-1 uppercase tracking-widest border border-error/30 backdrop-blur-sm">
+                            Limited Drop
+                        </div>
+<img alt="Tactical Hoodie" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500 ease-out" data-alt="A premium tactical hoodie displayed against a stark, pitch-black background. The garment features complex structural paneling, oversized utility pockets, and heavy-duty matte black zippers. Harsh, directional white lighting highlights the rough, durable texture of the fabric. The overall style is industrial and minimalist, focusing entirely on the architectural silhouette of the clothing without any lifestyle distractions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOv60jHVqaCVJP3sFdBCj-npynjynVi2q_IFCRWjxyGbAbnNzsDwWFe8KMlUjNWdjmLoDn8i6demjWOlSW3ZE_OxFr8yFdjldft_WXCjZxPPymBHQ7tcgv-s6Iz0AHehJAj861DAmbTIpUMrf7bBMhnjbJipW0R_k1QrgSvlIV0CbAu9ghkzAAaW_SProSo2X1pQKMu0fdeXw_X-rSs69DYjw01NTvWdOaIK2NuHMpvWU2fIVa3xsSYvUl3tTAkVg7YIOK2_bZRw"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-accent-label text-accent-label text-on-surface uppercase mb-1">Obsidian Cargo Hoodie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Heavyweight / Water-repellent</p>
+</div>
+<span class="font-accent-label text-accent-label text-on-surface">$185</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="col-span-4 md:col-span-3 group cursor-pointer mt-0 md:mt-12">
+<div class="relative aspect-[3/4] bg-surface-container-low ghost-border mb-4 overflow-hidden">
+<img alt="Technical Pants" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500 ease-out" data-alt="A pair of highly technical, multi-pocketed tactical pants shown in a flat lay style against a dark grey concrete texture. The pants are constructed from a stiff, ripstop material with articulated knees and adjustable straps. Lighting is precise and sharp, casting distinct, thin shadows that emphasize the complex construction and premium utilitarian design. The mood is functional and aggressive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3fQjy5tTuL6NqSQPyE6vok0868Vzpvj9oClXi2lXX6Q-BOov-JhePuXhdIBxuWaVp46l-n9NdKdFHGEiVe-XSYLlvJP1zAp3cLmN0rmjWKBiCL6zMG8583ott9XmGB3uuZ5k0jivV7N2gpfwnuARMWus0GcRGshKG0MdL6YNvQMK7RX-3apj4GrrZg5sSRySjg0pfYyabKJA6ZQ4VhwHCMhQ3XMoqIbt0-cEw0FmAumb1afPVuX4qXLYmxKx3Nzw131KmND-r7Q"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-accent-label text-accent-label text-on-surface uppercase mb-1">Vanguard Tech Pants</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ripstop / Articulated</p>
+</div>
+<span class="font-accent-label text-accent-label text-on-surface">$220</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="col-span-4 md:col-span-3 group cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low ghost-border mb-4 overflow-hidden">
+<div class="absolute top-4 left-4 z-10 bg-background/90 text-on-surface font-accent-label text-[10px] px-3 py-1 uppercase tracking-widest border border-surface-container-highest backdrop-blur-sm">
+                            Core
+                        </div>
+<img alt="Graphic Tee" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500 ease-out" data-alt="An oversized, heavy cotton t-shirt with a distressed red 'RMD' logo graphic printed across the back. The shirt is draped over a raw steel industrial rack in a dark, empty warehouse. The lighting is moody and low-key, with a single spotlight illuminating the red graphic, creating a high-contrast focal point against the surrounding pitch-black environment. The style is raw and street-ready." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjK1lL9tZUGQOpdVPwPQ652KLIWzzGIFUhlbJDcMSC9G_Zmz3JqbBx_8qlKwBxjDBl3Gh9COp-Fxy2nfQR_6Z4XGjtsacQYBYwgP44vtH3WKa1IDcqrJgMYZ6SZjP9NkrV198LohMbPTBsrJh6S94hOnmYHPKjnsknvgb35ZyM-TTYbdroXqIP6A36_QcAGO7FlQhxxK7PEbeA12MdXHBClWvfLsd815Fps07YISyQW1nrtiaIcDye9BJlPywU8KQVz41yzPI7_A"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-accent-label text-accent-label text-on-surface uppercase mb-1">Chaos Heavyweight Tee</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oversized / Distressed</p>
+</div>
+<span class="font-accent-label text-accent-label text-on-surface">$65</span>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="col-span-4 md:col-span-3 group cursor-pointer mt-0 md:mt-12">
+<div class="relative aspect-[3/4] bg-surface-container-low ghost-border mb-4 overflow-hidden">
+<img alt="Tactical Accessories" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500 ease-out" data-alt="A close-up shot of tactical hardware accessories—matte black carabiners, nylon webbing straps, and an industrial-grade buckle—arranged asymmetrically on a sleek, black metal surface. The lighting is extremely sharp, creating stark reflections on the metal hardware. The visual style is purely technical and aggressive, fitting seamlessly into a high-end, brutalist streetwear aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNV9uBuqucsvLS_oLHAerUYBlSc3E0kaoTjygGFbkfMWGfH7xL70t3_scELZawI1sTtOQfwEBnRMH-3cMDlUakV6lMEy-azsluCsDq_KvtaGF4Of5kfxnFsG034obxL94z_oRQOflWeFkfx6Ur4wsIZ3x4d3NyDsdEe1fADnmKZVVHMgHEvmVapZbKXr0RYVJy0ccir5jS3y9s-dEcNfU2N4M6Adg8CT9nLgHLVGekKM6syGomFB_w5ESnn-7Gm67Hi8OCdvEPuw"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-accent-label text-accent-label text-on-surface uppercase mb-1">Aegis Hardware Belt</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Nylon / Fidlock</p>
+</div>
+<span class="font-accent-label text-accent-label text-on-surface">$85</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Story -->
+<section class="py-section-gap w-full bg-surface-container-lowest relative overflow-hidden border-y border-surface-container-highest">
+<div class="absolute inset-0 z-0 opacity-20 grayscale mix-blend-luminosity">
+<img alt="Brand Background" class="w-full h-full object-cover" data-alt="A wide, sweeping shot of a desolate, concrete urban landscape at night. Towering brutalist architecture looms in the background, dimly lit by distant, flickering streetlights. In the foreground, blurred figures move quickly, wearing dark, tactical clothing, conveying a sense of urgent, underground energy. The scene is monochromatic, heavily textured, and deeply atmospheric, embodying a sense of gritty exclusivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIewGB6cGdh-TJcXOAdmCUASOQlbwnq7dkAHibOjkItL_6k8j4TJ8V21n1ZjtWifDNKOo_s2aleB7svmV-23FuwI6LZVRM4SjXRqSJUFA5cDfqboyR3nY5QZ-P8c9NNNOzPHZSSA5UcOZe4vM1nsUuuWkMfenm6IsRMG9ecleXEZGeiJD3g8e_FVgViYTjMubuYLFl7tsRY8lPjVM8Ap6RqyMhFBnMMjjnJ3pmXASHfsX-nAm-icQ5tWJidNVDrOmV30mrYq0WZw"/>
+</div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop layout-grid items-center">
+<div class="col-span-4 md:col-span-6 md:col-start-4 text-center">
+<img alt="RMD Logo" class="h-24 mx-auto mb-8 opacity-80 mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZTaPkAllAgaakwja1CJjgFtMbm7WgHUL6C74ikfyHmKdszb0WqiXD4UPkuJ_W392evAZJ3T0rzxVqz_Bv5vunpMwKN93Bs7xzxt3KICKA4ueO6pzO4_qwOydrAFptK8yLLYsBoUsLC2uM9cIqaZxfnTDccqi6JO3pPDbMMaqssgpS0eXUXLFetRIU2lVdJB-Rur-ts3XZ3HYAcFy-Ouhk6Naw50p_Wm250rLdFJzYhfuS1qD4MfYprbiZvLynraJabumMQUmBg"/>
+<h2 class="font-display-xl text-headline-lg-mobile md:text-[72px] text-on-surface mb-8 uppercase leading-none tracking-tighter">
+                        Engineered for the Unforgiving.
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mb-12">
+                        RMD sits at the intersection of raw underground energy and precise technical execution. We don't design for comfort; we design for resilience. Inspired by tactical gear and brutalist structures, every piece is built to withstand the chaos of the modern environment while maintaining an uncompromising, aggressive aesthetic.
+                    </p>
+<a class="inline-block border-b-2 border-error pb-1 font-accent-label text-accent-label text-on-surface uppercase hover:text-error transition-colors duration-150" href="#">
+                        Explore Our Philosophy
+                    </a>
+</div>
+</div>
+</section>
+<!-- Newsletter -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-background flex flex-col items-center text-center">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase mb-4">Join the Network</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-8 max-w-md">
+                Sign up to receive classified intel on limited drops, collaborations, and early access.
+            </p>
+<form class="w-full max-w-md flex flex-col gap-4">
+<div class="relative w-full">
+<input class="w-full bg-transparent border-0 border-b border-surface-container-highest text-on-surface font-accent-label text-accent-label py-4 pl-0 pr-12 focus:ring-0 ghost-border-focus transition-colors duration-200 placeholder:text-surface-container-highest" placeholder="ENTER EMAIL ADDRESS" required="" type="email"/>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-error transition-colors duration-150" type="submit">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="text-left mt-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="sr-only peer" required="" type="checkbox"/>
+<div class="w-4 h-4 border border-surface-container-highest peer-checked:bg-error peer-checked:border-error flex items-center justify-center transition-colors duration-150 group-hover:border-error">
+<span class="material-symbols-outlined text-[12px] text-primary-container opacity-0 peer-checked:opacity-100" data-icon="check">check</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[10px] uppercase">I agree to the <a class="text-on-surface underline hover:text-error" href="#">Terms</a> &amp; <a class="text-on-surface underline hover:text-error" href="#">Privacy Policy</a></span>
+</label>
+</div>
+</form>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest full-width bottom-0 border-t border-surface-container-highest flat no shadows w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Brand Column -->
+<div class="col-span-1 flex flex-col justify-between">
+<div>
+<a class="text-headline-lg-mobile font-black text-on-surface block mb-6 italic tracking-tighter" href="#">
+<img alt="RMD Logo" class="h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZTaPkAllAgaakwja1CJjgFtMbm7WgHUL6C74ikfyHmKdszb0WqiXD4UPkuJ_W392evAZJ3T0rzxVqz_Bv5vunpMwKN93Bs7xzxt3KICKA4ueO6pzO4_qwOydrAFptK8yLLYsBoUsLC2uM9cIqaZxfnTDccqi6JO3pPDbMMaqssgpS0eXUXLFetRIU2lVdJB-Rur-ts3XZ3HYAcFy-Ouhk6Naw50p_Wm250rLdFJzYhfuS1qD4MfYprbiZvLynraJabumMQUmBg"/>
+</a>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[200px]">
+                    High-stakes tactical streetwear born in chaos.
+                </p>
+</div>
+<p class="font-accent-label text-[10px] text-on-surface-variant mt-12 md:mt-0 uppercase tracking-widest">
+                © 2024 RMD. ALL RIGHTS RESERVED.
+            </p>
+</div>
+<!-- Links Columns -->
+<div class="col-span-1 md:col-span-2 grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-2 border-b border-surface-container-highest pb-2 uppercase">Store</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Shop All</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Collaborations</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-2 border-b border-surface-container-highest pb-2 uppercase">Support</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">FAQ</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Order Tracking</a>
+</div>
+</div>
+<!-- Social Column -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-2 border-b border-surface-container-highest pb-2 uppercase">Connect</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200 uppercase flex items-center justify-between group" href="#">
+                 Instagram <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="north_east">north_east</span>
+</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200 uppercase flex items-center justify-between group" href="#">
+                 X <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="north_east">north_east</span>
+</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200 uppercase flex items-center justify-between group" href="#">
+                 Discord <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="north_east">north_east</span>
+</a>
+</div>
+</footer>
+</body></html>

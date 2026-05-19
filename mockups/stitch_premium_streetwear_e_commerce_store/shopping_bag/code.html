@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cart - RMD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&amp;family=Montserrat:wght@800;900&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for raw aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffb4ab;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#c6c6c7",
+                      "primary": "#c6c6c6",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#353535",
+                      "on-primary-container": "#757575",
+                      "tertiary": "#c6c6c6",
+                      "on-primary-fixed-variant": "#474747",
+                      "surface-container-low": "#1b1b1b",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "on-surface-variant": "#cfc4c5",
+                      "surface-dim": "#131313",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-high": "#2a2a2a",
+                      "secondary-container": "#454747",
+                      "on-secondary-container": "#b4b5b5",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#393939",
+                      "on-tertiary-container": "#757575",
+                      "primary-container": "#000000",
+                      "inverse-on-surface": "#303030",
+                      "tertiary-container": "#000000",
+                      "surface": "#131313",
+                      "outline-variant": "#4c4546",
+                      "inverse-surface": "#e2e2e2",
+                      "on-primary": "#303030",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "outline": "#988e90",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-variant": "#353535",
+                      "on-tertiary": "#303030",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#5e5e5e",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-secondary": "#2f3131",
+                      "on-surface": "#e2e2e2",
+                      "background": "#131313",
+                      "surface-tint": "#c6c6c6",
+                      "surface-container": "#1f1f1f",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-background": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "120px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-xl": [
+                              "Montserrat"
+                      ],
+                      "accent-label": [
+                              "Space Grotesk"
+                      ],
+                      "button-text": [
+                              "Montserrat"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "110%",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "150%",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "96px",
+                              {
+                                      "lineHeight": "100%",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "900"
+                              }
+                      ],
+                      "accent-label": [
+                              "14px",
+                              {
+                                      "lineHeight": "100%",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "button-text": [
+                              "14px",
+                              {
+                                      "lineHeight": "100%",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "110%",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "160%",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-error selection:text-on-error min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-background/80 dark:bg-background/80 backdrop-blur-md text-on-background dark:text-on-background font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-error italic tracking-tighter docked full-width top-0 z-50 border-b border-surface-container-highest flat no shadows sticky top-0 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-on-surface-variant hover:text-error transition-all duration-150 ease-linear p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex gap-gutter items-center h-full">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-on-surface transition-colors duration-200 hover:text-error ease-linear uppercase" href="#">Shop</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-on-surface transition-colors duration-200 hover:text-error ease-linear uppercase" href="#">About</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-on-surface transition-colors duration-200 hover:text-error ease-linear uppercase" href="#">Contact</a>
+</nav>
+<!-- Brand Logo -->
+<div class="flex-grow md:flex-grow-0 flex justify-center md:justify-start">
+<a class="flex items-center gap-2 hover:scale-95 transition-transform duration-100" href="#">
+<img alt="RMD Logo" class="h-8 md:h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZTaPkAllAgaakwja1CJjgFtMbm7WgHUL6C74ikfyHmKdszb0WqiXD4UPkuJ_W392evAZJ3T0rzxVqz_Bv5vunpMwKN93Bs7xzxt3KICKA4ueO6pzO4_qwOydrAFptK8yLLYsBoUsLC2uM9cIqaZxfnTDccqi6JO3pPDbMMaqssgpS0eXUXLFetRIU2lVdJB-Rur-ts3XZ3HYAcFy-Ouhk6Naw50p_Wm250rLdFJzYhfuS1qD4MfYprbiZvLynraJabumMQUmBg"/>
+</a>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="flex gap-4 md:gap-gutter items-center">
+<button class="text-on-surface-variant hover:text-error transition-all duration-150 ease-linear flex items-center justify-center p-2">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-error transition-all duration-150 ease-linear flex items-center justify-center p-2">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<!-- Active state for shopping bag since we are on Cart -->
+<button class="text-on-surface font-bold border-b-2 border-error pb-1 hover:text-error transition-all duration-150 ease-linear flex items-center justify-center p-2 relative">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute top-1 right-1 bg-error text-on-error text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-none">2</span>
+</button>
+</div>
+</header>
+<!-- Main Cart Content -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-section-gap max-w-[1920px] mx-auto w-full">
+<div class="flex flex-col md:flex-row justify-between items-start mb-12 border-b border-surface-container-highest pb-6">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-on-surface">CART</h1>
+<a class="mt-4 md:mt-0 font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-colors duration-150 flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                CONTINUE SHOPPING
+            </a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-16">
+<!-- Cart Items List (Col span 8 on desktop) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Table Header (Desktop only) -->
+<div class="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-surface-container-highest font-accent-label text-accent-label text-on-surface-variant uppercase tracking-widest">
+<div class="col-span-6">Product</div>
+<div class="col-span-3 text-center">Quantity</div>
+<div class="col-span-3 text-right">Total</div>
+</div>
+<!-- Item 1 -->
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-4 items-center py-6 border-b border-surface-container-highest relative">
+<!-- Remove Button (Absolute top right on mobile, inline on desktop) -->
+<button class="absolute top-6 right-0 md:static md:col-span-1 md:order-last text-on-surface-variant hover:text-error transition-colors p-2 flex justify-end md:justify-center">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<!-- Product Info -->
+<div class="flex gap-6 items-center md:col-span-6">
+<div class="w-24 h-32 md:w-32 md:h-40 bg-surface-container-low border border-surface-container-highest overflow-hidden relative group-hover:border-error transition-colors duration-200">
+<!-- Image overlay effect -->
+<div class="absolute inset-0 bg-error/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-overlay"></div>
+<img alt="Tactical Hoodie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A premium heavy-weight cotton hoodie in deep matte black. It features a distressed red graphic on the back resembling raw energetic textures. The garment is photographed flat lay on a raw concrete surface under harsh, cinematic lighting. The aesthetic is high-contrast, industrial minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwpe9PaeILK0UwVsny3IDDzoRDgJWQE6syqOq8HgSUXYUDSoVMUCHx6PzmczL2eJTQUePt6Rm8IWUWTuG--WKX2eyHtKtixENfQ8h-dKT-3dy5tgfrhgApgzfERN7z2f--ZvdMPKB3rCS6cjFZGtPBkbISrFII0bM-KBM0gY2qBkeCu7JADJ-XwBaGwf_mtZZFzNEbkq5fwzrxWsPaY6rJUuBXg14d58kvB68Kx934t2RbyWH42p-on6mXJPYIxUsp4-pLprUgcw"/>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-body-md text-body-md font-bold uppercase tracking-wide text-on-surface">Tactical Hoodie V2</h3>
+<div class="font-accent-label text-accent-label text-on-surface-variant flex flex-col gap-1">
+<span>SIZE: XL</span>
+<span>COLOR: ONYX</span>
+</div>
+<span class="md:hidden font-body-sm text-body-sm text-on-surface mt-2">$ 185.00</span>
+</div>
+</div>
+<!-- Quantity Controls -->
+<div class="flex items-center gap-0 md:col-span-3 justify-start md:justify-center mt-4 md:mt-0">
+<div class="flex border border-surface-container-highest bg-surface-container-low h-10 w-32 focus-within:border-error transition-colors duration-150">
+<button class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors font-accent-label">-</button>
+<input class="w-full h-full bg-transparent border-none text-center font-accent-label text-accent-label text-on-surface focus:ring-0 appearance-none p-0 m-0" min="1" type="number" value="1"/>
+<button class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors font-accent-label">+</button>
+</div>
+</div>
+<!-- Line Total -->
+<div class="hidden md:block md:col-span-2 text-right font-body-md text-body-md text-on-surface">
+                        $ 185.00
+                    </div>
+</div>
+<!-- Item 2 -->
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-4 items-center py-6 border-b border-surface-container-highest relative">
+<!-- Remove Button -->
+<button class="absolute top-6 right-0 md:static md:col-span-1 md:order-last text-on-surface-variant hover:text-error transition-colors p-2 flex justify-end md:justify-center">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<!-- Product Info -->
+<div class="flex gap-6 items-center md:col-span-6">
+<div class="w-24 h-32 md:w-32 md:h-40 bg-surface-container-low border border-surface-container-highest overflow-hidden relative group-hover:border-error transition-colors duration-200">
+<div class="absolute inset-0 bg-error/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-overlay"></div>
+<img alt="Acid Wash Tee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A heavyweight vintage-wash t-shirt in faded dark grey. The shirt features an oversized fit and raw hem detailing. It is draped over industrial steel piping in a stark, dimly lit room. Strong directional lighting creates deep shadows, emphasizing the premium streetwear aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDUO1z9EetXE5QpSSijzgzKUa0JH9sh3RO1MJY2rMHjhajqmNUkQDYfeILIm5IXM6JJ27NJVwSmDhcNSuZvCATdaYDXzp-f18Gfg-nyiFH6bufebcVTqFJ4U_crox9VzcDNty4Qycki3Ok-xP7tf9J_3TIl9r5juEn4pqHcHfAb_8wvfr4wKCed8salIhr_FH8P_HbTFFYwUdX17_wdj2zpdIs1GR13HB64QcywhKbqFNqGqNFe1oLIwFk8KJFneKax7c0OyXkmw"/>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-body-md text-body-md font-bold uppercase tracking-wide text-on-surface">Acid Drop Tee</h3>
+<div class="font-accent-label text-accent-label text-on-surface-variant flex flex-col gap-1">
+<span>SIZE: L</span>
+<span>COLOR: SLATE</span>
+</div>
+<span class="md:hidden font-body-sm text-body-sm text-on-surface mt-2">$ 85.00</span>
+</div>
+</div>
+<!-- Quantity Controls -->
+<div class="flex items-center gap-0 md:col-span-3 justify-start md:justify-center mt-4 md:mt-0">
+<div class="flex border border-surface-container-highest bg-surface-container-low h-10 w-32 focus-within:border-error transition-colors duration-150">
+<button class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors font-accent-label">-</button>
+<input class="w-full h-full bg-transparent border-none text-center font-accent-label text-accent-label text-on-surface focus:ring-0 appearance-none p-0 m-0" min="1" type="number" value="1"/>
+<button class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors font-accent-label">+</button>
+</div>
+</div>
+<!-- Line Total -->
+<div class="hidden md:block md:col-span-2 text-right font-body-md text-body-md text-on-surface">
+                        $ 85.00
+                    </div>
+</div>
+</div>
+<!-- Summary Sidebar (Col span 4 on desktop) -->
+<div class="lg:col-span-4 mt-8 lg:mt-0">
+<div class="bg-surface-container-low border border-surface-container-highest p-6 md:p-8 flex flex-col gap-8 sticky top-[120px]">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase border-b border-surface-container-highest pb-4">Summary</h2>
+<div class="flex flex-col gap-4 font-body-md text-body-md text-on-surface-variant">
+<div class="flex justify-between items-center">
+<span>SUBTOTAL</span>
+<span class="text-on-surface">$ 270.00</span>
+</div>
+<div class="flex justify-between items-center pb-6 border-b border-surface-container-highest">
+<span>SHIPPING</span>
+<span class="text-on-surface font-accent-label text-accent-label">CALCULATED AT CHECKOUT</span>
+</div>
+<div class="flex justify-between items-center pt-2 font-headline-lg-mobile text-headline-lg-mobile text-on-surface">
+<span>TOTAL</span>
+<span>$ 270.00</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center opacity-70">
+                            Taxes and shipping calculated at checkout.
+                        </p>
+<button class="w-full bg-[#F5F5F5] text-[#000000] font-button-text text-button-text uppercase py-4 px-6 hover:bg-error hover:text-on-error transition-colors duration-150 ease-linear tracking-widest relative overflow-hidden group">
+<span class="relative z-10">PROCEED TO CHECKOUT</span>
+<div class="absolute inset-0 bg-error transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></div>
+<span class="relative z-10 group-hover:text-[#000000] mix-blend-difference pointer-events-none absolute inset-0 flex items-center justify-center">PROCEED TO CHECKOUT</span>
+</button>
+</div>
+<!-- Distressed accent detail -->
+<div class="absolute -bottom-1 -right-1 w-16 h-16 bg-error/10 pointer-events-none z-0 mix-blend-overlay"></div>
+</div>
+</div>
+</div>
+<!-- Optional: Empty State (Hidden by default, structure provided) -->
+<!--
+        <div class="flex flex-col items-center justify-center py-32 gap-8">
+            <span class="material-symbols-outlined text-[64px] text-surface-container-highest" data-icon="shopping_cart">shopping_cart</span>
+            <p class="font-body-md text-body-md text-on-surface-variant uppercase tracking-widest">YOUR CART IS EMPTY</p>
+            <a href="#" class="border border-surface-container-highest px-8 py-4 font-button-text text-button-text text-on-surface uppercase hover:border-error hover:text-error transition-colors duration-150">CONTINUE SHOPPING</a>
+        </div>
+        -->
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-on-surface dark:text-on-surface font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-black full-width bottom-0 border-t border-surface-container-highest flat no shadows w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<div class="text-headline-lg-mobile font-black text-on-surface uppercase italic tracking-tighter text-error">RMD</div>
+<p class="font-accent-label text-accent-label text-on-surface-variant mt-auto">© 2024 RMD. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface uppercase tracking-widest mb-4">Shop</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Shop All</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Collaborations</a>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface uppercase tracking-widest mb-4">Support</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">FAQ</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Order Tracking</a>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface uppercase tracking-widest mb-4">Social</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Instagram</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">X</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Discord</a>
+</div>
+</footer>
+</body></html>

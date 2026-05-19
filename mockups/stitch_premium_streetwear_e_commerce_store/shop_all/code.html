@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RMD | THE COLLECTION</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,800&amp;family=Space+Grotesk:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#c6c6c7",
+                      "primary": "#c6c6c6",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#353535",
+                      "on-primary-container": "#757575",
+                      "tertiary": "#c6c6c6",
+                      "on-primary-fixed-variant": "#474747",
+                      "surface-container-low": "#1b1b1b",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "on-surface-variant": "#cfc4c5",
+                      "surface-dim": "#131313",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-high": "#2a2a2a",
+                      "secondary-container": "#454747",
+                      "on-secondary-container": "#b4b5b5",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#393939",
+                      "on-tertiary-container": "#757575",
+                      "primary-container": "#000000",
+                      "inverse-on-surface": "#303030",
+                      "tertiary-container": "#000000",
+                      "surface": "#131313",
+                      "outline-variant": "#4c4546",
+                      "inverse-surface": "#e2e2e2",
+                      "on-primary": "#303030",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "outline": "#988e90",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-variant": "#353535",
+                      "on-tertiary": "#303030",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#5e5e5e",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-secondary": "#2f3131",
+                      "on-surface": "#e2e2e2",
+                      "background": "#131313",
+                      "surface-tint": "#c6c6c6",
+                      "surface-container": "#1f1f1f",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-background": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "120px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-xl": [
+                              "Montserrat"
+                      ],
+                      "accent-label": [
+                              "Space Grotesk"
+                      ],
+                      "button-text": [
+                              "Montserrat"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "110%",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "150%",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "96px",
+                              {
+                                      "lineHeight": "100%",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "900"
+                              }
+                      ],
+                      "accent-label": [
+                              "14px",
+                              {
+                                      "lineHeight": "100%",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "button-text": [
+                              "14px",
+                              {
+                                      "lineHeight": "100%",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "110%",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "160%",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        
+        .distress-overlay {
+            position: relative;
+        }
+        .distress-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 0, 0, 0.05);
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.2s ease-linear;
+        }
+        .group:hover .distress-overlay::before {
+            opacity: 1;
+        }
+        
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353535;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffb4ab;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-error selection:text-on-error">
+<!-- TopNavBar -->
+<nav class="bg-background/80 dark:bg-background/80 backdrop-blur-md text-on-background dark:text-on-background sticky top-0 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 docked full-width top-0 z-50 border-b border-surface-container-highest flat no shadows">
+<!-- Logo -->
+<a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-error italic tracking-tighter hover:scale-95 transition-transform duration-100 flex items-center gap-2" href="#">
+            RMD
+        </a>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-accent-label text-accent-label text-on-surface font-bold border-b-2 border-error pb-1 hover:text-error transition-all duration-150 ease-linear" href="#">Shop</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-on-surface transition-colors duration-200 hover:text-error transition-all duration-150 ease-linear" href="#">About</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-on-surface transition-colors duration-200 hover:text-error transition-all duration-150 ease-linear" href="#">Contact</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4 md:gap-6">
+<button class="text-on-surface-variant hover:text-on-surface hover:text-error transition-all duration-150 ease-linear hover:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface hover:text-error transition-all duration-150 ease-linear hover:scale-95 transition-transform duration-100 hidden md:block">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface hover:text-error transition-all duration-150 ease-linear hover:scale-95 transition-transform duration-100 relative">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant hover:text-on-surface hover:text-error transition-all duration-150 ease-linear">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24">
+<!-- Header Section -->
+<header class="mb-16 md:mb-section-gap flex flex-col items-start gap-4">
+<h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl uppercase text-on-surface tracking-tighter">THE COLLECTION</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                Raw power meets technical precision. High-contrast industrial minimalism engineered for the streets.
+            </p>
+</header>
+<!-- Content Layout -->
+<div class="flex flex-col lg:flex-row gap-gutter md:gap-12 lg:gap-24 relative items-start">
+<!-- Sidebar Filter (Sticky Desktop) -->
+<aside class="w-full lg:w-64 flex-shrink-0 lg:sticky lg:top-32 border-t lg:border-t-0 border-surface-container-highest pt-8 lg:pt-0">
+<div class="flex justify-between items-center mb-8 lg:hidden">
+<h2 class="font-accent-label text-accent-label text-on-surface">FILTERS</h2>
+<button class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="hidden lg:flex flex-col gap-12">
+<!-- Categories -->
+<div class="flex flex-col gap-4">
+<h3 class="font-accent-label text-accent-label text-on-surface uppercase tracking-widest border-b border-surface-container-highest pb-2">Category</h3>
+<ul class="flex flex-col gap-3 font-body-sm text-body-sm text-on-surface-variant">
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="form-checkbox bg-transparent border-surface-container-highest text-error focus:ring-0 focus:ring-offset-0 rounded-none w-4 h-4 transition-colors duration-150 checked:border-error" type="checkbox"/>
+<span class="group-hover:text-on-surface transition-colors duration-150">All Products</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox bg-transparent border-surface-container-highest text-error focus:ring-0 focus:ring-offset-0 rounded-none w-4 h-4 transition-colors duration-150 checked:border-error" type="checkbox"/>
+<span class="group-hover:text-on-surface transition-colors duration-150">Outerwear</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox bg-transparent border-surface-container-highest text-error focus:ring-0 focus:ring-offset-0 rounded-none w-4 h-4 transition-colors duration-150 checked:border-error" type="checkbox"/>
+<span class="group-hover:text-on-surface transition-colors duration-150">Tops</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox bg-transparent border-surface-container-highest text-error focus:ring-0 focus:ring-offset-0 rounded-none w-4 h-4 transition-colors duration-150 checked:border-error" type="checkbox"/>
+<span class="group-hover:text-on-surface transition-colors duration-150">Bottoms</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox bg-transparent border-surface-container-highest text-error focus:ring-0 focus:ring-offset-0 rounded-none w-4 h-4 transition-colors duration-150 checked:border-error" type="checkbox"/>
+<span class="group-hover:text-on-surface transition-colors duration-150">Accessories</span>
+</label>
+</li>
+</ul>
+</div>
+<!-- Size -->
+<div class="flex flex-col gap-4">
+<h3 class="font-accent-label text-accent-label text-on-surface uppercase tracking-widest border-b border-surface-container-highest pb-2">Size</h3>
+<div class="grid grid-cols-4 gap-2">
+<button class="border border-surface-container-highest py-2 text-center font-accent-label text-accent-label hover:border-on-surface transition-colors duration-150 text-on-surface-variant hover:text-on-surface">S</button>
+<button class="border border-error py-2 text-center font-accent-label text-accent-label bg-surface-container-high text-on-surface transition-colors duration-150">M</button>
+<button class="border border-surface-container-highest py-2 text-center font-accent-label text-accent-label hover:border-on-surface transition-colors duration-150 text-on-surface-variant hover:text-on-surface">L</button>
+<button class="border border-surface-container-highest py-2 text-center font-accent-label text-accent-label hover:border-on-surface transition-colors duration-150 text-on-surface-variant hover:text-on-surface">XL</button>
+</div>
+</div>
+<!-- Color -->
+<div class="flex flex-col gap-4">
+<h3 class="font-accent-label text-accent-label text-on-surface uppercase tracking-widest border-b border-surface-container-highest pb-2">Color</h3>
+<div class="flex flex-wrap gap-3">
+<button class="w-6 h-6 bg-[#000000] border border-surface-container-highest rounded-full ring-2 ring-offset-2 ring-offset-background ring-error"></button>
+<button class="w-6 h-6 bg-[#ffffff] border border-surface-container-highest rounded-full hover:ring-2 hover:ring-offset-2 hover:ring-offset-background hover:ring-surface-container-highest transition-all duration-150"></button>
+<button class="w-6 h-6 bg-[#ff0000] border border-surface-container-highest rounded-full hover:ring-2 hover:ring-offset-2 hover:ring-offset-background hover:ring-surface-container-highest transition-all duration-150"></button>
+<button class="w-6 h-6 bg-[#333333] border border-surface-container-highest rounded-full hover:ring-2 hover:ring-offset-2 hover:ring-offset-background hover:ring-surface-container-highest transition-all duration-150"></button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-8 border-b border-surface-container-highest pb-4">
+<span class="font-accent-label text-accent-label text-on-surface-variant">24 Items</span>
+<div class="flex items-center gap-2">
+<span class="font-accent-label text-accent-label text-on-surface-variant">Sort By</span>
+<select class="bg-transparent border-none text-on-surface font-accent-label text-accent-label focus:ring-0 cursor-pointer">
+<option value="new">Newest</option>
+<option value="price-low">Price: Low to High</option>
+<option value="price-high">Price: High to Low</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-6">
+<!-- Product Card 1 -->
+<article class="group flex flex-col gap-4 cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low border border-surface-container-highest overflow-hidden distress-overlay">
+<!-- Sale Badge -->
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-error text-on-error font-accent-label text-[10px] px-2 py-1 tracking-widest uppercase">SALE</span>
+</div>
+<!-- Image Container -->
+<div class="w-full h-full bg-surface-container-high transition-transform duration-500 group-hover:scale-105 ease-out">
+<img alt="Product Image" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A premium tactical hoodie in deep black, featuring oversized industrial drawstrings and complex panelling. The hoodie is presented floating in a vast, minimalist digital void with high-contrast, cinematic rim lighting that highlights the heavy textile texture. The aesthetic is raw, aggressive, and highly structured, emphasizing a brutalist streetwear vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrFGP8aO7Y5hkG_HowjBVrS1u_NPVys2bK4ft0MkcQ_FCRbj4H64Vuz69yzSs38SR5TCcDG907lMyA88822feAP_1Vy0aVG3INUTyaXVuI_2WYpofCwFvgk9rQ0SuRkgudiSBwDWbuHPG9NRarx8F0R6McxdpPWnSmUYqkdNtrjU3NTljwLEIr2SAxTvXPB5J9kEPv5YIjqk5tGXI47wrffHooAvXY1e1QglZ3baLsdeiXwM8bKw1xp0hbHslQfL6wU9-ebMDKAA"/>
+</div>
+<!-- Quick Add -->
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+<button class="w-full bg-[#F5F5F5] text-[#000000] font-button-text text-button-text py-3 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150">Quick Add</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-body-md text-body-md font-bold text-on-surface group-hover:text-error transition-colors duration-150">NEXUS TACTICAL HOODIE</h3>
+<div class="flex items-center gap-3 font-accent-label text-accent-label">
+<span class="text-error line-through opacity-70">$180</span>
+<span class="text-on-surface">$120</span>
+</div>
+</div>
+</article>
+<!-- Product Card 2 (Sold Out) -->
+<article class="group flex flex-col gap-4 cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low border border-surface-container-highest overflow-hidden distress-overlay">
+<!-- Sold Out Badge -->
+<div class="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-20 flex items-center justify-center">
+<span class="bg-[#1A1A1A] border border-error text-error font-accent-label text-accent-label px-4 py-2 tracking-widest uppercase">SOLD OUT</span>
+</div>
+<!-- Image Container -->
+<div class="w-full h-full bg-surface-container-high transition-transform duration-500 group-hover:scale-105 ease-out opacity-50 grayscale">
+<img alt="Product Image" class="w-full h-full object-cover" data-alt="A heavy cotton graphic tee in off-white, displaying a distressed, aggressive abstract graphic in bold red. The t-shirt is suspended against a pitch-black background with harsh, directional lighting creating sharp shadows. The mood is underground and exclusive, perfectly matching a high-stakes streetwear aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmx8pfEnKJIoUSKU2ziSb0MFG1DyjF3qRkMQOQpV9s4kc3bAoofRxE4Z5HQJDRy61gfewXNPZlOEPgF-hahW2g0fScTrzaJ4HRdQRP3FzhC6QYn8keYmQMRpPYuMtZl4TxZ-m-t1fD0dkyCDkorvLn7c4MeQ-UaCMj0XdqJMIXp02I1qTG1pCrwE81GFKdszXEHDfViCksTpU2IUh2BZmeESposKvVjJHSFANejZzUokEK4NdN5mro6vxiXoNiCEuftnt8ladnOg"/>
+</div>
+</div>
+<div class="flex flex-col gap-1 opacity-50">
+<h3 class="font-body-md text-body-md font-bold text-on-surface">VOID GRAPHIC TEE</h3>
+<div class="flex items-center gap-3 font-accent-label text-accent-label">
+<span class="text-on-surface">$65</span>
+</div>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="group flex flex-col gap-4 cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low border border-surface-container-highest overflow-hidden distress-overlay">
+<!-- Image Container -->
+<div class="w-full h-full bg-surface-container-high transition-transform duration-500 group-hover:scale-105 ease-out">
+<img alt="Product Image" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="Utilitarian cargo pants in charcoal grey, featuring multiple rigid, geometric pockets and technical strap details. Captured from a low angle against a stark concrete-textured backdrop, illuminated by cold, industrial light. The overall feel is tactical, rigid, and premium brutalist design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7xEielzJQ2pytWeTQID-84aWJtoDg-FKH8TDWqhRTZHvfWcehIaC9aXGGDckxYeGasPEls8ZTROUuyUzmPDsTroJ3-HTdP-EpUJLlESzeWeALI6XPE0SY7VShTyj-pmgPzt-_fH1JFjt8EyNvV5lCM7vSH8p1wutUCsb2Efphjo6xiCiu1x2oRk1esTWTNCVAMX_5uCnU49XO0-96_w0bGb5noy7xirXsd0j4HpDxVtECR5Y-qbqWhiQyOV3PVnEBgdfxjDFxyQ"/>
+</div>
+<!-- Quick Add -->
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+<button class="w-full bg-[#F5F5F5] text-[#000000] font-button-text text-button-text py-3 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150">Quick Add</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-body-md text-body-md font-bold text-on-surface group-hover:text-error transition-colors duration-150">AEON CARGO PANTS</h3>
+<div class="flex items-center gap-3 font-accent-label text-accent-label">
+<span class="text-on-surface">$220</span>
+</div>
+</div>
+</article>
+<!-- Product Card 4 -->
+<article class="group flex flex-col gap-4 cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low border border-surface-container-highest overflow-hidden distress-overlay">
+<!-- Image Container -->
+<div class="w-full h-full bg-surface-container-high transition-transform duration-500 group-hover:scale-105 ease-out">
+<img alt="Product Image" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A stark, minimalist black beanie with a small, metallic red brand tag. Positioned centrally in a vast, dark grey void with precise spotlighting that emphasizes the knit texture. The atmosphere is cold, luxurious, and strictly monochromatic with a singular pop of distressed red." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyEzxfCaDEFADYuwBIxSqd8gsdt5TUfZVBrISMYwdNvvYcEhCYXN9qrslqXiveknSdgA31JS1Rnz9GUY4LKNTvJ0wq16Bx7VZw5jTWAsuVZvc66eb3IxYbp65FetgqtcjOHxI_AA7Hyzmi-PjKBujFhWhKcVx4HV6Z-DV25l8_aVMMrnlPVHBoivVf200ElRCqBC1n4Rd6rnKiPRucthV4W5RT7N9LBRTAjUjuxXOj8Nt6GzEg6DIbEbk7WFxP6JQU9nM_ISY4Qw"/>
+</div>
+<!-- Quick Add -->
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+<button class="w-full bg-[#F5F5F5] text-[#000000] font-button-text text-button-text py-3 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150">Quick Add</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-body-md text-body-md font-bold text-on-surface group-hover:text-error transition-colors duration-150">CORE KNIT BEANIE</h3>
+<div class="flex items-center gap-3 font-accent-label text-accent-label">
+<span class="text-on-surface">$45</span>
+</div>
+</div>
+</article>
+<!-- Product Card 5 (Limited) -->
+<article class="group flex flex-col gap-4 cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low border border-surface-container-highest overflow-hidden distress-overlay">
+<!-- Limited Badge -->
+<div class="absolute top-4 right-4 z-20">
+<span class="bg-[#1A1A1A] border border-surface-container-highest text-on-surface font-accent-label text-[10px] px-2 py-1 tracking-widest uppercase">LIMITED DROP</span>
+</div>
+<!-- Image Container -->
+<div class="w-full h-full bg-surface-container-high transition-transform duration-500 group-hover:scale-105 ease-out">
+<img alt="Product Image" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="An oversized, highly structured bomber jacket in deep onyx, featuring asymmetrical zip details and heavy metal hardware. Presented in a dramatic, low-key lighting setup that casts sharp shadows, echoing brutalist architecture. The visual style is aggressive, high-contrast, and strictly premium streetwear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBANNhgJaPmxdLxiyVPJxgCbPfPht35nYFyiqYVEOrz5l_eE9jkIXnsPcTn7O3BoyctWpgIXcS5t8LJSD8RIuO1pFKRxiUWHdxThuyILy9BxczC9YjdzRIrjVqJDu_C66kgk4yEUZot01-zReyp-va1bbp1lI-ZLoPz7irLGJrgjXMf9GX-HUX02cCBf-zo-aydLjyrPnw8KmJUAmmGsC5vvnPi8R9S0bop9n_5rzJAXHDcQjdO92tx604kAAau2ZhyL7QdUvNXxg"/>
+</div>
+<!-- Quick Add -->
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+<button class="w-full bg-[#F5F5F5] text-[#000000] font-button-text text-button-text py-3 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150">Quick Add</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-body-md text-body-md font-bold text-on-surface group-hover:text-error transition-colors duration-150">OBSIDIAN BOMBER</h3>
+<div class="flex items-center gap-3 font-accent-label text-accent-label">
+<span class="text-on-surface">$350</span>
+</div>
+</div>
+</article>
+<!-- Product Card 6 -->
+<article class="group flex flex-col gap-4 cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container-low border border-surface-container-highest overflow-hidden distress-overlay">
+<!-- Image Container -->
+<div class="w-full h-full bg-surface-container-high transition-transform duration-500 group-hover:scale-105 ease-out">
+<img alt="Product Image" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A long-sleeve base layer shirt in pitch black, accented with minimal geometric red stitching lines. Displayed flat against a rough, dark industrial texture. The lighting is harsh and direct, creating a high-contrast, technical, and precise aesthetic characteristic of luxury tactical gear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByqhVznhUEwpJyxpljHw_fYgzFki1lCkBYTGA6wDizToycnKivD40hoZ2_7lClIIyXXFS_NY9BgTfnCIH7WJLjZOzz7SQm1hOz3EqeOkCdetJdhU-VJEy9QBMulqrvY5Ov7x69XJ_SSfgB2uo_yLDlM_GW9TZDwb1Y30Ns_ADZ5cWp1mV5bq7PgLGBZ6FNZV5mryh_kT2CPWp8PULccyKpYcz7WfJt9Irp22wqtCpIsSJxwwZTvqtl9O8gHVN1jt2QzciHoUAlrA"/>
+</div>
+<!-- Quick Add -->
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+<button class="w-full bg-[#F5F5F5] text-[#000000] font-button-text text-button-text py-3 uppercase tracking-widest hover:bg-error hover:text-on-error transition-colors duration-150">Quick Add</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-body-md text-body-md font-bold text-on-surface group-hover:text-error transition-colors duration-150">BASE LAYER L/S</h3>
+<div class="flex items-center gap-3 font-accent-label text-accent-label">
+<span class="text-on-surface">$85</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center items-center gap-4 border-t border-surface-container-highest pt-8">
+<button class="w-10 h-10 flex items-center justify-center border border-surface-container-highest text-on-surface-variant hover:border-error hover:text-error transition-all duration-150">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-2 font-accent-label text-accent-label">
+<button class="w-10 h-10 flex items-center justify-center border border-error bg-surface-container-high text-on-surface">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-surface-container-highest text-on-surface-variant hover:border-on-surface transition-all duration-150">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-surface-container-highest text-on-surface-variant hover:border-on-surface transition-all duration-150">3</button>
+</div>
+<button class="w-10 h-10 flex items-center justify-center border border-surface-container-highest text-on-surface-variant hover:border-error hover:text-error transition-all duration-150">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-on-surface dark:text-on-surface full-width bottom-0 border-t border-surface-container-highest flat no shadows w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto">
+<!-- Logo Column -->
+<div class="flex flex-col items-start gap-4 col-span-1">
+<span class="text-headline-lg-mobile font-black text-on-surface italic tracking-tighter">RMD</span>
+<p class="font-accent-label text-accent-label text-on-surface-variant mt-auto uppercase tracking-widest text-xs">
+                © 2024 RMD. ALL RIGHTS RESERVED.
+            </p>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col gap-4 col-span-1">
+<h4 class="font-accent-label text-accent-label text-on-surface uppercase mb-2 border-b border-surface-container-highest pb-2 w-max">Shop</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Shop All</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Collaborations</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-4 col-span-1">
+<h4 class="font-accent-label text-accent-label text-on-surface uppercase mb-2 border-b border-surface-container-highest pb-2 w-max">Support</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">FAQ</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Order Tracking</a>
+</div>
+<!-- Links Column 3 -->
+<div class="flex flex-col gap-4 col-span-1">
+<h4 class="font-accent-label text-accent-label text-on-surface uppercase mb-2 border-b border-surface-container-highest pb-2 w-max">Social</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Instagram</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">X</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:text-error transition-colors duration-200" href="#">Discord</a>
+</div>
+</footer>
+</body></html>

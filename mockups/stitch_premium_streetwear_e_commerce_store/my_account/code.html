@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RMD - User Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&amp;family=Montserrat:ital,wght@0,800;0,900;1,800&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#c6c6c7",
+                    "primary": "#c6c6c6",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#353535",
+                    "on-primary-container": "#757575",
+                    "tertiary": "#c6c6c6",
+                    "on-primary-fixed-variant": "#474747",
+                    "surface-container-low": "#1b1b1b",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-surface-variant": "#cfc4c5",
+                    "surface-dim": "#131313",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-container": "#454747",
+                    "on-secondary-container": "#b4b5b5",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#393939",
+                    "on-tertiary-container": "#757575",
+                    "primary-container": "#000000",
+                    "inverse-on-surface": "#303030",
+                    "tertiary-container": "#000000",
+                    "surface": "#131313",
+                    "outline-variant": "#4c4546",
+                    "inverse-surface": "#e2e2e2",
+                    "on-primary": "#303030",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "outline": "#988e90",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-variant": "#353535",
+                    "on-tertiary": "#303030",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#5e5e5e",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-secondary": "#2f3131",
+                    "on-surface": "#e2e2e2",
+                    "background": "#131313",
+                    "surface-tint": "#c6c6c6",
+                    "surface-container": "#1f1f1f",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-background": "#e2e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "120px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Montserrat"
+                    ],
+                    "body-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-xl": [
+                            "Montserrat"
+                    ],
+                    "accent-label": [
+                            "Space Grotesk"
+                    ],
+                    "button-text": [
+                            "Montserrat"
+                    ],
+                    "headline-lg-mobile": [
+                            "Montserrat"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "110%",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "150%",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl": [
+                            "96px",
+                            {
+                                    "lineHeight": "100%",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "900"
+                            }
+                    ],
+                    "accent-label": [
+                            "14px",
+                            {
+                                    "lineHeight": "100%",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "button-text": [
+                            "14px",
+                            {
+                                    "lineHeight": "100%",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "110%",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "160%",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353535;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4c4546;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-error selection:text-on-error">
+<!-- TopNavBar -->
+<nav class="bg-background/80 dark:bg-background/80 backdrop-blur-md docked full-width top-0 z-50 border-b border-surface-container-highest flat no shadows sticky top-0 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-gutter">
+<a class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-error italic tracking-tighter" href="#">RMD</a>
+<div class="hidden md:flex gap-gutter ml-8">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-all duration-150 ease-linear" href="#">Shop</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-all duration-150 ease-linear" href="#">About</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-error transition-all duration-150 ease-linear" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button aria-label="Search" class="text-on-background dark:text-on-background hover:text-error transition-all duration-150 ease-linear active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="Profile" class="text-error font-bold border-b-2 border-error pb-1 hover:text-error transition-all duration-150 ease-linear active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined filled-icon" data-icon="person">person</span>
+</button>
+<button aria-label="Shopping Bag" class="text-on-background dark:text-on-background hover:text-error transition-all duration-150 ease-linear active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area: Split View -->
+<main class="w-full max-w-[1600px] mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-gutter md:gap-16 min-h-[819px]">
+<!-- Sidebar Navigation -->
+<aside class="lg:col-span-3 flex flex-col gap-8">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-2">ACCOUNT</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage your orders and preferences.</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center justify-between p-4 bg-surface-container border border-surface-container-highest text-on-surface font-accent-label text-accent-label relative overflow-hidden group" href="#">
+<span class="relative z-10 font-bold text-error">ORDER HISTORY</span>
+<span class="material-symbols-outlined relative z-10 text-error">arrow_forward</span>
+<!-- Active State Distressed Overlay -->
+<div class="absolute inset-0 bg-error/10 z-0"></div>
+<div class="absolute inset-y-0 left-0 w-1 bg-error z-10"></div>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-low border border-surface-container-highest text-on-surface-variant hover:text-on-surface hover:border-outline font-accent-label text-accent-label transition-colors duration-200 group" href="#">
+<span>PROFILE</span>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity duration-200">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-low border border-surface-container-highest text-on-surface-variant hover:text-on-surface hover:border-outline font-accent-label text-accent-label transition-colors duration-200 group" href="#">
+<span>ADDRESSES</span>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity duration-200">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-low border border-surface-container-highest text-on-surface-variant hover:text-on-surface hover:border-outline font-accent-label text-accent-label transition-colors duration-200 group mt-8" href="#">
+<span>LOG OUT</span>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity duration-200">logout</span>
+</a>
+</nav>
+</aside>
+<!-- Main View: Order History -->
+<section class="lg:col-span-9 flex flex-col gap-8">
+<header class="flex justify-between items-end border-b border-surface-container-highest pb-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">ORDER HISTORY</h2>
+<span class="font-accent-label text-accent-label text-on-surface-variant">3 ORDERS</span>
+</header>
+<div class="flex flex-col gap-6">
+<!-- Order Card 1: Processing -->
+<article class="bg-surface-container border border-surface-container-highest p-6 flex flex-col md:flex-row gap-6 relative overflow-hidden group hover:border-outline transition-colors duration-200">
+<!-- Image Area -->
+<div class="w-full md:w-48 h-48 bg-surface-container-low border border-surface-container-highest flex-shrink-0 relative overflow-hidden">
+<img alt="Black streetwear hoodie" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500" data-alt="A premium black streetwear hoodie laid flat on a dark industrial surface. The lighting is moody and dramatic, highlighting the texture of the heavy cotton fabric. The overall aesthetic is dark mode, minimal, and high-contrast, fitting a luxury urban fashion brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzD6WPhlfJBh_RBaDT3h36-T1g1p8o-6zcyUiUQtZQQMJF5gOo-FSqnbh7icD6xneGanBKzuuA8MxBkOfdcBSNA-CI8G5UuSH9PjpYU85-MaagASvRkwLKaH4b59OVOxmk006MdXdRiuJSimqY7phkLLIakmLNRhP81X_6Vnwh7U0z9NbLEI3j-aunZN0NY4WTQfiILZDBK9M-e5ostZdDzke0uOk4GxewLrMq_8Nzdm2ZJlTgtQbNnE6w82sg8YsliJYJFbYOJQ"/>
+<!-- Status Chip -->
+<div class="absolute top-2 left-2 bg-surface-container border border-surface-container-highest px-2 py-1 font-accent-label text-[10px] tracking-widest text-on-surface z-10 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                            PROCESSING
+                        </div>
+</div>
+<!-- Details Area -->
+<div class="flex flex-col justify-between w-full">
+<div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-accent-label text-accent-label text-on-background mb-1">RMD HEAVYWEIGHT HOODIE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Color: Carbon Black / Size: L</p>
+</div>
+<span class="font-accent-label text-accent-label text-on-background">$145.00</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6 border-t border-surface-container-highest pt-4">
+<div>
+<p class="font-accent-label text-[10px] text-on-surface-variant mb-1">ORDER NUMBER</p>
+<p class="font-body-sm text-body-sm text-on-surface">#RMD-8924-A</p>
+</div>
+<div>
+<p class="font-accent-label text-[10px] text-on-surface-variant mb-1">DATE</p>
+<p class="font-body-sm text-body-sm text-on-surface">OCT 24, 2023</p>
+</div>
+</div>
+</div>
+<div class="flex justify-end mt-6 gap-4">
+<button class="bg-surface-container border border-surface-container-highest text-on-surface px-6 py-3 font-button-text text-button-text hover:bg-surface-container-high transition-colors duration-200">VIEW INVOICE</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-3 font-button-text text-button-text border border-surface-container-highest hover:bg-error hover:text-primary-container hover:border-error transition-colors duration-200">TRACK ORDER</button>
+</div>
+</div>
+</article>
+<!-- Order Card 2: Delivered -->
+<article class="bg-surface-container-low border border-surface-container-highest p-6 flex flex-col md:flex-row gap-6 relative overflow-hidden group hover:border-outline transition-colors duration-200">
+<!-- Image Area -->
+<div class="w-full md:w-48 h-48 bg-surface border border-surface-container-highest flex-shrink-0 relative overflow-hidden">
+<img alt="Graphic t-shirt" class="w-full h-full object-cover grayscale opacity-60 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500" data-alt="A distressed white graphic t-shirt featuring aggressive, bold red typography folded neatly on a textured dark metal background. The lighting casts sharp shadows, emphasizing a brutalist, raw streetwear aesthetic. The scene is monochromatic with a stark red focal point." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYl6XpygY3Ko7VqZqtX4uBfBzZs_0cHV4yOXiMV56GtVFgcBjIIkMupnGWfi2fTAsTAE_WEvf4EQWUEhLGw7wWhjKBzmU_3t4ZQs39vk84gfokoShn4svrr2-e-WnYPWETPkZLgaughThcLkA8bxjI6R-ql5L7lB009rz-oAS6fizohx8rHk2Ix3l4x76CPivkNlN_Iqw2n71-hsFM5y13Ik9_VUNvGBiu_UDiirYd7JP6vtc6Wa1iLiNUSTzhlZSXpswwW9fiwQ"/>
+<!-- Status Chip -->
+<div class="absolute top-2 left-2 bg-surface-container-high border border-surface-container-highest px-2 py-1 font-accent-label text-[10px] tracking-widest text-on-surface-variant z-10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check</span>
+                            DELIVERED
+                        </div>
+</div>
+<!-- Details Area -->
+<div class="flex flex-col justify-between w-full opacity-80 group-hover:opacity-100 transition-opacity duration-200">
+<div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-accent-label text-accent-label text-on-background mb-1">RMD "DISTRESS" TEE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Color: Optic White / Size: XL</p>
+</div>
+<span class="font-accent-label text-accent-label text-on-background">$65.00</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6 border-t border-surface-container-highest pt-4">
+<div>
+<p class="font-accent-label text-[10px] text-on-surface-variant mb-1">ORDER NUMBER</p>
+<p class="font-body-sm text-body-sm text-on-surface">#RMD-7102-B</p>
+</div>
+<div>
+<p class="font-accent-label text-[10px] text-on-surface-variant mb-1">DATE</p>
+<p class="font-body-sm text-body-sm text-on-surface">SEP 12, 2023</p>
+</div>
+</div>
+</div>
+<div class="flex justify-end mt-6 gap-4">
+<button class="bg-transparent border border-surface-container-highest text-on-surface px-6 py-3 font-button-text text-button-text hover:bg-surface-container transition-colors duration-200">RETURN ITEM</button>
+<button class="bg-surface-container border border-surface-container-highest text-on-surface px-6 py-3 font-button-text text-button-text hover:bg-surface-container-high transition-colors duration-200">BUY AGAIN</button>
+</div>
+</div>
+</article>
+<!-- Order Card 3: Cancelled -->
+<article class="bg-surface border border-surface-container-highest p-6 flex flex-col md:flex-row gap-6 relative overflow-hidden group opacity-50 hover:opacity-100 transition-opacity duration-200">
+<!-- Image Area -->
+<div class="w-full md:w-48 h-48 bg-surface-container-lowest border border-surface-container-highest flex-shrink-0 relative overflow-hidden">
+<img alt="Tactical vest" class="w-full h-full object-cover grayscale mix-blend-luminosity group-hover:scale-105 transition-all duration-500" data-alt="A tactical streetwear utility vest in dark olive green, featuring multiple rigid cargo pockets and heavy-duty hardware. It is displayed against a stark black void. The lighting highlights the structural, industrial elements of the garment, fitting a high-contrast minimalist vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArs218yz6049ce1XIh9qDyemw4KCtUPedkhrKXbU6ZKL1zxgsxOppZnJFM1PyfuSRU1-cPRtbv8S7kxZOS6in__552Zg9jbt3fns7YS_UfnIOJ66fILK67MT7IqfzKU4A0223mkYAPCCJKnKf_oFO4-Cjjd5PnHAQ4lnS8-4MQ2Ex_lIL1IgmfQ_SDNZ6yoQwmXWAdQ5-jIZDlHSJgf-xtnnw3hOgJP-QOOkpVyYvGD144L7JBNPwGeyxSNaUFqXmwEM3dM7h3NA"/>
+<!-- Status Chip -->
+<div class="absolute top-2 left-2 bg-error/10 border border-error/20 px-2 py-1 font-accent-label text-[10px] tracking-widest text-error z-10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">close</span>
+                            CANCELLED
+                        </div>
+</div>
+<!-- Details Area -->
+<div class="flex flex-col justify-between w-full">
+<div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-accent-label text-accent-label text-on-surface-variant mb-1 line-through">TACTICAL UTILITY VEST</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Color: Olive / Size: M</p>
+</div>
+<span class="font-accent-label text-accent-label text-on-surface-variant line-through">$210.00</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6 border-t border-surface-container-highest pt-4">
+<div>
+<p class="font-accent-label text-[10px] text-on-surface-variant mb-1">ORDER NUMBER</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">#RMD-6001-X</p>
+</div>
+<div>
+<p class="font-accent-label text-[10px] text-on-surface-variant mb-1">DATE</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">AUG 05, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center mt-8">
+<button class="border-b border-on-surface text-on-surface font-accent-label text-accent-label pb-1 hover:text-error hover:border-error transition-colors duration-200">LOAD OLDER ORDERS</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-surface-container-highest flat no shadows w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter mt-section-gap">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<a class="text-headline-lg-mobile font-black text-on-surface font-headline-lg-mobile italic tracking-tighter hover:text-error transition-colors duration-200" href="#">RMD</a>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-auto uppercase tracking-widest text-[10px]">© 2024 RMD. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-2 border-b border-surface-container-highest pb-2 inline-block w-max">SHOP</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Shop All</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Collaborations</a>
+</nav>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-2 border-b border-surface-container-highest pb-2 inline-block w-max">SUPPORT</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">FAQ</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Order Tracking</a>
+</nav>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-accent-label text-accent-label text-on-surface mb-2 border-b border-surface-container-highest pb-2 inline-block w-max">SOCIAL</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Instagram</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">X</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-error transition-colors duration-200" href="#">Discord</a>
+</nav>
+</div>
+</footer>
+</body></html>

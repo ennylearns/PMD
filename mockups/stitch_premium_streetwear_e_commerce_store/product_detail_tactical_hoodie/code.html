@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RMD | PRODUCT DETAIL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,800;1,900&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#c6c6c7",
+                    "primary": "#c6c6c6",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#353535",
+                    "on-primary-container": "#757575",
+                    "tertiary": "#c6c6c6",
+                    "on-primary-fixed-variant": "#474747",
+                    "surface-container-low": "#1b1b1b",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-surface-variant": "#cfc4c5",
+                    "surface-dim": "#131313",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-container": "#454747",
+                    "on-secondary-container": "#b4b5b5",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#393939",
+                    "on-tertiary-container": "#757575",
+                    "primary-container": "#000000",
+                    "inverse-on-surface": "#303030",
+                    "tertiary-container": "#000000",
+                    "surface": "#131313",
+                    "outline-variant": "#4c4546",
+                    "inverse-surface": "#e2e2e2",
+                    "on-primary": "#303030",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "outline": "#988e90",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-variant": "#353535",
+                    "on-tertiary": "#303030",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#5e5e5e",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-secondary": "#2f3131",
+                    "on-surface": "#e2e2e2",
+                    "background": "#131313",
+                    "surface-tint": "#c6c6c6",
+                    "surface-container": "#1f1f1f",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-background": "#e2e2e2",
+                    "brand-red": "#FF0000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "120px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Montserrat"
+                    ],
+                    "body-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-xl": [
+                            "Montserrat"
+                    ],
+                    "accent-label": [
+                            "Space Grotesk"
+                    ],
+                    "button-text": [
+                            "Montserrat"
+                    ],
+                    "headline-lg-mobile": [
+                            "Montserrat"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "110%",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "150%",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl": [
+                            "96px",
+                            {
+                                    "lineHeight": "100%",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "900"
+                            }
+                    ],
+                    "accent-label": [
+                            "14px",
+                            {
+                                    "lineHeight": "100%",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "button-text": [
+                            "14px",
+                            {
+                                    "lineHeight": "100%",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "110%",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "160%",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #e2e2e2;
+        }
+        .distress-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .img-zoom:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .btn-hover-red:hover {
+            background-color: #FF0000;
+            color: #ffffff;
+            transition: background-color 0.1s linear, color 0.1s linear;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased overflow-x-hidden selection:bg-brand-red selection:text-white">
+<!-- TopNavBar -->
+<nav class="bg-background/80 dark:bg-background/80 backdrop-blur-md docked full-width top-0 z-50 border-b border-surface-container-highest sticky w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-8">
+<a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-brand-red italic tracking-tighter" href="#">RMD</a>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface font-bold border-b-2 border-brand-red pb-1 font-accent-label text-accent-label active-nav" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-accent-label text-accent-label hover:text-brand-red transition-all duration-150 ease-linear" href="#">About</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-200 font-accent-label text-accent-label hover:text-brand-red transition-all duration-150 ease-linear" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-background dark:text-on-background">
+<button class="hover:text-brand-red transition-all duration-150 ease-linear active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="hover:text-brand-red transition-all duration-150 ease-linear active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="hover:text-brand-red transition-all duration-150 ease-linear active:scale-95 transition-transform duration-100 relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold px-1 rounded-sm">2</span>
+</button>
+</div>
+</nav>
+<main class="w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24">
+<!-- Product Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-16">
+<!-- Left: Gallery -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="w-full bg-[#1A1A1A] relative border border-[#333333] overflow-hidden group">
+<img alt="Product Image Main" class="w-full h-auto object-cover aspect-[4/5] img-zoom" data-alt="A gritty, high-contrast, editorial streetwear fashion photograph of a black tactical hoodie. The model stands in an industrial warehouse setting with harsh, dramatic lighting highlighting the texture of the heavy cotton and utility pockets. The aesthetic is raw, aggressive, and premium, utilizing deep blacks, stark whites, and a touch of distressed red energy in the background shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVaiSrU0xKcHwNdOZPk79AslxzrdwHwloL4IPOe5OOtnkVEHsWoZD1wwD3AGRjLl3jcr5IXNh9hOtG6VkT3Kus6QT0fmWsiEsX4CJys1056Q4FuxQlo9drDAvGcGoerUe73I1-78kbr6CEFzfBxrTh4-mPLW3iLHkduGBqnLfpmXk3n4ZciVsmFewMWveYbyxv8X9dzEAKFV16V2rGIiajw9ta0kfKfP3Z28NST6j5Cv_6Q0EA2Cx2w9vTIAw_-08emfPyEd9gwg"/>
+<div class="absolute top-4 left-4 bg-brand-red text-white font-accent-label text-[10px] px-2 py-1 tracking-widest uppercase">
+                        LIMITED DROP
+                    </div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-[#1A1A1A] border border-[#333333] overflow-hidden">
+<img alt="Detail 1" class="w-full h-full object-cover aspect-square img-zoom" data-alt="A close-up macro shot of a black tactical streetwear garment, focusing on a heavy-duty matte metal zipper and intricate, reinforced stitching. The lighting is sharp and industrial, emphasizing the premium quality and structural integrity of the fabric. The overall mood is dark, technical, and exclusive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkAee_4EguTY2WmoTLDUTlNRwrfNhH4XubFpYA8s-2QXu24b-PiJxOj6_EbiKVhRPFEAmxzGYeNvDcK7QpYbdA5kTU8nu5j3gkY2KEX6TUxmTiQf6EJ5vUmDI8OFu0wvf80LQl4PdgZEeQFT5qje_YNSAgYxluJ7Pq6yj19SXnW-GsAtSd762IDlbvoU1YETF8zbNb6OwU_XlYGutnGXBWcMedFqC5gtTu9BCRhZntqJf8L2pYLXC5rUXbK-B2ceAQDy8jFCn2nA"/>
+</div>
+<div class="bg-[#1A1A1A] border border-[#333333] overflow-hidden">
+<img alt="Detail 2" class="w-full h-full object-cover aspect-square img-zoom" data-alt="A mid-shot of a model wearing a dark, oversized streetwear piece, captured in motion against a brutalist concrete wall. The photograph features high contrast and slight motion blur, conveying aggressive underground culture energy. Deep shadows dominate, with stark lighting carving out the silhouette of the garment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW39yghThl8SXsWifXW9O3oB0IBftjq1f-o1MWisgwqNOwFIiMEAIX3byQLpK5vPq6aJNSzIRp7aFzHsIX1oiSOFsRpxznVg9BniGzblLXWOUmZqig3n3yL3afd7FgtSgdpZb4muT7nP2qemHwYzkizCbMW6ZvEVvE2hqqgtDEI7AU79GreqIi6Iq_mBBquMTWTwQuBkuU2J7HXa3jIZflF2b7a8sgLHleaGZlIxX-ZN26we2dJ5f_kh7g3JXwn-6ysnCRRHYJdw"/>
+</div>
+</div>
+</div>
+<!-- Right: Product Info (Sticky) -->
+<div class="lg:col-span-5 flex flex-col pt-8 lg:pt-0">
+<div class="sticky top-32 flex flex-col gap-8">
+<div>
+<p class="font-accent-label text-secondary mb-2 uppercase tracking-widest text-[12px]">Tactical Series 001</p>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-on-surface mb-4 uppercase">
+                            HEAVYWEIGHT <br/> UTILITY HOODIE
+                        </h1>
+<p class="font-accent-label text-2xl text-brand-red tracking-wider">$185.00 USD</p>
+</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed max-w-md">
+                        Engineered for the urban grid. Constructed from 450gsm heavyweight French terry with articulated panelling and tactical utility pockets. Structural integrity meets raw aesthetic.
+                    </p>
+<hr class="border-[#333333]"/>
+<!-- Color Selector -->
+<div>
+<div class="flex justify-between mb-3">
+<span class="font-accent-label text-on-surface uppercase text-xs tracking-widest">Color</span>
+<span class="font-accent-label text-secondary text-xs" id="selected-color">Midnight Black</span>
+</div>
+<div class="flex gap-3">
+<button aria-label="Midnight Black" class="w-8 h-8 rounded-none border border-brand-red bg-[#0a0a0a]"></button>
+<button aria-label="Slate Grey" class="w-8 h-8 rounded-none border border-[#333333] hover:border-surface-variant transition-colors bg-[#4A4A4A]"></button>
+<button aria-label="Blood Red" class="w-8 h-8 rounded-none border border-[#333333] hover:border-surface-variant transition-colors bg-[#690005]"></button>
+</div>
+</div>
+<!-- Size Selector -->
+<div>
+<div class="flex justify-between mb-3">
+<span class="font-accent-label text-on-surface uppercase text-xs tracking-widest">Size</span>
+<a class="font-accent-label text-secondary text-xs hover:text-brand-red underline decoration-[#333333] underline-offset-4" href="#">Size Guide</a>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-3 border border-[#333333] text-on-surface font-button-text hover:border-white transition-colors bg-transparent">S</button>
+<button class="py-3 border border-brand-red text-white font-button-text bg-[#1A1A1A] relative overflow-hidden group">
+<span class="relative z-10">M</span>
+<div class="absolute inset-0 bg-brand-red/10 distress-overlay opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+<button class="py-3 border border-[#333333] text-on-surface font-button-text hover:border-white transition-colors bg-transparent">L</button>
+<button class="py-3 border border-[#333333] text-on-surface font-button-text hover:border-white transition-colors bg-transparent">XL</button>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full py-4 bg-[#F5F5F5] text-[#000000] font-button-text text-button-text uppercase tracking-widest font-black btn-hover-red flex justify-center items-center gap-2 mt-4">
+                        ADD TO BAG
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<!-- Accordion Info -->
+<div class="mt-8 border-t border-[#333333] divide-y divide-[#333333]">
+<details class="group py-4 cursor-pointer" open="">
+<summary class="flex justify-between items-center font-accent-label uppercase text-sm list-none">
+                                Details &amp; Care
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pt-4 font-body-sm text-on-surface-variant space-y-2">
+<p>- 100% Cotton 450gsm</p>
+<p>- Oversized drop-shoulder fit</p>
+<p>- Wash cold, hang dry</p>
+</div>
+</details>
+<details class="group py-4 cursor-pointer">
+<summary class="flex justify-between items-center font-accent-label uppercase text-sm list-none">
+                                Shipping &amp; Returns
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pt-4 font-body-sm text-on-surface-variant">
+<p>Complimentary shipping on orders over $200. Returns accepted within 14 days of delivery. Items must be unworn with original tags attached.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Related Products -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-section-gap border-t border-[#333333]">
+<div class="flex justify-between items-end mb-12">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black uppercase text-on-surface">YOU MAY ALSO LIKE</h2>
+<a class="hidden md:flex font-accent-label text-sm uppercase hover:text-brand-red transition-colors items-center gap-1 border-b border-[#333333] pb-1" href="#">
+                View All <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<a class="group block" href="#">
+<div class="bg-[#1A1A1A] aspect-[4/5] border border-[#333333] mb-4 overflow-hidden relative">
+<img alt="Related 1" class="w-full h-full object-cover img-zoom grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A stark, minimalist editorial shot of an oversized white t-shirt with dark brutalist graphic elements. The shirt is displayed on a textured concrete background under harsh spotlighting. The aesthetic is stark black-and-white streetwear style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXAYzjUgUNRGm_DppIz1_3JpJwwIqGxvD2Z4IUhSw9BGtoVAmYipznpAcRvZectlAEBRcC1q9bCftvjtLESpQXIZeuFNrzYGhI8P2F4txirym0jamLpGV2-zezbKXDAg4Z0Ts-ycK1zZaBjSSkKOFTAQbPlo6hR4XDXrbRIwNP0lH7a5jprfc5cGS2pYVYxhB1VC5jRoZLLvegzeC0G30xkNSEjOmLrp2s0TtO27lQHYZH2iArSjgwiipdK1zxNzS461Dr6O_YnQ"/>
+</div>
+<h3 class="font-accent-label text-sm uppercase tracking-wide mb-1">Graphic Tee 04</h3>
+<p class="font-accent-label text-secondary text-sm">$65.00</p>
+</a>
+<!-- Product Card 2 -->
+<a class="group block" href="#">
+<div class="bg-[#1A1A1A] aspect-[4/5] border border-[#333333] mb-4 overflow-hidden relative">
+<img alt="Related 2" class="w-full h-full object-cover img-zoom grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A high-contrast photograph of tactical cargo pants in deep black, featuring multiple metallic zippers and utilitarian straps. The lighting emphasizes the technical fabric and structural rigidity. The mood is industrial and raw." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjsykhuZ4KN2Q6Lqg3DvWjYq_Mm5fX3Tt1tPqzayHFnwGVhsqEuxuvK2V0FY1om7yct19a_-G6QUO_eG5cWX-YKWzW-L8xFYXsGOsUt_ESd4a5RxQEpELRbNpYYBHEBOimI4LSmcLjZueJJh32E_RWwzfo_1Jmu4aZcle_QHJgRlWxcONZWuYCGvlmcY6WeNSGUIpTkegDeJJw-6pq3h3MR_s2QOfXkmQR2y3blRW5pS9Vu6m0sOLN0ss8epsV2vv_w5G4mtzueA"/>
+</div>
+<h3 class="font-accent-label text-sm uppercase tracking-wide mb-1">Cargo Pant MK.II</h3>
+<p class="font-accent-label text-secondary text-sm">$210.00</p>
+</a>
+<!-- Product Card 3 -->
+<a class="group block" href="#">
+<div class="bg-[#1A1A1A] aspect-[4/5] border border-[#333333] mb-4 overflow-hidden relative">
+<img alt="Related 3" class="w-full h-full object-cover img-zoom grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A dramatic close-up of a chunky, aggressive streetwear sneaker. The shoe is predominantly black with sharp, structural lines and a splash of distressed red on the sole. It sits on rough asphalt under gritty, low-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAav7TbVc0bbmM62Ept0_x8GCxj--DL-Vf-45qn49a95U6np_coaPIH7ZGnIVEWvIIHn9MRV3tTa7AP6sHA27irsKN482xKvV4PZHUtznV-NWFp5ytHEMEuvZkPnc1xi7bi1rBwrou0GPVNMv0bvTLThRnpOVBonsz3t7p_u101Ixe_52nY-VKv0bMcF6PFVm1d4HcYcU2EM9GdlfGaGbp8cEcXzL_1R-X1NS7j43QJCaCz-XrQkyyMgj5VO5Xl8l_Gin_d4dfYyw"/>
+</div>
+<h3 class="font-accent-label text-sm uppercase tracking-wide mb-1">Runner Silhouette</h3>
+<p class="font-accent-label text-secondary text-sm">$285.00</p>
+</a>
+<!-- Product Card 4 -->
+<a class="group block hidden lg:block" href="#">
+<div class="bg-[#1A1A1A] aspect-[4/5] border border-[#333333] mb-4 overflow-hidden relative">
+<img alt="Related 4" class="w-full h-full object-cover img-zoom grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A sleek, black utilitarian messenger bag slung across a concrete block. The bag features heavy-duty matte hardware and technical canvas. The setting is a minimalist, dimly lit warehouse, exuding premium tactical style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZW-U0ZZZ4YrEAj056XiaW8XjDsrc0ODbfDIq2lz7RHJN2BmywnfgQRH8t74CfRSrVbTXYKUxz45eiUdz9axOo8r4aIDnKs8RnM7pQuVx8cqkAIFyMvntL1wF_qGcPmDVR3meSyncuwCXnGJB9yH_3fBLZLDBUnMCDiUpCnjE8s41xdya_dBNIVnOgAooW9-SMMdzLQ0ZdX9VrWS0TKloOB0sH9w-8G4mVqCW31JPpFJ_KVwfDuIl_jKZHi4uRsRz_qtfCj7nvNA"/>
+</div>
+<h3 class="font-accent-label text-sm uppercase tracking-wide mb-1">Tactical Sling</h3>
+<p class="font-accent-label text-secondary text-sm">$120.00</p>
+</a>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-surface-container-highest">
+<div class="col-span-1 md:col-span-1 flex flex-col justify-between">
+<h2 class="text-headline-lg-mobile font-black text-on-surface italic text-brand-red mb-8">RMD</h2>
+<p class="font-accent-label text-accent-label text-on-surface-variant">© 2024 RMD. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">Shop All</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">Collaborations</a>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">FAQ</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">Order Tracking</a>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">Instagram</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">X</a>
+<a class="font-accent-label text-accent-label text-on-surface-variant hover:text-brand-red transition-colors duration-200" href="#">Discord</a>
+</div>
+</footer>
+</body></html>

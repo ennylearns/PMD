@@ -244,4 +244,4 @@ Coupon (id, code, type, value, expiryDate, usageLimit, usedCount)
 
 ---
 
-Status: ready-for-agent
+Status: superseded-by-issues
