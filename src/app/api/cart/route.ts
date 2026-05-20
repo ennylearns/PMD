@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getOrCreateGuestId, setGuestIdCookie } from "@/lib/guest-id";
+import { getCartOwner } from "@/lib/cart-owner";
+import { setGuestIdCookie } from "@/lib/guest-id";
 
 // GET /api/cart — List cart items for current guest/user
 export async function GET() {
   try {
-    const [guestId, isNew] = await getOrCreateGuestId();
+    const { userId, guestId, isNew } = await getCartOwner();
+
+    const whereClause = userId ? { userId } : { guestId };
 
     const items = await prisma.cartItem.findMany({
-      where: { guestId },
+      where: whereClause,
       include: {
         variant: {
           include: {
@@ -29,7 +32,7 @@ export async function GET() {
     });
 
     const response = NextResponse.json({ items });
-    if (isNew) setGuestIdCookie(response, guestId);
+    if (isNew && guestId) setGuestIdCookie(response, guestId);
     return response;
   } catch (error) {
     console.error("Failed to fetch cart:", error);
@@ -69,12 +72,16 @@ export async function POST(request: NextRequest) {
 
     const availableStock = variant.inventory?.stock ?? 0;
 
-    // Get guest ID
-    const [guestId, isNew] = await getOrCreateGuestId();
+    // Get cart owner
+    const { userId, guestId, isNew } = await getCartOwner();
 
-    // Check if this variant is already in the cart for this guest
+    const ownerClause = userId
+      ? { userId, variantId }
+      : { guestId, variantId };
+
+    // Check if this variant is already in the cart
     const existingItem = await prisma.cartItem.findFirst({
-      where: { guestId, variantId },
+      where: ownerClause,
     });
 
     const currentQty = existingItem?.quantity ?? 0;
@@ -91,6 +98,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    const ownerData = userId ? { userId } : { guestId };
 
     let cartItem;
 
@@ -118,13 +127,13 @@ export async function POST(request: NextRequest) {
       });
 
       const response = NextResponse.json(cartItem, { status: 200 });
-      if (isNew) setGuestIdCookie(response, guestId);
+      if (isNew && guestId) setGuestIdCookie(response, guestId);
       return response;
     } else {
       // Create new cart item
       cartItem = await prisma.cartItem.create({
         data: {
-          guestId,
+          ...ownerData,
           variantId,
           quantity,
         },
@@ -147,7 +156,7 @@ export async function POST(request: NextRequest) {
       });
 
       const response = NextResponse.json(cartItem, { status: 201 });
-      if (isNew) setGuestIdCookie(response, guestId);
+      if (isNew && guestId) setGuestIdCookie(response, guestId);
       return response;
     }
   } catch (error) {

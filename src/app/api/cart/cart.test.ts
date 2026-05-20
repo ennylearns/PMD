@@ -9,7 +9,13 @@ import {
   DELETE,
 } from "@/app/api/cart/[itemId]/route";
 
-// --- Mock next/headers cookies for guest ID ---
+// --- Mock cart-owner at the system boundary ---
+const mockGetCartOwner = vi.fn();
+vi.mock("@/lib/cart-owner", () => ({
+  getCartOwner: (...args: unknown[]) => mockGetCartOwner(...args),
+}));
+
+// --- Mock next/headers cookies for guest ID (still needed by setGuestIdCookie) ---
 const mockCookieStore = {
   get: vi.fn(),
   set: vi.fn(),
@@ -88,14 +94,19 @@ const MOCK_CART_ITEM = {
 };
 
 const GUEST_ID = "guest-123";
+const USER_ID = "user-authenticated-1";
 
 // --- Tests ---
 
 describe("Cart API", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    // Default: guest cookie exists
-    mockCookieStore.get.mockReturnValue({ value: GUEST_ID });
+    // Default: guest cart owner
+    mockGetCartOwner.mockResolvedValue({
+      userId: null,
+      guestId: GUEST_ID,
+      isNew: false,
+    });
   });
 
   // --- POST /api/cart ---
@@ -191,6 +202,36 @@ describe("Cart API", () => {
       expect(response.status).toBe(400);
       expect(data.error).toContain("stock");
     });
+
+    it("uses userId when user is authenticated", async () => {
+      mockGetCartOwner.mockResolvedValue({
+        userId: USER_ID,
+        guestId: null,
+        isNew: false,
+      });
+      mockPrisma.variant.findUnique.mockResolvedValue(MOCK_VARIANT);
+      mockPrisma.cartItem.findFirst.mockResolvedValue(null);
+      mockPrisma.cartItem.create.mockResolvedValue({
+        ...MOCK_CART_ITEM,
+        userId: USER_ID,
+        guestId: null,
+      });
+
+      const request = createRequest("http://localhost:3000/api/cart", {
+        method: "POST",
+        body: { variantId: "var-1", quantity: 1 },
+      });
+
+      const response = await POST(request);
+
+      expect(response.status).toBe(201);
+      // Verify the create was called with userId, not guestId
+      expect(mockPrisma.cartItem.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ userId: USER_ID }),
+        })
+      );
+    });
   });
 
   // --- GET /api/cart ---
@@ -217,6 +258,24 @@ describe("Cart API", () => {
 
       expect(response.status).toBe(200);
       expect(data.items).toEqual([]);
+    });
+
+    it("queries by userId when user is authenticated", async () => {
+      mockGetCartOwner.mockResolvedValue({
+        userId: USER_ID,
+        guestId: null,
+        isNew: false,
+      });
+      mockPrisma.cartItem.findMany.mockResolvedValue([]);
+
+      const request = createRequest("http://localhost:3000/api/cart");
+      await GET(request);
+
+      expect(mockPrisma.cartItem.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { userId: USER_ID },
+        })
+      );
     });
   });
 

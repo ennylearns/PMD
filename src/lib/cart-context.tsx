@@ -8,6 +8,7 @@ import {
   useCallback,
   ReactNode,
 } from "react";
+import { useSession } from "next-auth/react";
 
 // --- Types ---
 
@@ -52,6 +53,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { status } = useSession();
 
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
   const cartTotal = items.reduce(
@@ -73,9 +75,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // Refresh cart on mount and when session status changes
   useEffect(() => {
     refreshCart();
-  }, [refreshCart]);
+  }, [refreshCart, status]);
 
   const addItem = async (
     variantId: string,

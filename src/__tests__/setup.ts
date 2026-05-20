@@ -36,10 +36,26 @@ vi.mock("@/lib/prisma", () => {
         update: vi.fn(),
         delete: vi.fn(),
         deleteMany: vi.fn(),
+        updateMany: vi.fn(),
       },
       variantInventory: {
         findUnique: vi.fn(),
       },
+      user: {
+        findUnique: vi.fn(),
+        create: vi.fn(),
+        update: vi.fn(),
+      },
+      address: {
+        findMany: vi.fn(),
+        findUnique: vi.fn(),
+        findFirst: vi.fn(),
+        create: vi.fn(),
+        update: vi.fn(),
+        delete: vi.fn(),
+        updateMany: vi.fn(),
+      },
+      $transaction: vi.fn(),
     },
   };
 });
