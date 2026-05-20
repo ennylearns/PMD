@@ -8,13 +8,14 @@ Customer authentication system: NextAuth.js setup with email/password credential
 
 ## Acceptance criteria
 
-- [ ] NextAuth.js configured with credentials provider
-- [ ] User registration: email, password, name, phone
-- [ ] User login with email/password
-- [ ] Protected routes for authenticated users
+- [ ] Auth.js (NextAuth v5) configured with credentials provider (JWT sessions)
+- [ ] User registration: email, password, name (with "Confirm Email" UI field, register-and-go flow)
+- [ ] User login with email/password using `bcryptjs`
+- [ ] Cart merge logic: Transfer `guestId` cart items to `userId` on login/registration
+- [ ] Protected routes: Middleware-based protection for `/dashboard`, `/orders` (leaving `/checkout` public)
 - [ ] User dashboard: view profile, order history, saved addresses
-- [ ] Address management: add, edit, delete shipping addresses
-- [ ] Set default address functionality
+- [ ] Address management: add, edit, delete shipping addresses (ZipCode optional, Country defaulted to "NG" in DB; ZipCode hidden, Country read-only in UI)
+- [ ] Provider nesting: `<SessionProvider>` wrapping `<CartProvider>`
 
 ## Blocked by
 
@@ -22,4 +23,4 @@ Customer authentication system: NextAuth.js setup with email/password credential
 
 ---
 
-Status: needs-triage
+Status: ready-for-agent
