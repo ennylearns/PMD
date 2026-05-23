@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
+import { isSupportedDeliveryLocation } from "@/lib/delivery";
 
 type RouteContext = {
   params: Promise<{ id: string }>;
@@ -33,9 +34,18 @@ export async function PUT(request: NextRequest, context: RouteContext) {
       );
     }
 
+    const nextState = state ?? existing.state;
+    const nextCity = city ?? existing.city;
+    if (!isSupportedDeliveryLocation(nextState, nextCity)) {
+      return NextResponse.json(
+        { error: "Select a supported delivery city" },
+        { status: 400 }
+      );
+    }
+
     const userId = session.user.id;
 
-    const address = await prisma.$transaction(async (tx: typeof prisma) => {
+    const address = await prisma.$transaction(async (tx) => {
       // If setting as default, un-default existing addresses
       if (isDefault) {
         await tx.address.updateMany({

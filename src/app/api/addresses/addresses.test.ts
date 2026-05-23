@@ -148,6 +148,43 @@ describe("Address API", () => {
       expect(data.address.country).toBe("NG");
     });
 
+    it("creates a supported Lagos metro address", async () => {
+      mockPrisma.address.create.mockResolvedValue(MOCK_ADDRESS_2);
+      mockPrisma.address.updateMany.mockResolvedValue({ count: 0 });
+
+      const request = createRequest("http://localhost:3000/api/addresses", {
+        method: "POST",
+        body: {
+          street: "5 Herbert Macaulay Way",
+          city: "Yaba",
+          state: "Lagos",
+        },
+      });
+
+      const response = await POST(request);
+      const data = await response.json();
+
+      expect(response.status).toBe(201);
+      expect(data.address.city).toBe("Yaba");
+    });
+
+    it("rejects unsupported State and City combinations", async () => {
+      const request = createRequest("http://localhost:3000/api/addresses", {
+        method: "POST",
+        body: {
+          street: "12 Broad Street",
+          city: "Yaba",
+          state: "Plateau",
+        },
+      });
+
+      const response = await POST(request);
+      const data = await response.json();
+
+      expect(response.status).toBe(400);
+      expect(data.error).toContain("supported delivery city");
+    });
+
     it("rejects missing required fields", async () => {
       const request = createRequest("http://localhost:3000/api/addresses", {
         method: "POST",
@@ -225,6 +262,24 @@ describe("Address API", () => {
       const response = await PUT(request, routeParams("fake-id"));
 
       expect(response.status).toBe(404);
+    });
+
+    it("rejects updates to unsupported State and City combinations", async () => {
+      mockPrisma.address.findFirst.mockResolvedValue(MOCK_ADDRESS);
+
+      const request = createRequest(
+        "http://localhost:3000/api/addresses/addr-1",
+        {
+          method: "PUT",
+          body: { city: "Yaba", state: "Plateau" },
+        }
+      );
+
+      const response = await PUT(request, routeParams("addr-1"));
+      const data = await response.json();
+
+      expect(response.status).toBe(400);
+      expect(data.error).toContain("supported delivery city");
     });
   });
 

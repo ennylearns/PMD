@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     const [guestId] = await getOrCreateGuestId();
 
     // Create user and merge cart in a transaction
-    const user = await prisma.$transaction(async (tx: typeof prisma) => {
+    const user = await prisma.$transaction(async (tx) => {
       const newUser = await tx.user.create({
         data: {
           name,

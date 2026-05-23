@@ -252,7 +252,7 @@ export default function CartPage() {
                       </span>
                     </div>
                     <div className="flex justify-between text-sm font-body-md text-on-surface-variant">
-                      <span>Shipping</span>
+                      <span>Delivery Fee</span>
                       <span className="text-on-surface-variant/50 text-xs font-accent-label uppercase tracking-wider">
                         Calculated at checkout
                       </span>
@@ -294,7 +294,7 @@ export default function CartPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-1 h-1 bg-error/50 rounded-full" />
-                      GIG Logistics delivery
+                      PMD-managed delivery
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-1 h-1 bg-error/50 rounded-full" />

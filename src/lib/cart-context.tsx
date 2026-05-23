@@ -77,7 +77,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Refresh cart on mount and when session status changes
   useEffect(() => {
-    refreshCart();
+    const timeoutId = window.setTimeout(() => {
+      void refreshCart();
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
   }, [refreshCart, status]);
 
   const addItem = async (

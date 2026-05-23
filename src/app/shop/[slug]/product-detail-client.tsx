@@ -238,7 +238,7 @@ export default function ProductDetailClient({
               </details>
               <details className="group ghost-border">
                 <summary className="flex items-center justify-between py-4 px-4 cursor-pointer text-xs font-accent-label uppercase tracking-[0.2em] text-on-surface-variant hover:text-on-surface transition-colors">
-                  Shipping & Returns
+                  Delivery & Returns
                   <svg
                     className="w-4 h-4 transition-transform duration-200 group-open:rotate-180"
                     viewBox="0 0 24 24"
@@ -257,11 +257,11 @@ export default function ProductDetailClient({
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1 h-1 bg-error rounded-full" />
-                      Delivery via GIG Logistics
+                      PMD-managed delivery
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1 h-1 bg-error rounded-full" />
-                      Shipping calculated at checkout
+                      Delivery Fee calculated at checkout
                     </li>
                   </ul>
                 </div>

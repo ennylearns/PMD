@@ -1,5 +1,6 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const STATUS_CONFIG: Record<string, { label: string; className: string; icon?: string }> = {
@@ -71,12 +72,12 @@ export default async function DashboardPage() {
             </svg>
           </div>
           <p className="font-body-sm text-body-sm text-on-surface-variant">No orders yet</p>
-          <a
+          <Link
             href="/shop"
             className="bg-on-surface text-surface px-6 py-3 font-button-text text-button-text tracking-wider hover:bg-error hover:text-primary-container transition-all duration-200"
           >
             START SHOPPING
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="flex flex-col gap-6">
@@ -160,12 +161,12 @@ export default async function DashboardPage() {
                   {!isCancelled && (
                     <div className="flex justify-end mt-6 gap-4">
                       {order.status === "DELIVERED" ? (
-                        <a
+                        <Link
                           href="/shop"
                           className="bg-surface-container border border-surface-container-highest text-on-surface px-6 py-3 font-button-text text-button-text hover:bg-surface-container-high transition-colors duration-200"
                         >
                           BUY AGAIN
-                        </a>
+                        </Link>
                       ) : (
                         <button className="bg-primary-container text-on-primary-container px-6 py-3 font-button-text text-button-text border border-surface-container-highest hover:bg-error hover:text-primary-container hover:border-error transition-colors duration-200">
                           TRACK ORDER

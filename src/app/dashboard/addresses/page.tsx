@@ -1,6 +1,11 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import {
+  NIGERIAN_STATES,
+  getSupportedCities,
+  isSupportedDeliveryLocation,
+} from "@/lib/delivery";
 
 type Address = {
   id: string;
@@ -11,15 +16,6 @@ type Address = {
   zipCode: string | null;
   isDefault: boolean;
 };
-
-// Nigerian states for the dropdown
-const NIGERIAN_STATES = [
-  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
-  "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu",
-  "FCT", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi",
-  "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun",
-  "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara",
-];
 
 const EMPTY_FORM = { street: "", city: "", state: "", isDefault: false };
 
@@ -47,7 +43,11 @@ export default function AddressesPage() {
   }, []);
 
   useEffect(() => {
-    fetchAddresses();
+    const timeoutId = window.setTimeout(() => {
+      void fetchAddresses();
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
   }, [fetchAddresses]);
 
   function startEdit(address: Address) {
@@ -82,6 +82,11 @@ export default function AddressesPage() {
 
     if (!form.street || !form.city || !form.state) {
       setError("Street, city, and state are required");
+      return;
+    }
+
+    if (!isSupportedDeliveryLocation(form.state, form.city)) {
+      setError("Select a supported delivery city");
       return;
     }
 
@@ -139,6 +144,12 @@ export default function AddressesPage() {
     }
   }
 
+  const cityOptions = getSupportedCities(form.state);
+  const hasUnsupportedSelectedCity =
+    Boolean(form.city) &&
+    Boolean(form.state) &&
+    !isSupportedDeliveryLocation(form.state, form.city);
+
   return (
     <>
       <header className="flex justify-between items-end border-b border-surface-container-highest pb-4">
@@ -186,21 +197,32 @@ export default function AddressesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col gap-2">
                 <label className="font-accent-label text-accent-label text-on-surface-variant">CITY</label>
-                <input
-                  type="text"
+                <select
                   required
                   value={form.city}
                   onChange={(e) => setForm({ ...form, city: e.target.value })}
-                  className="w-full bg-surface-container-low border border-surface-container-highest text-on-surface px-4 py-3 font-body-md text-body-sm outline-none focus:border-error transition-colors duration-200"
-                  placeholder="City"
-                />
+                  disabled={!form.state}
+                  className="w-full bg-surface-container-low border border-surface-container-highest text-on-surface px-4 py-3 font-body-md text-body-sm outline-none focus:border-error transition-colors duration-200 appearance-none disabled:opacity-50"
+                >
+                  <option value="">
+                    {form.state ? "Select city" : "Select state first"}
+                  </option>
+                  {hasUnsupportedSelectedCity && (
+                    <option value={form.city} disabled>
+                      Unsupported: {form.city}
+                    </option>
+                  )}
+                  {cityOptions.map((city) => (
+                    <option key={city} value={city}>{city}</option>
+                  ))}
+                </select>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-accent-label text-accent-label text-on-surface-variant">STATE</label>
                 <select
                   required
                   value={form.state}
-                  onChange={(e) => setForm({ ...form, state: e.target.value })}
+                  onChange={(e) => setForm({ ...form, state: e.target.value, city: "" })}
                   className="w-full bg-surface-container-low border border-surface-container-highest text-on-surface px-4 py-3 font-body-md text-body-sm outline-none focus:border-error transition-colors duration-200 appearance-none"
                 >
                   <option value="">Select state</option>
@@ -215,7 +237,7 @@ export default function AddressesPage() {
             <div className="flex flex-col gap-2">
               <label className="font-accent-label text-accent-label text-on-surface-variant">COUNTRY</label>
               <div className="w-full bg-surface-container-low/50 border border-surface-container-highest text-on-surface-variant px-4 py-3 font-body-md text-body-sm">
-                Nigeria 🇳🇬
+                Nigeria
               </div>
             </div>
 
