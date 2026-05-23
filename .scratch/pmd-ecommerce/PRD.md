@@ -2,21 +2,22 @@
 
 ## Problem Statement
 
-PMD (Pressure Makes Diamonds) is a growing streetwear brand that needs a fully functional e-commerce website to sell their clothing products online. The client wants a premium, dark-themed, minimal streetwear website that allows customers to browse products, select variants (color/size), add to cart, checkout with instant Paystack payment, and receive orders via GIG Logistics. The client also needs a comprehensive admin dashboard to manage products, orders, inventory, and sales.
+PMD (Pressure Makes Diamonds) is a growing streetwear brand that needs a fully functional e-commerce website to sell their clothing products online. The client wants a premium, dark-themed, minimal streetwear website that allows customers to browse products, select variants (color/size), add to cart, checkout with instant Paystack payment, and receive orders through owner-managed fulfillment. The client also needs a comprehensive admin dashboard to manage products, orders, inventory, and sales.
 
 Currently, PMD has no online store - they rely on social media (TikTok, Instagram) for sales. The website must look premium and visually strong to match the brand's ambition of becoming a globally recognized streetwear movement.
 
 ## Solution
 
-A full-featured e-commerce website built with Next.js (App Router) deployed on Vercel, using Vercel Postgres for the database, Prisma as the ORM, Paystack for payment processing, GIG Logistics API for shipping and tracking, Posthog for analytics, and NextAuth.js for customer authentication. The solution includes:
+A full-featured e-commerce website built with Next.js (App Router) deployed on Vercel, using Vercel Postgres for the database, Prisma as the ORM, Paystack for payment processing, PMD-owned delivery fees and fulfillment tracking, Posthog for analytics, and NextAuth.js for customer authentication. The solution includes:
 
 - Customer-facing storefront with 11 pages (Homepage, Shop, Product Detail, Cart, Checkout, About, Contact, FAQ, Terms, Privacy, Order Tracking)
 - Customer account system with registration/login, order history, and saved addresses
 - Product catalog with variant-level inventory tracking (color + size combinations)
 - Shopping cart with persistent session
 - Instant checkout with Paystack payment (card, USSD, bank transfer, virtual account)
-- GIG Logistics integration with location-based shipping calculation and API tracking
+- Owner-managed fulfillment with location-based delivery fee calculation and order status tracking
 - Admin dashboard for managing orders, products, inventory, coupons, and sales analytics
+- Admin-managed delivery fee settings for owner-managed fulfillment
 - SEO optimization with meta tags, product schema, and auto-generated sitemap
 
 ## User Stories
@@ -56,10 +57,10 @@ A full-featured e-commerce website built with Next.js (App Router) deployed on V
 28. As an admin, I want orders to automatically show as "paid" after successful payment, so that I don't need manual verification
 
 ### Shipping & Delivery
-29. As a customer, I want to select GIG Logistics for delivery, so that my order is shipped via their service
-30. As a customer, I want to receive shipping updates with tracking number, so that I can track my order
+29. As a customer, I want PMD to fulfill my delivery, so that my order is handled directly by the brand
+30. As a customer, I want to receive shipping updates, so that I can track my order status
 31. As a customer, I want to receive delivery notification when order arrives, so that I know when to expect it
-32. As an admin, I want to integrate with GIG Logistics API for tracking, so that tracking information is accurate
+32. As an admin, I want to manage fulfillment status manually, so that customer order updates stay accurate
 33. As an admin, I want to process orders within 1-3 business days, so that fulfillment is timely
 
 ### Inventory Management
@@ -124,7 +125,7 @@ A full-featured e-commerce website built with Next.js (App Router) deployed on V
 **3. Checkout Module**
 - Guest checkout + authenticated checkout flows
 - Address collection with location-based shipping calculation
-- Integration with GIG Logistics API for shipping rates
+- PMD-owned delivery fee calculation based on delivery state
 
 **4. Payment Module**
 - Paystack integration with inline checkout
@@ -134,7 +135,7 @@ A full-featured e-commerce website built with Next.js (App Router) deployed on V
 **5. Order Module**
 - Order creation with items, shipping info, payment status
 - Order status workflow: pending → paid → shipped → delivered
-- GIG Logistics tracking integration
+- Owner-managed fulfillment tracking
 
 **6. Customer Auth Module**
 - Email/password registration and login
@@ -160,7 +161,7 @@ Product (id, name, slug, description, price, categoryId, images, createdAt)
 Variant (id, productId, color, size, sku)
 VariantInventory (id, variantId, quantity)
 CartItem (sessionId, variantId, quantity)
-Order (id, userId/guestEmail, status, totalAmount, shippingFee, shippingAddress, trackingNumber, gigOrderId, createdAt)
+Order (id, userId/guestEmail, status, totalAmount, shippingFee, shippingAddress, fulfillmentReference, createdAt)
 OrderItem (id, orderId, variantId, price, quantity)
 Coupon (id, code, type, value, expiryDate, usageLimit, usedCount)
 ```

@@ -14,6 +14,7 @@ Admin dashboard: protected admin routes, product management (CRUD), order manage
 - [ ] Bulk CSV import for products
 - [ ] Orders page: list all orders, update status
 - [ ] Inventory page: view stock per variant, manual stock addition
+- [ ] Delivery fees page: view and update state/city-based delivery fees
 - [ ] Analytics section: sales data, popular products
 
 ## Blocked by

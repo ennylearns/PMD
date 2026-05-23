@@ -9,17 +9,17 @@ Order management and notifications: order status workflow, inventory decrement, 
 ## Acceptance criteria
 
 - [ ] Order statuses: pending → paid → shipped → delivered
-- [ ] Inventory automatically decrements when order is placed
+- [ ] Inventory automatically decrements only after successful Paystack payment
 - [ ] API: PUT /api/orders/[id]/status (admin updates status)
 - [ ] Email: order confirmation sent to customer
-- [ ] Email: shipping notification with tracking number
+- [ ] Email: shipping notification with fulfillment status/reference when available
 - [ ] Email: delivery notification
 - [ ] Customer order tracking page
 
 ## Blocked by
 
 - 06-paystack-payment
-- 07-gig-logistics
+- 07-owner-managed-fulfillment
 
 ---
 

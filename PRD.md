@@ -6,7 +6,7 @@
 
 **Project Type:** Full-featured e-commerce web application
 
-**Core Functionality:** A fully functional online store for a streetwear brand, featuring product browsing, shopping cart, instant checkout with Paystack payments, GIG Logistics integration for shipping, and a comprehensive admin dashboard.
+**Core Functionality:** A fully functional online store for a streetwear brand, featuring product browsing, shopping cart, instant checkout with Paystack payments, owner-managed fulfillment, and a comprehensive admin dashboard.
 
 **Target Users:**
 - Customers: Streetwear enthusiasts who can relate to the "Pressure Makes Diamonds" brand story
@@ -88,11 +88,11 @@
 - **Automatic Confirmation:** Orders automatically show as "paid" after successful payment
 - **Webhooks:** Handle payment verification callbacks
 
-### 4.4 Shipping & Logistics
+### 4.4 Delivery & Fulfillment
 
-- **Provider:** GIG Logistics
-- **Shipping Calculation:** Based on customer location at checkout
-- **Order Tracking:** Integrated with GIG Logistics API
+- **Provider:** Owner-managed fulfillment by PMD
+- **Delivery Fee Calculation:** Based on customer location at checkout
+- **Order Tracking:** Customer-visible order status updates managed by PMD
 - **Order Processing:** 1-3 business days
 
 ### 4.5 Inventory Management
@@ -111,7 +111,7 @@
 
 - **Email Notifications:**
   1. Order confirmation (sent to customer when payment completes)
-  2. Order status updates (sent when order ships with tracking number)
+  2. Order status updates (sent when order ships, with fulfillment reference when available)
   3. Order delivered notification
 - **WhatsApp Integration:** Button redirects to WhatsApp chat with store owner
 
@@ -143,6 +143,7 @@
 - Manage inventory (view stock, manual addition)
 - Add/edit/delete products
 - Manage coupons
+- Manage delivery fees
 - View reports/dashboards
 - Update order status
 
@@ -171,7 +172,7 @@
 - **Database:** Vercel Postgres (PostgreSQL)
 - **ORM:** Prisma or Drizzle
 - **Payment:** Paystack API
-- **Shipping:** GIG Logistics API
+- **Fulfillment:** Owner-managed delivery
 - **Analytics:** Posthog
 - **Authentication:** NextAuth.js (for customer accounts)
 - **Image Storage:** Cloudinary or Vercel Blob
