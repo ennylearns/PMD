@@ -102,22 +102,27 @@ model CartItem {
 }
 
 model Order {
-  id            String      @id @default(cuid())
-  userId        String?
-  user          User?       @relation(fields: [userId], references: [id])
-  status        OrderStatus @default(PENDING)
-  totalAmount   Float
-  shippingFee   Float       @default(0)
-  paymentMethod String?
-  paymentStatus String      @default("PENDING") 
-  trackingNo    String?
-  items         OrderItem[]
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  id                 String      @id @default(cuid())
+  userId             String?
+  user               User?       @relation(fields: [userId], references: [id])
+  guestEmail         String?     // Contact email for guest orders
+  guestId            String?     // Guest cookie ID — used to clear cart after payment
+  paymentReference   String?     @unique // Paystack reference — set after initialize succeeds
+  status             OrderStatus @default(PENDING)
+  totalAmount        Float
+  shippingFee        Float       @default(0)
+  paymentMethod      String?
+  paymentStatus      String      @default("PENDING")
+  trackingNo         String?
+  shippingAddress    Json?
+  items              OrderItem[]
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
 }
 
 enum OrderStatus {
   PENDING
+  PAID
   PROCESSING
   SHIPPED
   DELIVERED

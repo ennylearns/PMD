@@ -203,6 +203,23 @@ export default function CheckoutPage() {
       });
 
       setPreparedPayload(payload);
+
+      // Initialize payment and redirect to Paystack checkout
+      const res = await fetch("/api/payment/initialize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error ?? "Payment initialization failed. Please try again.");
+        return;
+      }
+
+      // Hard redirect to Paystack — browser leaves the page
+      window.location.href = data.authorizationUrl;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
@@ -429,11 +446,8 @@ export default function CheckoutPage() {
               </div>
             )}
 
-            {preparedPayload && (
-              <div className="border border-error/40 bg-error/10 p-4 text-on-surface font-body-sm text-sm">
-                Checkout details ready for payment.
-              </div>
-            )}
+
+
           </section>
         </div>
 
