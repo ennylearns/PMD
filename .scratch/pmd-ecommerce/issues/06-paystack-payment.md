@@ -8,18 +8,18 @@ Paystack payment integration: initialize payment from the validated checkout pay
 
 ## Acceptance criteria
 
-- [ ] Paystack inline checkout integration
-- [ ] Payment methods: card, USSD, bank transfer, virtual account
-- [ ] API: POST /api/payment/initialize (create payment reference)
-- [ ] Payment initialization consumes the checkout payload prepared by Issue #05
-- [ ] Payment initialization creates a pending Order before redirecting to Paystack
-- [ ] Stock is rechecked before payment initialization; unavailable items block redirect
-- [ ] Successful initialization redirects the customer to Paystack
-- [ ] API: POST /api/payment/webhook (handle Paystack callback)
-- [ ] Automatic order confirmation on successful payment
-- [ ] Order status changes from "pending" to "paid" automatically
-- [ ] Purchased cart items are cleared only after successful payment confirmation
-- [ ] Payment failure handling with error display
+- [x] Paystack inline checkout integration
+- [x] Payment methods: card, USSD, bank transfer, virtual account
+- [x] API: POST /api/payment/initialize (create payment reference)
+- [x] Payment initialization consumes the checkout payload prepared by Issue #05
+- [x] Payment initialization creates a pending Order before redirecting to Paystack
+- [x] Stock is rechecked before payment initialization; unavailable items block redirect
+- [x] Successful initialization redirects the customer to Paystack
+- [x] API: POST /api/payment/webhook (handle Paystack callback)
+- [x] Automatic order confirmation on successful payment
+- [x] Order status changes from "pending" to "paid" automatically
+- [x] Purchased cart items are cleared only after successful payment confirmation
+- [x] Payment failure handling with error display
 
 ## Resolved design decisions
 
@@ -47,4 +47,4 @@ Pending Orders where the customer closes the Paystack tab without paying are lef
 
 ---
 
-Status: ready-for-agent
+Status: done

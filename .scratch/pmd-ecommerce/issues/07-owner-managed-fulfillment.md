@@ -24,4 +24,4 @@ Owner-managed fulfillment: PMD-owned delivery fee policy from Jos, Plateau, admi
 
 ---
 
-Status: needs-triage
+Status: ready-for-agent
