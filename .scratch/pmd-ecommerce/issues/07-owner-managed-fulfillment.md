@@ -4,7 +4,7 @@
 
 ## What to build
 
-Owner-managed fulfillment: PMD-owned delivery fee policy from Jos, Plateau, admin-editable delivery fees, manual fulfillment reference/status support, and customer-facing fulfillment updates.
+Owner-managed fulfillment: PMD-owned delivery fee policy from Jos, Plateau, admin-editable delivery fees, manual fulfillment status support, and customer-facing fulfillment updates.
 
 ## Acceptance criteria
 
@@ -13,7 +13,6 @@ Owner-managed fulfillment: PMD-owned delivery fee policy from Jos, Plateau, admi
 - [ ] Admin can view and update delivery fees from the dashboard
 - [ ] Admin-managed delivery fees support city-specific overrides after the initial state-based policy
 - [ ] Admin-managed delivery fees replace the checkout default fee table without changing checkout behavior
-- [ ] Admin can add or update a fulfillment reference when one exists
 - [ ] Admin can update fulfillment status after payment
 - [ ] Customer can see fulfillment status on order details/tracking page
 - [ ] No external logistics provider integration is required

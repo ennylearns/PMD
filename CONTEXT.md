@@ -27,12 +27,16 @@ The person PMD can contact about a checkout or delivery, identified by name, pho
 _Avoid_: Address, recipient
 
 **Delivery Fee**:
-The amount PMD charges to deliver an order to a selected Nigerian State under owner-managed fulfillment.
+The amount PMD charges to deliver an order to a specific destination under owner-managed fulfillment. It is determined by a default fee at the **Delivery State** level, which can optionally be overridden at the **Delivery City** level.
 _Avoid_: Shipping fee, GIG rate, shipping provider fee
 
-**Supported City**:
-A City that PMD currently accepts for owner-managed delivery within a Nigerian State.
-_Avoid_: Free-text city, unsupported destination
+**Delivery State**:
+A Nigerian State configured for owner-managed delivery, containing a default **Delivery Fee**.
+_Avoid_: Region, province
+
+**Delivery City**:
+A specific city within a **Delivery State** that PMD currently accepts for owner-managed delivery. May optionally contain an override **Delivery Fee**.
+_Avoid_: Free-text city, Supported City
 
 **Fulfillment Origin**:
 The Jos, Plateau State location where PMD starts owner-managed delivery from.
@@ -48,11 +52,21 @@ _Avoid_: Location, destination
 - A checkout **Delivery Contact** phone number is captured for that checkout and is not a saved profile field yet.
 - A **Customer** can reuse a saved **Address** during **Checkout**, but can also enter a one-off **Address**.
 - A **Customer** can optionally save a one-off checkout **Address** for future reuse.
-- A **Delivery Fee** is determined by the State in the checkout **Address** relative to the **Fulfillment Origin**.
-- A checkout **Address** must use a **Supported City**.
+- A **Delivery Fee** is determined by a **Delivery State** default, optionally overridden by a **Delivery City**.
+- A checkout **Address** must use a configured **Delivery City**.
 - An **Order** is created from a valid **Checkout** when payment initialization begins.
 - Inventory is decremented only after an **Order** is paid.
 - Cart items included in an **Order** are cleared only after successful payment.
+
+## Order Lifecycle
+
+An **Order** progresses through the following statuses, which also serve as the fulfillment status:
+- **PENDING**: Payment initialized but not yet completed.
+- **PAID**: Payment successful (via Paystack webhook). Stock is decremented and cart is cleared.
+- **PROCESSING**: Admin has acknowledged the order and is preparing it for delivery. (Manual admin action)
+- **SHIPPED**: Order has left the Fulfillment Origin and is with the dispatcher. (Manual admin action)
+- **DELIVERED**: Order has successfully reached the Customer. (Manual admin action)
+- **CANCELLED**: Order was voided (e.g., oversell fallback, or manual cancellation).
 
 ## Flagged ambiguities
 
