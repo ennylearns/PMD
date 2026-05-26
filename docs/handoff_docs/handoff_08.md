@@ -18,27 +18,24 @@ We successfully completed **Issue #06: Paystack Payment Integration** using stri
 
 ---
 
-## 2. Next Session Focus: Issue #07 (Owner-Managed Fulfillment)
-The objective of the next session is to implement **Issue #07: Owner-Managed Fulfillment**. PMD uses its own manual Plateau-based delivery fee calculations and self-fulfillment workflows rather than third-party logistics APIs.
+## 2. Next Session Focus: Issue #13 (Admin Auth & Dashboard Layout)
+The objective of the next session is to implement **Issue #13: Admin Auth & Dashboard Layout** as the foundational shell for our administrative panel, setting up route protection and basic sidebar navigation before adding subsequent management pages (Fulfillment, Orders, Products).
 
 ### Scope & Goals
-1.  **Fulfillment Fee Policy**: Deliveries are priced based on the destination state/city relative to Jos, Plateau. Set up a default curated list of major cities/state capitals with Plateau.
-2.  **Admin Manageability**: Admin should be able to view and override delivery fees for states/cities from the admin dashboard.
-3.  **Fulfillment Reference & Status**:
-    *   Admin dashboard tools to input manual fulfillment/waybill reference numbers.
-    *   Admin dashboard actions to update order shipping status (`PROCESSING` → `SHIPPED` → `DELIVERED`).
-4.  **Customer Tracking**: Update the customer-facing order detail page (`src/app/order/[id]/page.tsx`) to show waybill details and live tracking badges (`OrderStatus`).
+1. **Admin Authentication**: Establish a separate admin login flow and session management.
+2. **Protected Routes**: Wrap all `/admin/*` endpoints and page routes to prevent unauthorized access.
+3. **Dashboard Shell**: Create a high-quality responsive sidebar/header dashboard navigation template.
+4. **Shell Placeholders**: Provide empty dashboard views for future sections: Orders, Products, and Delivery Fees.
 
 ---
 
 ## 3. Recommended Skills & Actions for the Next Agent
 
 The following skills are recommended for the next agent:
-- **`tdd`**: Run test-driven iterations for building the Plateau fee engine and status update APIs.
-- **`improve-codebase-architecture`**: Deepen delivery models in `src/lib/delivery.ts` and consolidate the admin status actions.
-- **`view_file`**: Read `src/lib/delivery.ts` and `src/app/order/[id]/page.tsx` first.
+- **`tdd`**: Run test-driven iterations for admin auth check APIs and protection middleware/wrappers.
+- **`view_file`**: Read standard layouts like `src/app/layout.tsx` to understand the root layout context.
 
 ### Key References
 *   PRD: [.scratch/pmd-ecommerce/PRD.md](../../.scratch/pmd-ecommerce/PRD.md)
-*   Issue #07 Ticket: [.scratch/pmd-ecommerce/issues/07-owner-managed-fulfillment.md](../../.scratch/pmd-ecommerce/issues/07-owner-managed-fulfillment.md)
-*   ADR 0001 (Oversell-and-refund): [docs/adr/0001-oversell-and-refund-over-stock-reservation.md](../../docs/adr/0001-oversell-and-refund-over-stock-reservation.md)
+*   Issue #13 Ticket: [.scratch/pmd-ecommerce/issues/13-admin-auth-dashboard-layout.md](../../.scratch/pmd-ecommerce/issues/13-admin-auth-dashboard-layout.md)
+*   Consolidated Issue Tracker Folder: [.scratch/pmd-ecommerce/issues/](../../.scratch/pmd-ecommerce/issues/)

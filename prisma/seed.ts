@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import bcrypt from "bcryptjs";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter });
@@ -153,6 +154,7 @@ async function main() {
   await prisma.variant.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
+  await prisma.user.deleteMany();
 
   // Create categories
   console.log("  Creating categories...");
@@ -197,6 +199,19 @@ async function main() {
       `    ✓ ${product.name} (${product.variants.length} variants, ${totalStock} total stock)`
     );
   }
+
+  // Create default admin user
+  console.log("  Creating default admin user...");
+  const hashedPassword = await bcrypt.hash("password", 12);
+  await prisma.user.create({
+    data: {
+      name: "PMD Administrator",
+      email: "admin@pmd.com",
+      password: hashedPassword,
+      role: "ADMIN",
+    },
+  });
+  console.log("    ✓ admin@pmd.com (password: password)");
 
   console.log("\n💎 PMD Seed: Complete! Pressure makes diamonds.\n");
 }

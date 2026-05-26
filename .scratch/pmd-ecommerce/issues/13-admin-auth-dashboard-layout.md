@@ -9,10 +9,10 @@ Set up the admin login flow, protected admin routes, and the main dashboard layo
 
 ## Acceptance criteria
 
-- [ ] Admin authentication flow separate from customer auth (e.g., using NextAuth/Clerk or custom JWT)
-- [ ] Protected route wrapper for `/admin/*`
-- [ ] Admin dashboard shell layout with a sidebar navigation
-- [ ] Placeholder empty pages for Orders, Products, and Delivery Fees
+- [x] Admin authentication flow separate from customer auth (e.g., using NextAuth/Clerk or custom JWT)
+- [x] Protected route wrapper for `/admin/*`
+- [x] Admin dashboard shell layout with a sidebar navigation
+- [x] Placeholder empty pages for Orders, Products, and Delivery Fees
 
 ## Blocked by
 
