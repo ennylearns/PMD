@@ -159,3 +159,24 @@ enum DiscountType {
   PERCENTAGE
   FIXED
 }
+
+model DeliveryState {
+  id         String         @id @default(cuid())
+  name       String         @unique
+  defaultFee Float
+  cities     DeliveryCity[]
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+}
+
+model DeliveryCity {
+  id              String        @id @default(cuid())
+  name            String
+  deliveryStateId String
+  deliveryState   DeliveryState @relation(fields: [deliveryStateId], references: [id], onDelete: Cascade)
+  overrideFee     Float?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@unique([deliveryStateId, name])
+}

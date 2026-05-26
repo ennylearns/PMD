@@ -89,7 +89,7 @@ const NEARBY_NORTH_CENTRAL_STATES = new Set([
 
 const METRO_HIGH_VOLUME_STATES = new Set(["Lagos", "Rivers", "Kano"]);
 
-function normalize(value: string) {
+export function normalize(value: string) {
   return value.trim().toLowerCase();
 }
 
@@ -136,3 +136,5 @@ export function getDeliveryFee({
   if (METRO_HIGH_VOLUME_STATES.has(supportedState)) return 5000;
   return 6500;
 }
+
+

@@ -15,13 +15,20 @@ import {
   validateCartStock,
   validateCheckoutDetails,
 } from "@/lib/checkout";
-import {
-  NIGERIAN_STATES,
-  formatNaira,
-  getDeliveryFee,
-  getSupportedCities,
-  isSupportedDeliveryLocation,
-} from "@/lib/delivery";
+import { formatNaira } from "@/lib/delivery";
+
+type DeliveryCityData = {
+  id: string;
+  name: string;
+  overrideFee: number | null;
+};
+
+type DeliveryStateData = {
+  id: string;
+  name: string;
+  defaultFee: number;
+  cities: DeliveryCityData[];
+};
 
 type SavedAddress = {
   id: string;
@@ -58,12 +65,36 @@ export default function CheckoutPage() {
   const [error, setError] = useState("");
   const [preparedPayload, setPreparedPayload] = useState<CheckoutPayload | null>(null);
   const [isPreparing, setIsPreparing] = useState(false);
+  const [deliveryStates, setDeliveryStates] = useState<DeliveryStateData[]>([]);
 
   const isAuthenticated = status === "authenticated";
   const sessionEmail = session?.user?.email ?? "";
   const sessionName = session?.user?.name ?? "";
-  const cityOptions = useMemo(() => getSupportedCities(address.state), [address.state]);
-  const deliveryFee = address.state ? getDeliveryFee({ state: address.state }) ?? 0 : 0;
+
+  // Derive delivery data from the fetched states
+  const stateNames = useMemo(() => deliveryStates.map((s) => s.name), [deliveryStates]);
+  const selectedState = useMemo(
+    () => deliveryStates.find((s) => s.name.toLowerCase() === address.state.toLowerCase()),
+    [deliveryStates, address.state]
+  );
+  const cityOptions = useMemo(() => selectedState?.cities.map((c) => c.name) ?? [], [selectedState]);
+  const deliveryFee = useMemo(() => {
+    if (!selectedState) return 0;
+    if (address.city) {
+      const cityMatch = selectedState.cities.find(
+        (c) => c.name.toLowerCase() === address.city.toLowerCase()
+      );
+      if (cityMatch?.overrideFee != null) return cityMatch.overrideFee;
+    }
+    return selectedState.defaultFee;
+  }, [selectedState, address.city]);
+  const isLocationSupported = useMemo(() => {
+    if (!selectedState || !address.city) return false;
+    return selectedState.cities.some(
+      (c) => c.name.toLowerCase() === address.city.toLowerCase()
+    );
+  }, [selectedState, address.city]);
+
   const stockResult = useMemo(() => validateCartStock(items), [items]);
   const total = cartTotal + deliveryFee;
   const checkoutContact = useMemo(
@@ -81,6 +112,25 @@ export default function CheckoutPage() {
     }
   }, [isLoading, items.length, router]);
 
+  // Fetch delivery states and cities from the database
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchDeliveryData() {
+      try {
+        const res = await fetch("/api/delivery-fees");
+        if (!res.ok) return;
+        const data = await res.json();
+        if (isMounted) {
+          setDeliveryStates(data.states ?? []);
+        }
+      } catch {
+        // Silently fail — customer can still proceed if data loads later
+      }
+    }
+    fetchDeliveryData();
+    return () => { isMounted = false; };
+  }, []);
+
   useEffect(() => {
     if (!isAuthenticated) return;
 
@@ -97,13 +147,25 @@ export default function CheckoutPage() {
 
         const defaultSupportedAddress =
           addresses.find(
-            (savedAddress: SavedAddress) =>
-              savedAddress.isDefault &&
-              isSupportedDeliveryLocation(savedAddress.state, savedAddress.city)
+            (savedAddress: SavedAddress) => {
+              const matchState = deliveryStates.find(
+                (s) => s.name.toLowerCase() === savedAddress.state.toLowerCase()
+              );
+              if (!matchState) return false;
+              return savedAddress.isDefault && matchState.cities.some(
+                (c) => c.name.toLowerCase() === savedAddress.city.toLowerCase()
+              );
+            }
           ) ??
-          addresses.find((savedAddress: SavedAddress) =>
-            isSupportedDeliveryLocation(savedAddress.state, savedAddress.city)
-          );
+          addresses.find((savedAddress: SavedAddress) => {
+            const matchState = deliveryStates.find(
+              (s) => s.name.toLowerCase() === savedAddress.state.toLowerCase()
+            );
+            if (!matchState) return false;
+            return matchState.cities.some(
+              (c) => c.name.toLowerCase() === savedAddress.city.toLowerCase()
+            );
+          });
 
         if (defaultSupportedAddress) {
           setSelectedAddressId(defaultSupportedAddress.id);
@@ -123,7 +185,7 @@ export default function CheckoutPage() {
     return () => {
       isMounted = false;
     };
-  }, [isAuthenticated]);
+  }, [isAuthenticated, deliveryStates]);
 
   function selectSavedAddress(savedAddress: SavedAddress) {
     setSelectedAddressId(savedAddress.id);
@@ -276,10 +338,15 @@ export default function CheckoutPage() {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {savedAddresses.map((savedAddress) => {
-                    const supported = isSupportedDeliveryLocation(
-                      savedAddress.state,
-                      savedAddress.city
-                    );
+                     const supported = (() => {
+                      const matchState = deliveryStates.find(
+                        (s) => s.name.toLowerCase() === savedAddress.state.toLowerCase()
+                      );
+                      if (!matchState) return false;
+                      return matchState.cities.some(
+                        (c) => c.name.toLowerCase() === savedAddress.city.toLowerCase()
+                      );
+                    })();
                     const selected = selectedAddressId === savedAddress.id;
 
                     return (
@@ -396,7 +463,7 @@ export default function CheckoutPage() {
                   className="w-full bg-surface border border-surface-container-highest p-4 text-on-surface font-body-md text-sm outline-none focus:border-error transition-colors appearance-none"
                 >
                   <option value="">Select state</option>
-                  {NIGERIAN_STATES.map((state) => (
+                  {stateNames.map((state) => (
                     <option key={state} value={state}>{state}</option>
                   ))}
                 </select>

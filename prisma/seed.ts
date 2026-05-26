@@ -142,11 +142,67 @@ const PRODUCTS = [
   },
 ];
 
+const DELIVERY_DATA: {
+  name: string;
+  defaultFee: number;
+  cities: { name: string; overrideFee?: number }[];
+}[] = [
+  { name: "Abia", defaultFee: 6500, cities: [{ name: "Umuahia" }] },
+  { name: "Adamawa", defaultFee: 6500, cities: [{ name: "Yola" }] },
+  { name: "Akwa Ibom", defaultFee: 6500, cities: [{ name: "Uyo" }] },
+  { name: "Anambra", defaultFee: 6500, cities: [{ name: "Awka" }] },
+  { name: "Bauchi", defaultFee: 6500, cities: [{ name: "Bauchi" }] },
+  { name: "Bayelsa", defaultFee: 6500, cities: [{ name: "Yenagoa" }] },
+  { name: "Benue", defaultFee: 3500, cities: [{ name: "Makurdi" }] },
+  { name: "Borno", defaultFee: 6500, cities: [{ name: "Maiduguri" }] },
+  { name: "Cross River", defaultFee: 6500, cities: [{ name: "Calabar" }] },
+  { name: "Delta", defaultFee: 6500, cities: [{ name: "Asaba" }] },
+  { name: "Ebonyi", defaultFee: 6500, cities: [{ name: "Abakaliki" }] },
+  { name: "Edo", defaultFee: 6500, cities: [{ name: "Benin City" }] },
+  { name: "Ekiti", defaultFee: 6500, cities: [{ name: "Ado Ekiti" }] },
+  { name: "Enugu", defaultFee: 6500, cities: [{ name: "Enugu" }] },
+  { name: "FCT", defaultFee: 3500, cities: [{ name: "Abuja" }] },
+  { name: "Gombe", defaultFee: 6500, cities: [{ name: "Gombe" }] },
+  { name: "Imo", defaultFee: 6500, cities: [{ name: "Owerri" }] },
+  { name: "Jigawa", defaultFee: 6500, cities: [{ name: "Dutse" }] },
+  { name: "Kaduna", defaultFee: 6500, cities: [{ name: "Kaduna" }] },
+  { name: "Kano", defaultFee: 5000, cities: [{ name: "Kano" }] },
+  { name: "Katsina", defaultFee: 6500, cities: [{ name: "Katsina" }] },
+  { name: "Kebbi", defaultFee: 6500, cities: [{ name: "Birnin Kebbi" }] },
+  { name: "Kogi", defaultFee: 3500, cities: [{ name: "Lokoja" }] },
+  { name: "Kwara", defaultFee: 3500, cities: [{ name: "Ilorin" }] },
+  {
+    name: "Lagos",
+    defaultFee: 5000,
+    cities: [
+      { name: "Lagos" },
+      { name: "Ikeja" },
+      { name: "Lekki" },
+      { name: "Victoria Island" },
+      { name: "Yaba" },
+    ],
+  },
+  { name: "Nasarawa", defaultFee: 3500, cities: [{ name: "Lafia" }] },
+  { name: "Niger", defaultFee: 3500, cities: [{ name: "Minna" }] },
+  { name: "Ogun", defaultFee: 6500, cities: [{ name: "Abeokuta" }] },
+  { name: "Ondo", defaultFee: 6500, cities: [{ name: "Akure" }] },
+  { name: "Osun", defaultFee: 6500, cities: [{ name: "Osogbo" }] },
+  { name: "Oyo", defaultFee: 6500, cities: [{ name: "Ibadan" }] },
+  { name: "Plateau", defaultFee: 2000, cities: [{ name: "Jos" }] },
+  { name: "Rivers", defaultFee: 5000, cities: [{ name: "Port Harcourt" }] },
+  { name: "Sokoto", defaultFee: 6500, cities: [{ name: "Sokoto" }] },
+  { name: "Taraba", defaultFee: 6500, cities: [{ name: "Jalingo" }] },
+  { name: "Yobe", defaultFee: 6500, cities: [{ name: "Damaturu" }] },
+  { name: "Zamfara", defaultFee: 6500, cities: [{ name: "Gusau" }] },
+];
+
 async function main() {
   console.log("🔥 PMD Seed: Starting...\n");
 
   // Clean existing data
   console.log("  Cleaning existing data...");
+  await prisma.deliveryCity.deleteMany();
+  await prisma.deliveryState.deleteMany();
   await prisma.variantInventory.deleteMany();
   await prisma.cartItem.deleteMany();
   await prisma.orderItem.deleteMany();
@@ -212,6 +268,27 @@ async function main() {
     },
   });
   console.log("    ✓ admin@pmd.com (password: password)");
+
+  // Create delivery states and cities
+  console.log("  Creating delivery states and cities...");
+  for (const stateData of DELIVERY_DATA) {
+    const { cities, ...stateFields } = stateData;
+    const deliveryState = await prisma.deliveryState.create({
+      data: {
+        ...stateFields,
+        cities: {
+          create: cities.map((c) => ({
+            name: c.name,
+            overrideFee: c.overrideFee ?? null,
+          })),
+        },
+      },
+      include: { cities: true },
+    });
+    console.log(
+      `    ✓ ${deliveryState.name} (₦${deliveryState.defaultFee.toLocaleString()}, ${deliveryState.cities.length} cities)`
+    );
+  }
 
   console.log("\n💎 PMD Seed: Complete! Pressure makes diamonds.\n");
 }

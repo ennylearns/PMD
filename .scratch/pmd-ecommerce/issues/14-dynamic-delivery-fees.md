@@ -9,11 +9,11 @@ Build the `DeliveryState` and `DeliveryCity` database schema, the Admin UI to vi
 
 ## Acceptance criteria
 
-- [ ] Prisma schema includes `DeliveryState` (default fee) and `DeliveryCity` (override fee)
-- [ ] Prisma seed migrates existing hardcoded states/cities into the DB
-- [ ] Admin dashboard page to list Delivery States and Cities
-- [ ] Admin can update a State's default fee and a City's override fee
-- [ ] Customer checkout calculates delivery fee using the database instead of hardcoded constants
+- [x] Prisma schema includes `DeliveryState` (default fee) and `DeliveryCity` (override fee)
+- [x] Prisma seed migrates existing hardcoded states/cities into the DB
+- [x] Admin dashboard page to list Delivery States and Cities
+- [x] Admin can update a State's default fee and a City's override fee
+- [x] Customer checkout calculates delivery fee using the database instead of hardcoded constants
 
 ## Blocked by
 
@@ -21,4 +21,4 @@ Build the `DeliveryState` and `DeliveryCity` database schema, the Admin UI to vi
 
 ---
 
-Status: ready-for-agent
+Status: done
