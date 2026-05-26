@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { CheckCircle, Clock, Package, Truck } from "lucide-react";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -22,49 +21,7 @@ async function getOrder(id: string) {
   });
 }
 
-function StatusBadge({ status }: { status: string }) {
-  const config: Record<string, { icon: React.ReactNode; label: string; color: string }> = {
-    PAID: {
-      icon: <CheckCircle className="w-5 h-5" />,
-      label: "Payment confirmed",
-      color: "text-emerald-400",
-    },
-    PENDING: {
-      icon: <Clock className="w-5 h-5" />,
-      label: "Awaiting payment confirmation",
-      color: "text-yellow-400",
-    },
-    PROCESSING: {
-      icon: <Package className="w-5 h-5" />,
-      label: "Order is being processed",
-      color: "text-blue-400",
-    },
-    SHIPPED: {
-      icon: <Truck className="w-5 h-5" />,
-      label: "Order shipped",
-      color: "text-purple-400",
-    },
-    DELIVERED: {
-      icon: <CheckCircle className="w-5 h-5" />,
-      label: "Delivered",
-      color: "text-emerald-400",
-    },
-    CANCELLED: {
-      icon: <Clock className="w-5 h-5" />,
-      label: "Order cancelled",
-      color: "text-error",
-    },
-  };
-
-  const { icon, label, color } = config[status] ?? config.PENDING;
-
-  return (
-    <div className={`flex items-center gap-2 font-accent-label text-xs uppercase tracking-[0.18em] ${color}`}>
-      {icon}
-      {label}
-    </div>
-  );
-}
+import { OrderTimeline } from "@/components/order-timeline";
 
 function formatNaira(amount: number) {
   return new Intl.NumberFormat("en-NG", {
@@ -108,16 +65,18 @@ export default async function OrderPage({ params }: Props) {
       </header>
 
       <div className="max-w-4xl mx-auto px-6 md:px-16 py-12 md:py-20 space-y-12">
-        {/* Status */}
-        <section className="space-y-4">
-          <StatusBadge status={order.status} />
-          <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background uppercase">
-            {order.status === "PAID" ? "Order confirmed" : "Order placed"}
-          </h1>
-          <p className="font-body-md text-sm text-on-surface-variant">
-            Order reference:{" "}
-            <span className="text-on-surface font-mono text-xs">{order.id}</span>
-          </p>
+        <section className="space-y-6">
+          <div>
+            <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background uppercase">
+              {order.status === "PAID" ? "Order confirmed" : "Order tracking"}
+            </h1>
+            <p className="font-body-md text-sm text-on-surface-variant mt-2">
+              Order reference:{" "}
+              <span className="text-on-surface font-mono text-xs">{order.id}</span>
+            </p>
+          </div>
+          
+          <OrderTimeline currentStatus={order.status} />
         </section>
 
         {/* Items */}

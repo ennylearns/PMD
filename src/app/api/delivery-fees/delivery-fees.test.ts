@@ -3,12 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
 // Mock next-auth to simulate admin session for protected routes
-vi.mock("next-auth", () => ({
-  getServerSession: vi.fn(),
-}));
-
 vi.mock("@/lib/auth", () => ({
-  authOptions: {},
+  auth: vi.fn(),
 }));
 
 const mockPrisma = prisma as unknown as {
