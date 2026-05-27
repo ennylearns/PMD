@@ -52,6 +52,7 @@ const MOCK_ORDER = {
   id: "order-1",
   userId: "user-1",
   guestId: null,
+  guestEmail: "test@example.com",
   status: "PENDING",
   totalAmount: 35000,
   shippingFee: 5000,
@@ -102,7 +103,9 @@ describe("POST /api/payment/webhook", () => {
     const raw = JSON.stringify(CHARGE_SUCCESS_EVENT);
     const sig = sign(raw);
 
-    mockPrisma.order.findUnique.mockResolvedValue(MOCK_ORDER);
+    mockPrisma.order.findUnique
+      .mockResolvedValueOnce(MOCK_ORDER)
+      .mockResolvedValueOnce({ ...MOCK_ORDER, status: "PAID" });
     mockPrisma.orderItem.findMany.mockResolvedValue(MOCK_ORDER_ITEMS);
 
     // $transaction executes the callback with a tx proxy
@@ -124,6 +127,14 @@ describe("POST /api/payment/webhook", () => {
 
     // Transaction was invoked
     expect(mockPrisma.$transaction).toHaveBeenCalled();
+
+    // Verification of email dispatch
+    const { sendOrderNotification } = await import("@/lib/email");
+    expect(sendOrderNotification).toHaveBeenCalledWith(
+      expect.objectContaining({ status: "PAID" }),
+      "test@example.com",
+      "PAID"
+    );
   });
 
   // Slice 8 — oversell path

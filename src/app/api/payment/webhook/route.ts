@@ -74,6 +74,29 @@ export async function POST(req: NextRequest) {
       }
     });
 
+    // 8. Send Order Notification
+    const populatedOrder = await prisma.order.findUnique({
+      where: { id: order.id },
+      include: {
+        user: { select: { email: true } },
+        items: {
+          include: {
+            variant: {
+              include: { product: { select: { name: true, images: true } } },
+            },
+          },
+        },
+      },
+    });
+
+    if (populatedOrder) {
+      const recipientEmail = populatedOrder.guestEmail ?? populatedOrder.user?.email;
+      if (recipientEmail) {
+        const { sendOrderNotification } = await import("@/lib/email");
+        await sendOrderNotification(populatedOrder as any, recipientEmail, "PAID");
+      }
+    }
+
     return NextResponse.json({ received: true });
   } catch {
     // 8. Oversell path: transaction failed (stock went to 0) — issue a refund and cancel

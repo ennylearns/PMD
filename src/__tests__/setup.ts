@@ -89,3 +89,10 @@ vi.mock("@/lib/prisma", () => {
     },
   };
 });
+
+// Mock the email client to prevent actual emails from being sent during tests
+vi.mock("@/lib/email", () => {
+  return {
+    sendOrderNotification: vi.fn().mockResolvedValue(undefined),
+  };
+});

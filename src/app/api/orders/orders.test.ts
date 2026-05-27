@@ -7,6 +7,11 @@ vi.mock("@/lib/auth", () => ({
   auth: vi.fn(),
 }));
 
+// Mock email
+vi.mock("@/lib/email", () => ({
+  sendOrderNotification: vi.fn(),
+}));
+
 const mockPrisma = prisma as unknown as {
   order: {
     findMany: ReturnType<typeof vi.fn>;
@@ -65,10 +70,19 @@ describe("Orders API", () => {
     });
   });
 
-  it("PATCH /api/orders/[id]/status updates an order status", async () => {
+  it("PATCH /api/orders/[id]/status updates an order status and sends notification for SHIPPED", async () => {
     mockPrisma.order.update.mockResolvedValue({
       id: "order-1",
       status: "SHIPPED",
+      guestEmail: "test@example.com",
+    });
+
+    // Mock findUnique which will be used to fetch the populated order for email
+    mockPrisma.order.findUnique.mockResolvedValue({
+      id: "order-1",
+      status: "SHIPPED",
+      guestEmail: "test@example.com",
+      items: [],
     });
 
     const { PATCH } = await import("./[id]/status/route");
@@ -86,6 +100,14 @@ describe("Orders API", () => {
       where: { id: "order-1" },
       data: { status: "SHIPPED" },
     });
+
+    // Verify email dispatch
+    const { sendOrderNotification } = await import("@/lib/email");
+    expect(sendOrderNotification).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "order-1", status: "SHIPPED" }),
+      "test@example.com",
+      "SHIPPED"
+    );
   });
 
   it("PATCH /api/orders/[id]/status rejects invalid status", async () => {
