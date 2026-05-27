@@ -3,9 +3,6 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 
 const validStatuses = [
-  "PENDING",
-  "PAID",
-  "PROCESSING",
   "SHIPPED",
   "DELIVERED",
   "CANCELLED",

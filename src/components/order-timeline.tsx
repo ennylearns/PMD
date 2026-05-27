@@ -7,7 +7,7 @@ export function OrderTimeline({ currentStatus }: { currentStatus: string }) {
   const isCancelled = currentStatus === "CANCELLED";
 
   // The main linear progression steps for fulfillment
-  const timelineSteps = ["PAID", "PROCESSING", "SHIPPED", "DELIVERED"];
+  const timelineSteps = ["PAID", "SHIPPED", "DELIVERED"];
 
   if (isCancelled) {
     return (

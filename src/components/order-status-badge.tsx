@@ -17,23 +17,17 @@ export const ORDER_STATUS_CONFIG: Record<
     color: "text-emerald-400",
     step: 1,
   },
-  PROCESSING: {
-    icon: <Package className="w-5 h-5" />,
-    label: "Order is being processed",
-    color: "text-blue-400",
-    step: 2,
-  },
   SHIPPED: {
     icon: <Truck className="w-5 h-5" />,
     label: "Order shipped",
     color: "text-purple-400",
-    step: 3,
+    step: 2,
   },
   DELIVERED: {
     icon: <CheckCircle className="w-5 h-5" />,
     label: "Delivered",
     color: "text-emerald-400",
-    step: 4,
+    step: 3,
   },
   CANCELLED: {
     icon: <Clock className="w-5 h-5" />,

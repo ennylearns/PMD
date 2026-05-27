@@ -110,15 +110,29 @@ describe("Orders API", () => {
     );
   });
 
-  it("PATCH /api/orders/[id]/status rejects invalid status", async () => {
+  it("PATCH /api/orders/[id]/status rejects invalid and non-manual statuses", async () => {
     const { PATCH } = await import("./[id]/status/route");
-    const request = new NextRequest("http://localhost/api/orders/order-1/status", {
+    
+    const invalidRequest = new NextRequest("http://localhost/api/orders/order-1/status", {
       method: "PATCH",
       body: JSON.stringify({ status: "INVALID_STATUS" }),
     });
+    const invalidResponse = await PATCH(invalidRequest, { params: Promise.resolve({ id: "order-1" }) });
+    expect(invalidResponse.status).toBe(400);
 
-    const response = await PATCH(request, { params: Promise.resolve({ id: "order-1" }) });
-    expect(response.status).toBe(400);
+    const pendingRequest = new NextRequest("http://localhost/api/orders/order-1/status", {
+      method: "PATCH",
+      body: JSON.stringify({ status: "PENDING" }),
+    });
+    const pendingResponse = await PATCH(pendingRequest, { params: Promise.resolve({ id: "order-1" }) });
+    expect(pendingResponse.status).toBe(400);
+
+    const paidRequest = new NextRequest("http://localhost/api/orders/order-1/status", {
+      method: "PATCH",
+      body: JSON.stringify({ status: "PAID" }),
+    });
+    const paidResponse = await PATCH(paidRequest, { params: Promise.resolve({ id: "order-1" }) });
+    expect(paidResponse.status).toBe(400);
   });
 });
 

@@ -63,7 +63,6 @@ _Avoid_: Location, destination
 An **Order** progresses through the following statuses, which also serve as the fulfillment status:
 - **PENDING**: Payment initialized but not yet completed.
 - **PAID**: Payment successful (via Paystack webhook). Stock is decremented and cart is cleared.
-- **PROCESSING**: Admin has acknowledged the order and is preparing it for delivery. (Manual admin action)
 - **SHIPPED**: Order has left the Fulfillment Origin and is with the dispatcher. (Manual admin action)
 - **DELIVERED**: Order has successfully reached the Customer. (Manual admin action)
 - **CANCELLED**: Order was voided (e.g., oversell fallback, or manual cancellation).
