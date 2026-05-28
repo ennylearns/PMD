@@ -10,6 +10,7 @@ vi.mock("@/lib/prisma", () => {
         findUnique: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         delete: vi.fn(),
       },
       product: {
@@ -18,6 +19,7 @@ vi.mock("@/lib/prisma", () => {
         findUnique: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         delete: vi.fn(),
         count: vi.fn(),
       },
@@ -26,6 +28,7 @@ vi.mock("@/lib/prisma", () => {
         findUnique: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         delete: vi.fn(),
       },
       cartItem: {
@@ -34,6 +37,7 @@ vi.mock("@/lib/prisma", () => {
         findUnique: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         delete: vi.fn(),
         deleteMany: vi.fn(),
         updateMany: vi.fn(),
@@ -41,12 +45,14 @@ vi.mock("@/lib/prisma", () => {
       variantInventory: {
         findUnique: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         updateMany: vi.fn(),
       },
       user: {
         findUnique: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
       },
       address: {
         findMany: vi.fn(),
@@ -54,6 +60,7 @@ vi.mock("@/lib/prisma", () => {
         findFirst: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         delete: vi.fn(),
         updateMany: vi.fn(),
       },
@@ -62,6 +69,7 @@ vi.mock("@/lib/prisma", () => {
         findUnique: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
       },
       orderItem: {
         createMany: vi.fn(),
@@ -73,6 +81,7 @@ vi.mock("@/lib/prisma", () => {
         findFirst: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         upsert: vi.fn(),
         delete: vi.fn(),
       },
@@ -82,10 +91,12 @@ vi.mock("@/lib/prisma", () => {
         findFirst: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        aggregate: vi.fn(),
         upsert: vi.fn(),
         delete: vi.fn(),
       },
       $transaction: vi.fn(),
+      $queryRaw: vi.fn(),
     },
   };
 });
