@@ -9,8 +9,8 @@ Static content pages: Homepage with promotional video, About page with brand sto
 ## Acceptance criteria
 
 - [x] Homepage (/): hero with promotional video (16:9), featured products, brand story section
-- [ ] About page (/about): brand story, mission, vision
-- [ ] Contact page (/contact): email, phone, WhatsApp button (opens WhatsApp)
+- [x] About page (/about): brand story, mission, vision
+- [x] Contact page (/contact): email, phone, WhatsApp button (opens WhatsApp)
 - [ ] FAQ page (/faq): accordion-style with delivery, returns, payment, sizing info
 - [ ] Terms page (/terms): terms of service content
 - [ ] Privacy page (/privacy): privacy policy content
