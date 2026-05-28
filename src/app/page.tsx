@@ -1,57 +1,6 @@
 import Link from "next/link";
-
-// Shared Header - Clean, Dark, Premium PMD Branding with Occasional Red
-function Header() {
-  return (
-    <header className="bg-black/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#222222] w-full flex justify-between items-center px-6 md:px-16 py-5">
-      <Link className="font-display-xl text-3xl md:text-4xl font-black text-white tracking-tighter hover:text-error transition-colors italic" href="/">
-        PMD.
-      </Link>
-      <nav className="hidden md:flex gap-10 items-center">
-        <Link className="text-white font-accent-label text-xs font-bold border-b-2 border-error pb-1 hover:text-error transition-colors uppercase tracking-[0.15em]" href="/shop">Shop</Link>
-        <Link className="text-gray-400 font-accent-label text-xs hover:text-white transition-colors duration-200 uppercase tracking-[0.15em]" href="/about">About</Link>
-        <Link className="text-gray-400 font-accent-label text-xs hover:text-white transition-colors duration-200 uppercase tracking-[0.15em]" href="/contact">Contact</Link>
-      </nav>
-      <div className="flex items-center gap-4">
-        <button aria-label="shopping_bag" className="text-white hover:text-error transition-colors duration-150">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        </button>
-      </div>
-    </header>
-  );
-}
-
-// Shared Footer
-function Footer() {
-  return (
-    <footer className="bg-black border-t border-[#222222] w-full px-6 md:px-16 py-20 grid grid-cols-1 md:grid-cols-4 gap-12 mt-auto">
-      <div className="col-span-1 flex flex-col justify-between">
-        <div>
-          <Link className="text-3xl font-black text-white block mb-6 tracking-tighter italic hover:text-error transition-colors" href="/">PMD.</Link>
-          <p className="font-body-sm text-sm text-gray-400 max-w-[240px] leading-relaxed">
-            Pressure Makes Diamonds. Streetwear built on ambition, resilience, and self-belief.
-          </p>
-        </div>
-        <p className="font-accent-label text-[10px] text-gray-600 mt-12 md:mt-0 uppercase tracking-widest">
-            © 2026 PMD. ALL RIGHTS RESERVED.
-        </p>
-      </div>
-      <div className="col-span-1 md:col-span-2 grid grid-cols-2 gap-8">
-        <div className="flex flex-col gap-5">
-          <h4 className="font-accent-label text-xs text-white mb-2 border-b border-error pb-3 uppercase tracking-[0.15em]">Store</h4>
-          <Link className="font-body-sm text-sm text-gray-400 hover:text-error transition-colors" href="/shop">All Products</Link>
-          <Link className="font-body-sm text-sm text-gray-400 hover:text-error transition-colors" href="/shop">T-Shirts</Link>
-          <Link className="font-body-sm text-sm text-gray-400 hover:text-error transition-colors" href="/shop">Joggers</Link>
-        </div>
-        <div className="flex flex-col gap-5">
-          <h4 className="font-accent-label text-xs text-white mb-2 border-b border-[#222222] pb-3 uppercase tracking-[0.15em]">Support</h4>
-          <Link className="font-body-sm text-sm text-gray-400 hover:text-white transition-colors" href="/faq">FAQ</Link>
-          <Link className="font-body-sm text-sm text-gray-400 hover:text-white transition-colors" href="/contact">Contact</Link>
-        </div>
-      </div>
-    </footer>
-  );
-}
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 // Shared Sections
 function FeaturedProducts() {

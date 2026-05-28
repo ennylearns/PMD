@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import ProductCard from "@/components/product-card";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -55,21 +57,14 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <main className="flex-1 flex flex-col min-h-screen">
-      {/* Header */}
-      <section className="relative pt-24 pb-12 px-(--spacing-margin-mobile) md:px-(--spacing-margin-desktop)">
-        <div className="absolute inset-0 distress-overlay mix-blend-overlay pointer-events-none opacity-30" />
-        <div className="relative max-w-7xl mx-auto">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-xs font-accent-label text-on-surface-variant/50 uppercase tracking-[0.2em] mb-6 hover:text-error transition-colors"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Home
-          </Link>
-          <h1 className="font-display-xl text-4xl md:text-6xl text-on-background uppercase tracking-wider">
+    <div className="flex-1 flex flex-col min-h-screen bg-background">
+      <Header />
+      <main className="flex-1 flex flex-col">
+        {/* Header Hero */}
+        <section className="relative pt-24 pb-12 px-(--spacing-margin-mobile) md:px-(--spacing-margin-desktop)">
+          <div className="absolute inset-0 distress-overlay mix-blend-overlay pointer-events-none opacity-30" />
+          <div className="relative max-w-7xl mx-auto">
+            <h1 className="font-display-xl text-4xl md:text-6xl text-on-background uppercase tracking-wider">
             {activeCategorySlug
               ? categories.find((c) => c.slug === activeCategorySlug)?.name || "Shop"
               : "Shop All"}
@@ -199,6 +194,8 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           )}
         </div>
       </section>
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }
