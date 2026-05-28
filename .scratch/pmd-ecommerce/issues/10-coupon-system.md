@@ -8,15 +8,15 @@ Coupon/discount system: create/edit/delete coupons, percentage and fixed amount 
 
 ## Acceptance criteria
 
-- [ ] API: POST /api/coupons (create coupon)
-- [ ] API: GET /api/coupons (list coupons)
-- [ ] API: PUT /api/coupons/[id] (update coupon)
-- [ ] API: DELETE /api/coupons/[id] (delete coupon)
-- [ ] Coupon types: percentage (%) and fixed amount (₦)
-- [ ] Expiry date validation at checkout
-- [ ] Usage limit enforcement (if set)
-- [ ] Apply coupon at checkout with validation
-- [ ] Display discount in order summary
+- [x] API: POST /api/coupons (create coupon)
+- [x] API: GET /api/coupons (list coupons)
+- [x] API: PUT /api/coupons/[id] (update coupon)
+- [x] API: DELETE /api/coupons/[id] (delete coupon)
+- [x] Coupon types: percentage (%) and fixed amount (₦)
+- [x] Expiry date validation at checkout
+- [x] Usage limit enforcement (if set)
+- [x] Apply coupon at checkout with validation
+- [x] Display discount in order summary
 
 ## Blocked by
 

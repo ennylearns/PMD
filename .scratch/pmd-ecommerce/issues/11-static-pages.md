@@ -14,7 +14,6 @@ Static content pages: Homepage with promotional video, About page with brand sto
 - [ ] FAQ page (/faq): accordion-style with delivery, returns, payment, sizing info
 - [ ] Terms page (/terms): terms of service content
 - [ ] Privacy page (/privacy): privacy policy content
-- [ ] Order tracking page (/track): enter order number, view status
 
 ## Blocked by
 
