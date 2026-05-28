@@ -1,4 +1,31 @@
-export default function AdminDashboardOverview() {
+import { prisma } from "@/lib/prisma";
+import Link from "next/link";
+import { AlertTriangle } from "lucide-react";
+
+export default async function AdminDashboardOverview() {
+  const LOW_STOCK_THRESHOLD = 5;
+
+  const lowStockVariants = await prisma.variant.findMany({
+    where: {
+      inventory: {
+        stock: {
+          lte: LOW_STOCK_THRESHOLD,
+        },
+      },
+    },
+    include: {
+      product: {
+        select: { name: true, id: true },
+      },
+      inventory: true,
+    },
+    orderBy: {
+      inventory: {
+        stock: "asc",
+      },
+    },
+  });
+
   return (
     <div className="flex flex-col gap-8">
       <header className="border-b border-surface-container-highest pb-6">
@@ -33,17 +60,56 @@ export default function AdminDashboardOverview() {
         ))}
       </div>
 
-      {/* Main Content Area Placeholder */}
-      <div className="bg-surface border border-surface-container-highest min-h-[400px] flex items-center justify-center relative overflow-hidden mt-8">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-surface-container-lowest to-surface"></div>
-        <div className="text-center relative z-10">
-          <p className="font-accent-label text-[12px] tracking-widest text-on-surface-variant uppercase mb-4">
-            Awaiting Data Feeds
-          </p>
-          <div className="w-16 h-16 border-2 border-dashed border-surface-container-highest rounded-full flex items-center justify-center mx-auto animate-[spin_10s_linear_infinite]">
-            <div className="w-2 h-2 bg-error rounded-full animate-pulse shadow-[0_0_10px_rgba(255,0,0,1)]"></div>
+      {/* Main Content Area */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+        
+        {/* Low Stock Alerts */}
+        <div className="bg-surface border border-error/30 flex flex-col">
+          <div className="p-4 border-b border-error/30 bg-error/5 flex items-center gap-3">
+            <AlertTriangle size={18} className="text-error" />
+            <h2 className="font-accent-label text-sm uppercase tracking-widest text-error">
+              Low Stock Alerts
+            </h2>
+            <span className="ml-auto bg-error text-background text-[10px] font-bold px-2 py-0.5 rounded-full">
+              {lowStockVariants.length}
+            </span>
+          </div>
+          
+          <div className="p-4 flex-1 max-h-[400px] overflow-y-auto">
+            {lowStockVariants.length === 0 ? (
+              <div className="h-full flex flex-col items-center justify-center text-on-surface-variant py-12 opacity-50">
+                <p className="font-accent-label text-xs uppercase tracking-widest">Inventory Levels Healthy</p>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3">
+                {lowStockVariants.map((variant) => (
+                  <div key={variant.id} className="flex items-center justify-between p-3 border border-surface-container-highest bg-surface-container-lowest hover:border-error/50 transition-colors group">
+                    <div className="flex flex-col">
+                      <span className="font-body-sm text-sm text-on-surface">{variant.product.name}</span>
+                      <span className="font-accent-label text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">
+                        {variant.color} • {variant.size} • SKU: {variant.sku}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="flex flex-col items-end">
+                        <span className="font-accent-label text-[9px] uppercase tracking-widest text-error">Stock</span>
+                        <span className="font-mono font-bold text-error">{variant.inventory?.stock || 0}</span>
+                      </div>
+                      <Link 
+                        href={`/admin/products/${variant.product.id}`}
+                        className="p-2 bg-surface-container-highest text-on-surface hover:bg-error hover:text-background transition-colors"
+                        title="Update Stock"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
+
       </div>
     </div>
   );
