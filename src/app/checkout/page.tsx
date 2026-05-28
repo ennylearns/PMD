@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Lock, MapPin, ShoppingBag } from "lucide-react";
+import { ArrowRight, Lock, MapPin, ShoppingBag, XCircle } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 import {
   buildCheckoutPayload,
@@ -66,6 +66,10 @@ export default function CheckoutPage() {
   const [preparedPayload, setPreparedPayload] = useState<CheckoutPayload | null>(null);
   const [isPreparing, setIsPreparing] = useState(false);
   const [deliveryStates, setDeliveryStates] = useState<DeliveryStateData[]>([]);
+  const [couponCode, setCouponCode] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState<{ code: string; discountAmount: number } | null>(null);
+  const [couponError, setCouponError] = useState("");
+  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
 
   const isAuthenticated = status === "authenticated";
   const sessionEmail = session?.user?.email ?? "";
@@ -96,7 +100,7 @@ export default function CheckoutPage() {
   }, [selectedState, address.city]);
 
   const stockResult = useMemo(() => validateCartStock(items), [items]);
-  const total = cartTotal + deliveryFee;
+  const total = cartTotal - (appliedCoupon?.discountAmount || 0) + deliveryFee;
   const checkoutContact = useMemo(
     () => ({
       email: isAuthenticated ? sessionEmail : contact.email,
@@ -229,6 +233,38 @@ export default function CheckoutPage() {
     setSelectedAddressId(data.address.id);
   }
 
+  async function handleApplyCoupon() {
+    setCouponError("");
+    if (!couponCode.trim()) return;
+
+    setIsApplyingCoupon(true);
+    try {
+      const res = await fetch("/api/checkout/validate-coupon", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: couponCode, subtotal: cartTotal }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setCouponError(data.error || "Invalid coupon");
+        setAppliedCoupon(null);
+      } else if (data.valid) {
+        setAppliedCoupon({ code: couponCode.trim(), discountAmount: data.discountAmount });
+        setCouponCode("");
+      }
+    } catch (err) {
+      setCouponError("Failed to apply coupon");
+    } finally {
+      setIsApplyingCoupon(false);
+    }
+  }
+
+  function handleRemoveCoupon() {
+    setAppliedCoupon(null);
+    setCouponError("");
+  }
+
   async function handlePreparePayment(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -262,6 +298,7 @@ export default function CheckoutPage() {
         cartItems: items,
         deliveryFee,
         saveAddress: isAuthenticated && saveAddress && !selectedAddressId,
+        couponCode: appliedCoupon?.code || null,
       });
 
       setPreparedPayload(payload);
@@ -566,6 +603,14 @@ export default function CheckoutPage() {
                 <span>Subtotal ({itemCount} items)</span>
                 <span className="text-on-surface">{formatNaira(cartTotal)}</span>
               </div>
+              
+              {appliedCoupon && (
+                <div className="flex justify-between font-accent-label text-xs uppercase tracking-[0.16em] text-error">
+                  <span>Discount ({appliedCoupon.code})</span>
+                  <span>-{formatNaira(appliedCoupon.discountAmount)}</span>
+                </div>
+              )}
+
               <div className="flex justify-between font-accent-label text-xs uppercase tracking-[0.16em] text-on-surface-variant">
                 <span>Delivery Fee</span>
                 <span className="text-on-surface">
@@ -575,6 +620,45 @@ export default function CheckoutPage() {
               {!stockResult.valid && (
                 <p className="font-body-sm text-sm text-error">{stockResult.errors[0]}</p>
               )}
+            </div>
+
+            <div className="py-6 border-b border-surface-container-highest space-y-3">
+              <label className="font-accent-label text-xs text-on-surface-variant uppercase tracking-[0.16em]">
+                Gift card or discount code
+              </label>
+              {appliedCoupon ? (
+                <div className="flex items-center justify-between bg-surface-container-low border border-surface-container-highest p-3">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-sm font-bold text-on-surface">{appliedCoupon.code}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleRemoveCoupon}
+                    className="text-error hover:text-error/80 transition-colors"
+                  >
+                    <XCircle size={18} />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={couponCode}
+                    onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+                    placeholder="Enter code"
+                    className="flex-1 bg-surface border border-surface-container-highest p-3 text-on-surface font-mono text-sm outline-none focus:border-on-surface transition-colors uppercase placeholder:normal-case"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleApplyCoupon}
+                    disabled={!couponCode.trim() || isApplyingCoupon}
+                    className="bg-on-background text-background px-6 font-accent-label text-xs uppercase tracking-[0.16em] disabled:opacity-50 hover:bg-on-background/90 transition-colors"
+                  >
+                    {isApplyingCoupon ? "..." : "Apply"}
+                  </button>
+                </div>
+              )}
+              {couponError && <p className="font-body-sm text-xs text-error">{couponError}</p>}
             </div>
 
             <div className="flex justify-between py-6">

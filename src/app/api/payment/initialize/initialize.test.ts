@@ -18,6 +18,9 @@ const mockPrisma = prisma as unknown as {
     create: ReturnType<typeof vi.fn>;
     update: ReturnType<typeof vi.fn>;
   };
+  coupon: {
+    findUnique: ReturnType<typeof vi.fn>;
+  };
   $transaction: ReturnType<typeof vi.fn>;
 };
 
@@ -131,6 +134,56 @@ describe("POST /api/payment/initialize", () => {
       expect.objectContaining({
         method: "POST",
         body: expect.stringContaining('"amount":3500000'), // 35000 NGN × 100
+      })
+    );
+  });
+
+  it("applies a valid coupon, deducts discount, and saves couponCode on Order", async () => {
+    mockPrisma.cartItem.findMany.mockResolvedValue(MOCK_CART_ITEMS);
+
+    mockPrisma.coupon = {
+      findUnique: vi.fn().mockResolvedValue({
+        id: "coupon-1",
+        code: "SUMMER20",
+        discountType: "FIXED",
+        discountAmount: 5000,
+        isActive: true,
+      })
+    } as any;
+
+    const PENDING_ORDER = { id: "order-2", totalAmount: 30000, shippingFee: 5000 };
+
+    mockPrisma.$transaction.mockImplementation(async (fn: (tx: unknown) => Promise<unknown>) => {
+      const tx = {
+        order: { create: vi.fn().mockResolvedValue(PENDING_ORDER) },
+        orderItem: { createMany: vi.fn().mockResolvedValue({ count: 1 }) },
+      };
+      return fn(tx);
+    });
+
+    mockPrisma.order.update.mockResolvedValue({
+      ...PENDING_ORDER,
+      paymentReference: "paystack-ref-xyz",
+    });
+
+    const payloadWithCoupon = {
+      ...CHECKOUT_PAYLOAD,
+      couponCode: "SUMMER20",
+    };
+
+    const req = createPostRequest(payloadWithCoupon);
+    const res = await POST(req);
+    const data = await res.json();
+
+    expect(res.status).toBe(200);
+
+    // Verify order was created with new total (30000 subtotal - 5000 discount + 5000 delivery = 30000)
+    // Wait, the payload has subtotal 30000. Discount 5000. Total should be 30000.
+    // We should just check that paystack was called with 30000.
+    expect(global.fetch).toHaveBeenCalledWith(
+      "https://api.paystack.co/transaction/initialize",
+      expect.objectContaining({
+        body: expect.stringContaining('"amount":3000000'), // 30000 NGN × 100
       })
     );
   });

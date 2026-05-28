@@ -14,6 +14,7 @@ const mockPrisma = prisma as unknown as {
   orderItem: { findMany: ReturnType<typeof vi.fn> };
   variantInventory: { update: ReturnType<typeof vi.fn> };
   cartItem: { deleteMany: ReturnType<typeof vi.fn> };
+  coupon: { update: ReturnType<typeof vi.fn> };
   $transaction: ReturnType<typeof vi.fn>;
 };
 
@@ -135,6 +136,41 @@ describe("POST /api/payment/webhook", () => {
       "test@example.com",
       "PAID"
     );
+  });
+
+  it("increments coupon usageCount if order has a couponCode", async () => {
+    const raw = JSON.stringify(CHARGE_SUCCESS_EVENT);
+    const sig = sign(raw);
+
+    const orderWithCoupon = { ...MOCK_ORDER, couponCode: "SUMMER20" };
+
+    mockPrisma.order.findUnique
+      .mockResolvedValueOnce(orderWithCoupon)
+      .mockResolvedValueOnce({ ...orderWithCoupon, status: "PAID" });
+    mockPrisma.orderItem.findMany.mockResolvedValue(MOCK_ORDER_ITEMS);
+
+    const mockCouponUpdate = vi.fn().mockResolvedValue({});
+    mockPrisma.$transaction.mockImplementation(
+      async (fn: (tx: unknown) => Promise<unknown>) => {
+        const tx = {
+          variantInventory: { update: vi.fn().mockResolvedValue({}) },
+          order: { update: vi.fn().mockResolvedValue({ ...orderWithCoupon, status: "PAID" }) },
+          cartItem: { deleteMany: vi.fn().mockResolvedValue({ count: 2 }) },
+          coupon: { update: mockCouponUpdate },
+        };
+        return fn(tx);
+      }
+    );
+
+    const req = createWebhookRequest(CHARGE_SUCCESS_EVENT, sig);
+    const res = await POST(req);
+
+    expect(res.status).toBe(200);
+
+    expect(mockCouponUpdate).toHaveBeenCalledWith({
+      where: { code: "SUMMER20" },
+      data: { usageCount: { increment: 1 } },
+    });
   });
 
   // Slice 8 — oversell path

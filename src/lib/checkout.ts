@@ -38,6 +38,7 @@ export type CheckoutPayload = {
   deliveryFee: number;
   total: number;
   saveAddress: boolean;
+  couponCode?: string | null;
 };
 
 function hasValue(value: string) {
@@ -98,12 +99,14 @@ export function buildCheckoutPayload({
   cartItems,
   deliveryFee,
   saveAddress,
+  couponCode,
 }: {
   contact: CheckoutContact;
   address: CheckoutAddress;
   cartItems: CheckoutCartItem[];
   deliveryFee: number;
   saveAddress: boolean;
+  couponCode?: string | null;
 }): CheckoutPayload {
   const items = cartItems.map((item) => ({
     cartItemId: item.id,
@@ -128,7 +131,8 @@ export function buildCheckoutPayload({
     items,
     subtotal,
     deliveryFee,
-    total: subtotal + deliveryFee,
+    total: subtotal + deliveryFee, // NOTE: this is purely nominal, backend recalculates total
     saveAddress,
+    couponCode,
   };
 }

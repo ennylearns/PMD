@@ -118,7 +118,7 @@ export default async function DashboardPage() {
                   )}
                   {/* Status Chip */}
                   <div className={`absolute top-2 left-2 border px-2 py-1 font-accent-label text-[10px] tracking-widest z-10 flex items-center gap-1 ${status.className}`}>
-                    {order.status === "PROCESSING" && (
+                    {order.status === "PAID" && (
                       <span className="w-1.5 h-1.5 rounded-full bg-error animate-pulse" />
                     )}
                     {status.label}

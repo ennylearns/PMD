@@ -8,7 +8,7 @@ const PAYSTACK_API = "https://api.paystack.co/transaction/initialize";
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
-    const { contact, address, items: payloadItems, total, deliveryFee } = payload;
+    const { contact, address, items: payloadItems, subtotal, deliveryFee, couponCode } = payload;
 
     // 1. Identify the cart owner
     const { userId, guestId } = await getCartOwner();
@@ -36,6 +36,29 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    let calculatedSubtotal = 0;
+    for (const item of cartItems) {
+      calculatedSubtotal += item.variant.product.price * item.quantity;
+    }
+
+    let discountAmount = 0;
+    if (couponCode) {
+      const coupon = await prisma.coupon.findUnique({
+        where: { code: couponCode },
+      });
+      if (coupon) {
+        const { validateAndCalculateDiscount } = await import("@/lib/services/coupon");
+        const couponResult = validateAndCalculateDiscount(coupon, calculatedSubtotal);
+        if (couponResult.valid) {
+          discountAmount = couponResult.discountAmount;
+        } else {
+          return NextResponse.json({ error: couponResult.error }, { status: 400 });
+        }
+      }
+    }
+
+    const finalTotal = Math.max(0, calculatedSubtotal - discountAmount) + deliveryFee;
+
     // 4. Create pending Order + OrderItems in a transaction
     const order = await prisma.$transaction(async (tx) => {
       const newOrder = await tx.order.create({
@@ -44,9 +67,11 @@ export async function POST(req: NextRequest) {
           guestId: guestId ?? undefined,
           guestEmail: userId ? undefined : contact.email,
           status: "PENDING",
-          totalAmount: total,
+          totalAmount: finalTotal,
           shippingFee: deliveryFee,
           shippingAddress: address,
+          couponCode: couponCode ?? null,
+          discountAmount,
         },
       });
 
@@ -76,7 +101,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         email: contact.email,
-        amount: Math.round(total * 100), // NGN → kobo
+        amount: Math.round(finalTotal * 100), // NGN → kobo
         callback_url: `${appUrl}/payment/callback`,
         metadata: { orderId: order.id },
       }),

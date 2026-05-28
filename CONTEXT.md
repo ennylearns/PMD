@@ -56,7 +56,19 @@ _Avoid_: Location, destination
 - A checkout **Address** must use a configured **Delivery City**.
 - An **Order** is created from a valid **Checkout** when payment initialization begins.
 - Inventory is decremented only after an **Order** is paid.
+- **Coupon** usage is incremented only after an **Order** is paid, aligning with inventory deduction.
+- A **Checkout** can only have a maximum of one **Coupon** applied at any time.
 - Cart items included in an **Order** are cleared only after successful payment.
+
+## Coupons & Discounts
+
+**Coupon**:
+A code (e.g., "SUMMER20") that a **Customer** can apply during **Checkout** to receive a discount. The discount applies *only* to the cart subtotal, never to the **Delivery Fee**. 
+- Expiry is evaluated using exact DateTimes to prevent timezone ambiguity.
+- Coupons can optionally have a **Minimum Order Value** that the subtotal must meet before applying.
+- Discounts are hard-capped at the cart subtotal (the subtotal can never go below zero).
+- Coupons can be manually disabled at any time via an explicit kill switch (Active/Inactive toggle).
+_Avoid_: Promo code, voucher, discount code
 
 ## Order Lifecycle
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle, XCircle } from "lucide-react";
@@ -10,7 +10,7 @@ type VerifyResult =
   | { status: "failed"; message: string }
   | { status: "loading" };
 
-export default function PaymentCallbackPage() {
+function CallbackContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [result, setResult] = useState<VerifyResult>({ status: "loading" });
@@ -23,15 +23,12 @@ export default function PaymentCallbackPage() {
       return;
     }
 
-    // The webhook already handles the actual verification — we just look up the order
-    // by reference to redirect to the confirmation page.
     async function lookupOrder() {
       try {
         const res = await fetch(`/api/payment/verify?reference=${reference}`);
         const data = await res.json();
 
         if (res.ok && data.orderId) {
-          // Small delay so the webhook has time to process
           router.replace(`/order/${data.orderId}`);
         } else {
           setResult({ status: "failed", message: data.error ?? "Payment could not be confirmed." });
@@ -41,7 +38,6 @@ export default function PaymentCallbackPage() {
       }
     }
 
-    // Give the webhook up to 3 seconds head-start then poll
     const timer = setTimeout(lookupOrder, 2000);
     return () => clearTimeout(timer);
   }, [searchParams, router]);
@@ -85,10 +81,17 @@ export default function PaymentCallbackPage() {
     );
   }
 
-  // success case handled by redirect — this is a fallback
   return (
     <main className="min-h-screen bg-background flex items-center justify-center">
       <CheckCircle className="w-12 h-12 text-error" strokeWidth={1} />
     </main>
+  );
+}
+
+export default function PaymentCallbackPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background flex flex-col items-center justify-center"><div className="w-10 h-10 border-2 border-on-surface-variant/20 border-t-error rounded-full animate-spin" /></div>}>
+      <CallbackContent />
+    </Suspense>
   );
 }

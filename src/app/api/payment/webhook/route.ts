@@ -72,6 +72,14 @@ export async function POST(req: NextRequest) {
       if (cartWhere) {
         await tx.cartItem.deleteMany({ where: cartWhere });
       }
+
+      // Increment coupon usage if applied
+      if (order.couponCode) {
+        await tx.coupon.update({
+          where: { code: order.couponCode },
+          data: { usageCount: { increment: 1 } },
+        });
+      }
     });
 
     // 8. Send Order Notification
