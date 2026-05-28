@@ -1,15 +1,39 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Header() {
+  const pathname = usePathname();
+
+  const links = [
+    { href: "/shop", label: "Shop" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ];
+
   return (
     <header className="bg-black/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#222222] w-full flex justify-between items-center px-6 md:px-16 py-5">
       <Link className="font-display-xl text-3xl md:text-4xl font-black text-white tracking-tighter hover:text-error transition-colors italic" href="/">
         PMD.
       </Link>
       <nav className="hidden md:flex gap-10 items-center">
-        <Link className="text-white font-accent-label text-xs font-bold border-b-2 border-error pb-1 hover:text-error transition-colors uppercase tracking-[0.15em]" href="/shop">Shop</Link>
-        <Link className="text-gray-400 font-accent-label text-xs hover:text-white transition-colors duration-200 uppercase tracking-[0.15em]" href="/about">About</Link>
-        <Link className="text-gray-400 font-accent-label text-xs hover:text-white transition-colors duration-200 uppercase tracking-[0.15em]" href="/contact">Contact</Link>
+        {links.map((link) => {
+          const isActive = pathname === link.href || pathname?.startsWith(link.href + "/");
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`font-accent-label text-xs uppercase tracking-[0.15em] pb-1 border-b-2 transition-colors duration-200 ${
+                isActive
+                  ? "text-white font-bold border-error hover:text-error"
+                  : "text-gray-400 font-normal border-transparent hover:text-white"
+              }`}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
       </nav>
       <div className="flex items-center gap-6">
         <Link href="/dashboard" aria-label="user_dashboard" className="text-white hover:text-error transition-colors duration-150">
