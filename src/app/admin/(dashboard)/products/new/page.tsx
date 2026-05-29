@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Plus, Trash2 } from "lucide-react";
+import { ImageUploader } from "@/components/admin/image-uploader";
 
 type Category = {
   id: string;
@@ -31,6 +32,7 @@ export default function NewProductPage() {
   const [price, setPrice] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [isFeatured, setIsFeatured] = useState(false);
+  const [images, setImages] = useState<string[]>([]);
   const [variants, setVariants] = useState<VariantInput[]>([]);
 
   useEffect(() => {
@@ -90,6 +92,7 @@ export default function NewProductPage() {
         price: Number(price),
         categoryId,
         isFeatured,
+        images,
         variants: variants.length > 0 ? variants : undefined,
       };
 
@@ -238,6 +241,13 @@ export default function NewProductPage() {
               Featured Product
             </label>
           </div>
+        </div>
+
+        <div className="bg-surface border border-surface-container-highest p-6 md:p-8 flex flex-col gap-6">
+          <h2 className="font-accent-label text-sm uppercase tracking-widest text-on-surface border-b border-surface-container-highest pb-4">
+            Product Images
+          </h2>
+          <ImageUploader value={images} onChange={setImages} />
         </div>
 
         <div className="bg-surface border border-surface-container-highest p-6 md:p-8 flex flex-col gap-6">
