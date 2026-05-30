@@ -142,6 +142,11 @@ export default function AdminOrdersPage() {
                       onChange={(e) => updateOrderStatus(order.id, e.target.value)}
                       className="bg-transparent border border-surface-container-highest text-on-surface text-xs p-1 uppercase focus:outline-none focus:border-on-surface cursor-pointer"
                     >
+                      {!["SHIPPED", "DELIVERED", "CANCELLED"].includes(order.status) && (
+                        <option value={order.status} disabled>
+                          {order.status}
+                        </option>
+                      )}
                       {Object.keys(ORDER_STATUS_CONFIG)
                         .filter(status => ["SHIPPED", "DELIVERED", "CANCELLED"].includes(status))
                         .map((status) => (
