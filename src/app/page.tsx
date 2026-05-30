@@ -69,7 +69,7 @@ export default function Home() {
               autoPlay loop muted playsInline 
               className="w-full h-full object-contain grayscale opacity-60"
             >
-              <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
+              <source src="/pmd-brand-video.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black pointer-events-none"></div>
           </div>
