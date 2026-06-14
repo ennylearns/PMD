@@ -1,15 +1,27 @@
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-
+import { prisma } from "@/lib/prisma";
+import { formatNaira } from "@/lib/delivery";
+import Image from "next/image";
 // Shared Sections
-function FeaturedProducts() {
-  const mockProducts = [
-    { title: "Chaos Heavyweight Tee", desc: "Oversized Fit", price: "₦35,000" },
-    { title: "Diamond Core Joggers", desc: "Premium Fleece", price: "₦45,000" },
-    { title: "Pressure Graphic Tee", desc: "Vintage Wash", price: "₦35,000" },
-    { title: "Resilience Cargo", desc: "Tactical Build", price: "₦55,000" }
-  ];
+export async function FeaturedProducts() {
+  let products = await prisma.product.findMany({
+    where: { isFeatured: true },
+    take: 4,
+  });
+
+  if (products.length < 4) {
+    const fallback = await prisma.product.findMany({
+      where: {
+        isFeatured: false,
+        id: { notIn: products.map(p => p.id) }
+      },
+      take: 4 - products.length,
+      orderBy: { createdAt: "desc" },
+    });
+    products = [...products, ...fallback];
+  }
 
   return (
     <section className="py-32 px-6 md:px-16 bg-[#050505]">
@@ -20,19 +32,23 @@ function FeaturedProducts() {
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {mockProducts.map((p, i) => (
-          <div key={i} className="group cursor-pointer">
+        {products.map((p) => (
+          <Link key={p.id} href={`/shop/${p.slug}`} className="group cursor-pointer">
             <div className="relative aspect-[3/4] bg-[#111111] mb-5 overflow-hidden group-hover:bg-[#1a1a1a] transition-colors border border-transparent group-hover:border-error/30">
-               <div className="absolute inset-0 flex items-center justify-center text-[#333333] group-hover:text-error/20 font-accent-label text-2xl tracking-[0.2em] group-hover:scale-105 transition-all duration-700">PMD</div>
+               {p.images && p.images.length > 0 ? (
+                 <Image src={p.images[0]} alt={p.name} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+               ) : (
+                 <div className="absolute inset-0 flex items-center justify-center text-[#333333] group-hover:text-error/20 font-accent-label text-2xl tracking-[0.2em] group-hover:scale-105 transition-all duration-700">PMD</div>
+               )}
             </div>
             <div className="flex flex-col gap-1">
-              <h3 className="font-accent-label text-[13px] text-white uppercase tracking-widest group-hover:text-error transition-colors">{p.title}</h3>
+              <h3 className="font-accent-label text-[13px] text-white uppercase tracking-widest group-hover:text-error transition-colors">{p.name}</h3>
               <div className="flex justify-between items-center mt-1">
-                <p className="font-body-sm text-[13px] text-gray-500">{p.desc}</p>
-                <span className="font-body-sm text-[13px] text-white">{p.price}</span>
+                <p className="font-body-sm text-[13px] text-gray-500 line-clamp-1">{p.description}</p>
+                <span className="font-body-sm text-[13px] text-white shrink-0 ml-4">{formatNaira(p.price)}</span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
@@ -57,7 +73,7 @@ function BrandStory() {
   );
 }
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="flex-1 flex flex-col min-h-screen bg-black">
       <Header />

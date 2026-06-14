@@ -100,13 +100,21 @@ export async function DELETE(_request: NextRequest, { params }: RouteParams) {
     if (
       error &&
       typeof error === "object" &&
-      "code" in error &&
-      (error as { code: string }).code === "P2025"
+      "code" in error
     ) {
-      return NextResponse.json(
-        { error: "Product not found" },
-        { status: 404 }
-      );
+      const prismaError = error as { code: string };
+      if (prismaError.code === "P2025") {
+        return NextResponse.json(
+          { error: "Product not found" },
+          { status: 404 }
+        );
+      }
+      if (prismaError.code === "P2003") {
+        return NextResponse.json(
+          { error: "Cannot delete this product because it is part of an existing order history. Consider archiving it or removing it from featured products instead." },
+          { status: 400 }
+        );
+      }
     }
     return NextResponse.json(
       { error: "Failed to delete product" },
